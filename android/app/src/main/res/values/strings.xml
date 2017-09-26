@@ -1,0 +1,4 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">7O1oHsPLXbrTEAfbrlbc6_InkbeP687af85f-1654-43d6-b735-3ff7e4bf4cd7</string>
+    <string name="app_name">homekey</string>
+</resources>

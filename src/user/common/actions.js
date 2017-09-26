@@ -1,0 +1,126 @@
+export const ACTION_TYPES = {
+  USER_REQUEST: 'USER_REQUEST',
+  USER_SUCCESS: 'USER_SUCCESS',
+  USER_FAILURE: 'USER_FAILURE',
+  USER_UPDATE_REQUEST: 'USER_UPDATE_REQUEST',
+  USER_UPDATE_SUCCESS: 'USER_UPDATE_SUCCESS',
+  USER_UPDATE_FAILURE: 'USER_UPDATE_FAILURE',
+
+  USER_PROPERTIES_REQUEST: 'USER_PROPERTIES_REQUEST',
+  USER_PROPERTIES_SUCCESS: 'USER_PROPERTIES_SUCCESS',
+  USER_PROPERTIES_FAILURE: 'USER_PROPERTIES_FAILURE',
+  USER_PROPERTIES_RESET_NEXT_PAGE_URL: 'USER_PROPERTIES_RESET_NEXT_PAGE_URL',
+  USER_PROPERTIES_RESET: 'USER_PROPERTIES_RESET',
+
+  PROPERTY_THREAD_FETCH_REQUEST: 'PROPERTY_THREAD_FETCH_REQUEST',
+  PROPERTY_THREAD_FETCH_SUCCESS: 'PROPERTY_THREAD_FETCH_SUCCESS',
+  PROPERTY_THREAD_FETCH_FAILURE: 'PROPERTY_THREAD_FETCH_FAILURE',
+
+  THREAD_CREATE_REQUEST: 'THREAD_CREATE_REQUEST',
+  THREAD_CREATE_SUCCESS: 'THREAD_CREATE_SUCCESS',
+  THREAD_CREATE_FAILURE: 'THREAD_CREATE_FAILURE',
+
+  THREAD_FETCH_REQUEST: 'THREAD_FETCH_REQUEST',
+  THREAD_FETCH_SUCCESS: 'THREAD_FETCH_SUCCESS',
+  THREAD_FETCH_FAILURE: 'THREAD_FETCH_FAILURE',
+
+  THREAD_DETAIL_FETCH_REQUEST: 'THREAD_DETAIL_FETCH_REQUEST',
+  THREAD_DETAIL_FETCH_SUCCESS: 'THREAD_DETAIL_FETCH_SUCCESS',
+  THREAD_DETAIL_FETCH_FAILURE: 'THREAD_DETAIL_FETCH_FAILURE',
+
+  MESSAGE_ADD_REQUEST: 'MESSAGE_ADD_REQUEST',
+  MESSAGE_ADD_SUCCESS: 'MESSAGE_ADD_SUCCESS',
+  MESSAGE_ADD_FAILURE: 'MESSAGE_ADD_FAILURE',
+
+  SOCKET_EMIT_MESSAGE: 'SOCKET_EMIT_MESSAGE',
+  SOCKET_RECEIVE_MESSAGE: 'SOCKET_RECEIVE_MESSAGE',
+  SYNC_USER_TO_SOCKET: 'SYNC_USER_TO_SOCKET',
+  SUBSCRIBE_TO_THREAD_SOCKET: 'SUBSCRIBE_TO_THREAD_SOCKET',
+};
+
+function fetchThreads(params) {
+  return {
+    type: ACTION_TYPES.THREAD_FETCH_REQUEST,
+    params,
+  };
+}
+function fetchThreadByID(params) {
+  return {
+    type: ACTION_TYPES.THREAD_DETAIL_FETCH_REQUEST,
+    params,
+  };
+}
+
+function fetchPropertyThread(params) {
+  return {
+    type: ACTION_TYPES.PROPERTY_THREAD_FETCH_REQUEST,
+    params,
+  };
+}
+
+function fetchUser(params) {
+  return {
+    type: ACTION_TYPES.USER_REQUEST,
+    params,
+  };
+}
+function fetchUserProperties(params) {
+  return {
+    type: ACTION_TYPES.USER_PROPERTIES_REQUEST,
+    params,
+  };
+}
+function resetUserProperties() {
+  return {
+    type: ACTION_TYPES.USER_PROPERTIES_RESET,
+  };
+}
+
+function updateUser(params) {
+  return {
+    type: ACTION_TYPES.USER_UPDATE_REQUEST,
+    params,
+  };
+}
+
+function addMessage(params) {
+  return {
+    type: ACTION_TYPES.MESSAGE_ADD_REQUEST,
+    params,
+  };
+}
+
+function subscribeToSocket(params) {
+  return {
+    type: ACTION_TYPES.SUBSCRIBE_TO_THREAD_SOCKET,
+    params,
+  };
+}
+
+function broadcastMessage(params) {
+  return {
+    type: ACTION_TYPES.SOCKET_EMIT_MESSAGE,
+    params,
+  };
+}
+
+function createThread(params) {
+  return {
+    type: ACTION_TYPES.THREAD_CREATE_REQUEST,
+    params,
+  };
+}
+
+export const ACTIONS = {
+  fetchUser,
+  fetchThreads,
+  updateUser,
+  resetUserProperties,
+  fetchPropertyThread,
+  addMessage,
+  createThread,
+  subscribeToSocket,
+  fetchThreadByID,
+  broadcastMessage,
+  fetchUserProperties,
+};

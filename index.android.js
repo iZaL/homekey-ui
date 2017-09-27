@@ -4,4 +4,4 @@ import Root from './src/Root';
 
 console.disableYellowBox = true;
 
-AppRegistry.registerComponent('property', () => Root);
+AppRegistry.registerComponent('homekey', () => Root);

@@ -5,4 +5,4 @@ import Root from './src/Root';
 StatusBar.setBarStyle('dark-content');
 console.disableYellowBox = true;
 
-AppRegistry.registerComponent('property', () => Root);
+AppRegistry.registerComponent('homekey', () => Root);

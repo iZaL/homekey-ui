@@ -11,7 +11,6 @@ import {
   LANGUAGE_STORAGE_KEY,
   PUSH_TOKEN_KEY,
 } from './reducer';
-import RNRestart from 'react-native-restart';
 import CodePush from 'react-native-code-push';
 
 import {I18nManager} from 'react-native';
@@ -107,7 +106,6 @@ function* setLanguage(action) {
   });
 
   CodePush.restartApp();
-  // RNRestart.Restart();
 }
 
 function* setPushToken(action) {

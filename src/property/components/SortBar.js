@@ -4,7 +4,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  ActionSheetIOS,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -13,12 +12,13 @@ import {
 import colors from '../../common/colors';
 import I18n from '../../app/common/locale';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ActionSheet from '@yfuks/react-native-action-sheet';
 
 let showActionSheet = (sortOptions, onSortItemPress) => {
   let BUTTONS = sortOptions.map(item => item.value);
   BUTTONS.push(I18n.t('cancel'));
 
-  ActionSheetIOS.showActionSheetWithOptions(
+  ActionSheet.showActionSheetWithOptions(
     {
       options: BUTTONS,
       cancelButtonIndex: BUTTONS.length - 1,

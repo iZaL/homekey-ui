@@ -44,7 +44,7 @@ class SettingList extends Component {
         return navigation.navigate('CountryListScene');
       }
       case 'languageSelect': {
-        return navigation.navigate('SelectLanguageScene');
+        return navigation.navigate('LanguageSelectScene');
       }
       default:
         return;

@@ -169,7 +169,7 @@ const SettingTab = StackNavigator(
     ProfileScene: {
       screen: Profile,
     },
-    SelectLanguageScene: {screen: LanguageSelect},
+    LanguageSelectScene: {screen: LanguageSelect},
     ChatScene: {screen: Chat},
     ChatListScene: {screen: ChatList},
     ChatThreadScene: {screen: ChatThread},

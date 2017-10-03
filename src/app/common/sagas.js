@@ -12,6 +12,8 @@ import {
   PUSH_TOKEN_KEY,
 } from './reducer';
 import RNRestart from 'react-native-restart';
+import CodePush from 'react-native-code-push';
+
 import {I18nManager} from 'react-native';
 import {SELECTORS as AUTH_SELECTORS} from '../../auth/common/selectors';
 import {API} from './api';
@@ -104,7 +106,8 @@ function* setLanguage(action) {
     language: action.language,
   });
 
-  RNRestart.Restart();
+  CodePush.restartApp();
+  // RNRestart.Restart();
 }
 
 function* setPushToken(action) {

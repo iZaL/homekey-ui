@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
@@ -41,7 +40,6 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativeYouTube(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
-            new ReactNativeRestartPackage(),
             new ReactNativePushNotificationPackage(),
             new MapsPackage(),
             new PickerPackage(),

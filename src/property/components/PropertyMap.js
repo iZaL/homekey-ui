@@ -13,6 +13,7 @@ const LATITUDE_DELTA = 0.8;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class PropertyMap extends Component {
+
   static propTypes = {
     onPinPress: PropTypes.func.isRequired,
     address: PropTypes.object.isRequired,
@@ -53,7 +54,7 @@ export default class PropertyMap extends Component {
             : <MapView.Marker
                 coordinate={address}
                 onSelect={() => setSceneType('mapScene')}
-                scrollEnabled={false}
+                scrollEnabled={true}
               />}
         </MapView>
       </View>
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
+    // ...StyleSheet.absoluteFillObject,
     flex: 1,
     height: 250,
     alignItems: 'center',

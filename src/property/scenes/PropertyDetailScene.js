@@ -163,7 +163,8 @@ export default class PropertyDetailScene extends Component {
                 {
                   useNativeDriver: true,
                 },
-              )}>
+              )}
+            >
               <TouchableHighlight
                 onPress={() => setSceneType('galleryScene')}
                 underlayColor="transparent">

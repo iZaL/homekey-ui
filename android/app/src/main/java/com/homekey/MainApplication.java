@@ -51,6 +51,11 @@ public class MainApplication extends Application implements ReactApplication {
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG)
       );
     }
+
+    @Override
+    protected String getJSMainModuleName() {
+      return "index";
+    }
   };
 
   @Override

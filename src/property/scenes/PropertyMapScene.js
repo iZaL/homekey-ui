@@ -73,11 +73,10 @@ export default class PropertyMapScene extends PureComponent {
                   longitude: parseFloat(address.longitude),
                 }}
                 pinColor="red">
-                <MapView.Callout>
-                  <TouchableHighlight
-                    style={styles.mapContainer}
-                    onPress={() => loadScene(property)}
-                    underlayColor="transparent">
+                <MapView.Callout
+                  onPress={() => loadScene(property)}
+                >
+
                     <View style={styles.mapContent}>
                       <View style={styles.leftCol}>
                         <Image
@@ -106,7 +105,6 @@ export default class PropertyMapScene extends PureComponent {
                         </Text>
                       </View>
                     </View>
-                  </TouchableHighlight>
                 </MapView.Callout>
               </MapView.Marker>
             );
@@ -165,14 +163,14 @@ const styles = StyleSheet.create({
     height: 100,
   },
   mapContainer: {
+
+  },
+  mapContent: {
+    flexDirection: 'row',
     flex: 1,
     height: 100,
     alignItems: 'center',
     maxWidth: Dimensions.get('window').width,
-  },
-  mapContent: {
-    flex: 1,
-    flexDirection: 'row',
   },
   leftCol: {
     marginHorizontal: 2,

@@ -27,18 +27,18 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 1;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-async function requestData(placeID) {
-  let params = Qs.stringify({
-    key: GOOGLE_MAPS_KEY,
-    placeid: placeID,
-    language: 'ar',
-  });
-
-  let req = await fetch(
-    `https://maps.googleapis.com/maps/api/place/details/json?${params}`,
-  );
-  return await req.json();
-}
+// async function requestData(placeID) {
+//   let params = Qs.stringify({
+//     key: GOOGLE_MAPS_KEY,
+//     placeid: placeID,
+//     language: 'ar',
+//   });
+//
+//   let req = await fetch(
+//     `https://maps.googleapis.com/maps/api/place/details/json?${params}`,
+//   );
+//   return await req.json();
+// }
 
 export default class AddressPicker extends Component {
   static propTypes = {
@@ -63,6 +63,7 @@ export default class AddressPicker extends Component {
   }
 
   jumpToRegion = () => {
+    // console.log('region',this.mapMarkerRegion());
     this.map.animateToRegion(this.mapMarkerRegion());
   };
 
@@ -99,19 +100,16 @@ export default class AddressPicker extends Component {
         ...params,
         [city]: address_components[0].long_name,
         [state]: address_components[1].long_name,
-        // [country]: address_components[2].long_name,
       };
+
       updateAddress(params);
-      this.jumpToRegion();
     } catch (e) {
       params = {
         ...params,
         [city]: locationData.terms[0].value,
         [state]: locationData.terms[1].value,
-        // [country]: locationData.terms[2].value,
       };
       updateAddress(params);
-      this.jumpToRegion();
     }
   }
 

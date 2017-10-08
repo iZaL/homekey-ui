@@ -235,4 +235,5 @@
   "choose_account_type" : "Select Account Type",
   "individual" : "Individual" ,
   "company" : "Company" ,
+  "please_choose_precise_location" : "Please Choose neighbourhood"
 }

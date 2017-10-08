@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {
   FlatList,
-  ListView,
   StyleSheet,
   Text,
   TouchableHighlight,
   View,
+  Dimensions
 } from 'react-native';
 import colors from '../../common/colors';
 import {CountryPropType} from '../../property/common/proptypes';
@@ -21,32 +21,29 @@ export default class CountryListScene extends Component {
     country: CountryPropType.isRequired,
   };
 
-  renderRow = ({item}) => {
+  renderRow = ({item, index}) => {
     let {onCountrySelect, country} = this.props;
     return (
-      <View style={styles.row} key={item.id}>
-        <TouchableHighlight
-          onPress={() => onCountrySelect(item.id)}
-          underlayColor="transparent">
-          <View style={styles.rowContent}>
-            <Text
-              style={[
-                styles.title,
-                country.id === item.id && {
-                  color: colors.primary,
-                  fontWeight: '500',
-                },
-              ]}>
-              {item.name}
-            </Text>
-          </View>
-        </TouchableHighlight>
-      </View>
-    );
-  };
+      <TouchableHighlight
+        onPress={() => onCountrySelect(item.id)}
+        underlayColor="transparent"
+        key={index}
+      >
+        <View style={styles.row} >
+          <Text
+            style={[
+              styles.title,
+              country.id === item.id && {
+                color: colors.primary,
+                fontWeight: '500',
+              },
+            ]}>
+            {item.name}
+          </Text>
+        </View>
+      </TouchableHighlight>
 
-  renderSeparator = (sectionID: number, rowID: number) => {
-    return <View style={styles.separator} key={`${sectionID}-${rowID}`} />;
+    );
   };
 
   render() {
@@ -54,7 +51,6 @@ export default class CountryListScene extends Component {
     return (
       <FlatList
         style={styles.container}
-        contentContainerStyle={styles.list}
         data={countries}
         renderItem={this.renderRow}
         enableEmptySections={true}
@@ -62,6 +58,7 @@ export default class CountryListScene extends Component {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         automaticallyAdjustContentInsets={false}
+        numColumns={2}
       />
     );
   }
@@ -73,33 +70,27 @@ const styles = StyleSheet.create({
     backgroundColor: colors.fadedWhite,
     paddingTop: 20,
   },
-  list: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
+  list: {},
   row: {
-    flex: 1,
-    height: 150,
-    width: 150,
-    borderRadius: 75,
+    height: (Dimensions.get('window').width / 2) - 40,
+    width: (Dimensions.get('window').width / 2) - 40,
+    borderRadius: ((Dimensions.get('window').width / 2) - 40 )/2,
     justifyContent: 'center',
     borderColor: colors.mediumGrey,
     backgroundColor: 'white',
     borderWidth: 3,
-    margin: 10,
+    marginVertical: 10,
+    marginHorizontal: 20,
   },
   rowContent: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
+    // flexDirection: 'row',
   },
   title: {
-    flex: 1,
     color: colors.darkGrey,
     fontWeight: '500',
     textAlign: 'center',
     fontSize: 20,
+    backgroundColor:'transparent'
   },
   separator: {
     flex: 1,

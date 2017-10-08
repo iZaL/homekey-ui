@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 1, height: 1},
   },
   textInput: {
-    height: 30,
+    height: 40,
     fontSize: 16,
     marginVertical: 5,
     textAlign: isRTL ? 'right' : 'left',

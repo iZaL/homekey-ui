@@ -24,7 +24,6 @@ import I18n from './../../app/common/locale';
 import {
   TabBar,
   TabViewAnimated, TabViewPagerPan,
-  TabViewPagerScroll,
 } from 'react-native-tab-view';
 import {isRTL} from '../../app/common/locale';
 

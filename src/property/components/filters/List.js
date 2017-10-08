@@ -21,10 +21,6 @@ export default class List extends Component {
     hint: PropTypes.string,
   };
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.selected !== nextProps.selected;
-  }
-
   renderRow = ({item, index}) => {
     const {onSelect, selected, hint} = this.props;
     return (

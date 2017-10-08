@@ -35,23 +35,45 @@ export default class CompanyListScene extends PureComponent {
     return prev.item !== next.item;
   };
 
-  renderRow = ({item}) => {
+  renderRow = ({item,index}) => {
     const {loadScene} = this.props;
 
     return (
-      <View key={item._id} style={[styles.row]}>
-        <TouchableHighlight
-          onPress={() => loadScene(item)}
-          underlayColor="transparent">
-          <View style={styles.rowContent}>
+      <TouchableHighlight
+        onPress={() => loadScene(item)}
+        underlayColor="transparent"
+        key={index}
+        style={styles.row}>
+        <View style={styles.companyInfoContainer}>
+          <View>
+            <Image source={{uri: item.image}} style={styles.companyLogo} />
+
+          </View>
+
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'flex-start',
+              alignSelf: 'flex-start',
+              paddingTop: 10,
+            }}>
+
             <LocalizedText
-              style={styles.title}
+              style={styles.companyTitle}
               en={item.name_en}
               ar={item.name_ar}
             />
+
+            <LocalizedText
+              style={styles.companyDescription}
+              en={item.name_en}
+              ar={item.name_ar}
+            />
+
           </View>
-        </TouchableHighlight>
-      </View>
+
+        </View>
+      </TouchableHighlight>
     );
   };
 
@@ -66,7 +88,6 @@ export default class CompanyListScene extends PureComponent {
     return (
       <FlatList
         style={styles.container}
-        contentContainerStyle={styles.list}
         data={collection}
         renderItem={this.renderRow}
         enableEmptySections={true}
@@ -102,20 +123,10 @@ const styles = StyleSheet.create({
   list: {
     justifyContent: 'center',
     flexDirection: 'row',
-    flexWrap: 'wrap',
     alignItems: 'center',
   },
   row: {
-    flex: 1,
-    height: 150,
-    width: 150,
-    borderRadius: 75,
-    justifyContent: 'center',
-    borderColor: colors.mediumGrey,
-    backgroundColor: 'white',
-    borderWidth: 3,
-    margin: 10,
-    maxHeight: 150,
+
   },
   image: {
     flex: 1,
@@ -134,5 +145,54 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
     fontSize: 20,
+  },
+  companyImage: {
+    flex: 1,
+    width: null,
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  companyLogo: {
+    width: 75,
+    height: 75,
+    borderColor: 'white',
+    borderWidth: 2,
+    borderRadius: 4,
+    backgroundColor:colors.fadedWhite
+  },
+  companyInfoContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+    paddingBottom: 10,
+    alignItems: 'center',
+  },
+  companyTitle: {
+    color: colors.darkGrey,
+    backgroundColor: 'transparent',
+    fontSize: 17,
+    textAlign: 'left',
+  },
+  openText: {
+    color: colors.green,
+    fontWeight: '500',
+    fontSize: 14,
+    marginLeft: 2,
+  },
+  openCloseIcon: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    marginLeft: 10,
+    marginTop: 2,
+  },
+  companyDescription: {
+    color: colors.darkGrey,
+    backgroundColor: 'transparent',
+    fontSize: 14,
+    fontWeight: '100',
+    textAlign: 'left',
+    opacity: 0.8,
   },
 });

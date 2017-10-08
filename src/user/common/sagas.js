@@ -124,12 +124,14 @@ function* updateUser(action) {
         payload: response.data,
       });
     } else {
+
       const formData = new FormData();
       formData.append('image', {
         uri: image,
         name: getFileName(image),
         type: 'image/jpg',
       });
+
       const imageResponse = yield call(API.uploadImage, formData, urlParams);
       yield put({
         type: ACTION_TYPES.USER_UPDATE_SUCCESS,

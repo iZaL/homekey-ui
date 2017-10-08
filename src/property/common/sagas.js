@@ -325,15 +325,15 @@ function* saveProperty(action) {
     let attributes = action.payload;
     let propertyID = attributes._id ? attributes._id : null;
 
-    const {price, phone1, phone2, area} = attributes.meta;
+    const {price, mobile, phone, area} = attributes.meta;
 
     const filteredPrice = hasArabicChar(price) ? parseArabicChar(price) : price;
-    const filteredPhone1 = hasArabicChar(phone1)
-      ? parseArabicChar(phone1)
-      : phone1;
-    const filteredPhone2 = hasArabicChar(phone2)
-      ? parseArabicChar(phone2)
-      : phone2;
+    const filteredPhone1 = hasArabicChar(mobile)
+      ? parseArabicChar(mobile)
+      : mobile;
+    const filteredPhone2 = hasArabicChar(phone)
+      ? parseArabicChar(phone)
+      : phone;
     const filteredArea = hasArabicChar(area) ? parseArabicChar(area) : area;
 
     const {
@@ -366,8 +366,8 @@ function* saveProperty(action) {
       meta: {
         ...meta,
         price: filteredPrice,
-        phone1: filteredPhone1,
-        phone2: filteredPhone2,
+        mobile: filteredPhone1,
+        phone: filteredPhone2,
         area: filteredArea,
       },
       images,
@@ -377,7 +377,7 @@ function* saveProperty(action) {
       video,
     };
 
-    const urlParams = `api_token=${apiToken}`;
+    const urlParams = `api_token=${apiToken}&lang=${I18n.locale}`;
     const response = yield call(API.saveProperty, params, urlParams);
 
     const formData = new FormData();

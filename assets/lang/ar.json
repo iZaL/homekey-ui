@@ -2,7 +2,7 @@
   "email":"بريد الإلكتروني",
   "name":"إسم",
   "phone":"هاتف",
-  "mobile":"جوال",
+  "mobile":"موبايل",
   "description":"وصف",
   "password":"كلمة السر",
   "confirm_password":"تاكيد كلمة السر",
@@ -235,5 +235,6 @@
   "choose_account_type" : "اختر نوعية الحساب",
   "individual" : "شخصي" ,
   "company" : "شركة" ,
-  "please_choose_precise_location" : "اختر المنطقة"
+  "please_choose_precise_location" : "اختر المنطقة",
+  "required" : "مطلوب"
 }

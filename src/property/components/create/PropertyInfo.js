@@ -104,8 +104,8 @@ export default class PropertyInfo extends Component {
       price,
       area,
       gender,
-      phone1,
-      phone2,
+      mobile,
+      phone,
       email,
     } = attributes.meta;
 
@@ -176,8 +176,8 @@ export default class PropertyInfo extends Component {
               </View>
 
               <FormTextInput
-                onChangeText={value => onFieldChange('phone1', value)}
-                value={phone1 && phone1.toString()}
+                onChangeText={value => onFieldChange('mobile', value)}
+                value={mobile && mobile.toString()}
                 maxLength={12}
                 placeholder={I18n.t('mobile')}
                 keyboardType="numeric"
@@ -211,8 +211,8 @@ export default class PropertyInfo extends Component {
 
               <FormLabel title={I18n.t('phone')} />
               <FormTextInput
-                onChangeText={value => onFieldChange('phone2', value)}
-                value={phone2 ? phone2.toString() : ''}
+                onChangeText={value => onFieldChange('phone', value)}
+                value={phone ? phone.toString() : ''}
                 maxLength={12}
                 placeholder={I18n.t('phone')}
                 keyboardType="numeric"

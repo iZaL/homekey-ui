@@ -377,13 +377,13 @@ export default class PropertyDetailScene extends Component {
                   <Text
                     style={styles.infoResult}
                     onPress={() => {
-                      this.makePhoneCall(property.meta.phone1);
+                      this.makePhoneCall(property.meta.mobile);
                     }}>
-                    {property.meta.phone1}
+                    {property.meta.mobile}
                   </Text>
                 </View>
 
-                {!!property.meta.phone2 &&
+                {!!property.meta.phone &&
                   <View>
                     <Separator
                       style={[styles.separator, {marginVertical: 15}]}
@@ -407,9 +407,9 @@ export default class PropertyDetailScene extends Component {
                       <Text
                         style={styles.infoResult}
                         onPress={() => {
-                          this.makePhoneCall(property.meta.phone2);
+                          this.makePhoneCall(property.meta.phone);
                         }}>
-                        {property.meta.phone2}
+                        {property.meta.phone}
                       </Text>
                     </View>
                   </View>}

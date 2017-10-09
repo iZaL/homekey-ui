@@ -14,7 +14,8 @@ export default class RegisterScene extends Component {
   static propTypes = {
     handleRegister: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    name_en: PropTypes.string.isRequired,
+    name_ar: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     mobile: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,

@@ -43,7 +43,6 @@ class CompanyList extends PureComponent {
   render() {
     const {companies, isFetching, country} = this.props;
 
-    console.log('c',companies);
     return (
       <CompanyListScene
         collection={companies}

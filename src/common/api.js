@@ -1,4 +1,11 @@
+import I18n from './../app/common/locale';
+
 export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
+
+  let delimiter = url.indexOf('?') === -1 ? '?' : '&';
+
+  let localeAwareUrl = `${url+delimiter}lang=${I18n.locale}`;
+
   let request;
 
   if (__DEV__) {
@@ -7,14 +14,14 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
       console.log({
         method: method,
         body: body,
-        url: url,
+        url: localeAwareUrl,
       });
       console.groupEnd();
     }
   }
 
   if (method === 'POST') {
-    request = fetch(url, {
+    request = fetch(localeAwareUrl, {
       method,
       body: isBlob ? body : JSON.stringify(body),
       headers: {
@@ -23,7 +30,7 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
       },
     });
   } else {
-    request = fetch(url, {
+    request = fetch(localeAwareUrl, {
       method,
     });
   }

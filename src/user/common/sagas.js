@@ -149,7 +149,6 @@ export function* createThread(action) {
     const apiToken = AUTH_SELECTORS.getAuthToken(state);
 
     if (isEmpty(apiToken)) {
-      console.log('is Empty token');
       yield put({type: ACTION_TYPES.THREAD_CREATE_FAILURE});
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
       return yield put(
@@ -158,8 +157,6 @@ export function* createThread(action) {
         }),
       );
     }
-
-    console.log('waa');
 
     const urlParams = `api_token=${apiToken}`;
     const {message} = action.params;

@@ -89,7 +89,6 @@ class Chat extends PureComponent {
 
   render() {
     let {thread, user} = this.props;
-    console.log('this.props',this.props);
     const messages = thread && thread.messages ? thread.messages : [];
     return (
       <View style={{backgroundColor: 'white', flex: 1}}>

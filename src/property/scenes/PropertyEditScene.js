@@ -118,9 +118,6 @@ export default class PropertyEditScene extends Component {
     let requiredFields = ['price', 'description', 'mobile'];
 
     requiredFields.map(item => {
-
-      console.log('i',item);
-
       if (!meta[item]) {
         hasError = true;
         return this.props.actions.setNotification(

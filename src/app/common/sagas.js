@@ -141,8 +141,6 @@ function* navigate(action) {
       }),
     );
   } catch (error) {
-    console.log('err', error);
-    // yield put({type: ACTION_TYPES.SET_PUSH_TOKEN_FAILURE, error});
   }
 }
 

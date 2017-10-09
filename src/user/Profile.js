@@ -41,8 +41,6 @@ class Profile extends PureComponent {
   render() {
     const {properties, isFetching, country, countries, user} = this.props;
 
-    console.log('isFetching', this.props);
-
     return (
       <ProfileScene
         user={user}

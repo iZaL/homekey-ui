@@ -104,7 +104,6 @@ export default class PropertyListTopBar extends Component {
   };
 
   render() {
-    console.log('this.props', this.props);
     let {
       mapView, sortOptions, selectedSortOption, onSortItemPress, country,
       showRelated, propertyType, location, isFetching, isRelatedFetching,

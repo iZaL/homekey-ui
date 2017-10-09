@@ -83,9 +83,11 @@ class PropertyList extends PureComponent {
   };
 
   onSortItemPress = (option: object) => {
-    this.props.actions.setSortOption(option.key);
-    this.props.actions.resetProperty();
-    this.props.actions.fetchProperties();
+    if (option) {
+      this.props.actions.setSortOption(option.key);
+      this.props.actions.resetProperty();
+      this.props.actions.fetchProperties();
+    }
   };
 
   onMapViewPress = () => {

@@ -377,7 +377,7 @@ function* saveProperty(action) {
       video,
     };
 
-    const urlParams = `api_token=${apiToken}&lang=${I18n.locale}`;
+    const urlParams = `api_token=${apiToken}`;
     const response = yield call(API.saveProperty, params, urlParams);
 
     const formData = new FormData();

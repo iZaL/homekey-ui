@@ -17,9 +17,9 @@ class UserEdit extends Component {
   state = {
     uploaded: false,
     image: null,
-    name_en:null,
-    name_ar:null,
-    mobile:null,
+    name_en: null,
+    name_ar: null,
+    mobile: null,
     company: {
       address: null,
       description: null,
@@ -41,9 +41,9 @@ class UserEdit extends Component {
     const {user} = this.props;
     this.setState({
       image: user.image,
-      name_en:user.name_en,
-      name_ar:user.name_ar,
-      mobile:user.mobile,
+      name_en: user.name_en,
+      name_ar: user.name_ar,
+      mobile: user.mobile,
     });
     if (user.isCompany) {
       this.setState({

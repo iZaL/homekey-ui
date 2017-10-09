@@ -73,38 +73,33 @@ export default class PropertyMapScene extends PureComponent {
                   longitude: parseFloat(address.longitude),
                 }}
                 pinColor="red">
-                <MapView.Callout
-                  onPress={() => loadScene(property)}
-                >
-
-                    <View style={styles.mapContent}>
-                      <View style={styles.leftCol}>
-                        <Image
-                          source={{uri: property.images[0]}}
-                          style={styles.image}
-                          resizeMode="contain"
-                        />
-                      </View>
-                      <View style={styles.rightCol}>
-                        <View>
-                          <Text style={styles.title}>
-                            {property.title}
-                          </Text>
-                        </View>
-                        <Text style={styles.price}>
-                          {numberWithCommas(property.meta.price)}{' '}
-                          {property.country.currency}
-                        </Text>
-                        <PropertyIcons
-                          services={meta || []}
-                          items={['bedroom', 'bathroom', 'parking']}
-                        />
-                        <Text style={styles.lightText}>
-                          {I18n.t('added')}{' '}
-                          {moment(property.created_at).fromNow()}
-                        </Text>
-                      </View>
+                <MapView.Callout onPress={() => loadScene(property)}>
+                  <View style={styles.mapContent}>
+                    <View style={styles.leftCol}>
+                      <Image
+                        source={{uri: property.images[0]}}
+                        style={styles.image}
+                        resizeMode="contain"
+                      />
                     </View>
+                    <View style={styles.rightCol}>
+                      <View>
+                        <Text style={styles.title}>{property.title}</Text>
+                      </View>
+                      <Text style={styles.price}>
+                        {numberWithCommas(property.meta.price)}{' '}
+                        {property.country.currency}
+                      </Text>
+                      <PropertyIcons
+                        services={meta || []}
+                        items={['bedroom', 'bathroom', 'parking']}
+                      />
+                      <Text style={styles.lightText}>
+                        {I18n.t('added')}{' '}
+                        {moment(property.created_at).fromNow()}
+                      </Text>
+                    </View>
+                  </View>
                 </MapView.Callout>
               </MapView.Marker>
             );
@@ -162,9 +157,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   },
-  mapContainer: {
-
-  },
+  mapContainer: {},
   mapContent: {
     flexDirection: 'row',
     flex: 1,

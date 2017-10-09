@@ -6,9 +6,7 @@ import colors from '../../../common/colors';
 const Header = ({title}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        {title}
-      </Text>
+      <Text style={styles.text}>{title}</Text>
     </View>
   );
 };

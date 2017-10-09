@@ -3,18 +3,13 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {isRTL} from '../app/common/locale';
 
-const NavBar = ({style, left, right, middle}) =>
+const NavBar = ({style, left, right, middle}) => (
   <View style={[styles.navBar, style]}>
-    <View style={styles.left}>
-      {left}
-    </View>
-    <View style={styles.middle}>
-      {middle}
-    </View>
-    <View style={styles.right}>
-      {right}
-    </View>
-  </View>;
+    <View style={styles.left}>{left}</View>
+    <View style={styles.middle}>{middle}</View>
+    <View style={styles.right}>{right}</View>
+  </View>
+);
 
 NavBar.propTypes = {
   left: PropTypes.object,

@@ -119,11 +119,13 @@ const getPropertyThread = createSelector(
   getPropertyID,
   AUTH_SELECTORS.getCurrentUserID,
   ormSelector(orm, ({Thread}, propertyID, userID) => {
-    return Thread.all().toRefArray().filter(thread => {
-      return thread.property_id === propertyID && thread.user_ids
-        ? thread.user_ids.includes(userID)
-        : false;
-    })[0];
+    return Thread.all()
+      .toRefArray()
+      .filter(thread => {
+        return thread.property_id === propertyID && thread.user_ids
+          ? thread.user_ids.includes(userID)
+          : false;
+      })[0];
   }),
 );
 
@@ -182,7 +184,10 @@ const getMapView = createSelector(propertyMapView, mapView => mapView);
 
 // History Reducer
 const getSearchHistory = createSelector(propertySearchHistory, history =>
-  history.slice().reverse().slice(0, 20),
+  history
+    .slice()
+    .reverse()
+    .slice(0, 20),
 );
 
 // Options reducer

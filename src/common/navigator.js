@@ -197,48 +197,52 @@ const Tabs = TabNavigator(
       screen: PropertyTab,
       navigationOptions: {
         tabBarLabel: I18n.t('home'),
-        tabBarIcon: ({tintColor, focused}) =>
+        tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
             name={focused ? 'ios-home' : 'ios-home-outline'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
-          />,
+          />
+        ),
       },
     },
     FavoritesTab: {
       screen: FavoriteTab,
       navigationOptions: {
         tabBarLabel: I18n.t('favorites'),
-        tabBarIcon: ({tintColor, focused}) =>
+        tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
             name={focused ? 'ios-star' : 'ios-star-outline'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
-          />,
+          />
+        ),
       },
     },
     CompanyTab: {
       screen: CompanyTab,
       navigationOptions: {
         tabBarLabel: I18n.t('companies'),
-        tabBarIcon: ({tintColor, focused}) =>
+        tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
             name={focused ? 'ios-cloud-upload' : 'ios-cloud-upload-outline'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
-          />,
+          />
+        ),
       },
     },
     SettingsTab: {
       screen: SettingTab,
       navigationOptions: {
         tabBarLabel: I18n.t('more'),
-        tabBarIcon: ({tintColor, focused}) =>
+        tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
             name={focused ? 'ios-settings' : 'ios-settings'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
-          />,
+          />
+        ),
       },
     },
   },

@@ -63,14 +63,10 @@ export default class Button extends Component {
               size={20}
               style={styles.icon}
             />
-            <Text style={[styles.title, titleStyle]}>
-              {title}
-            </Text>
+            <Text style={[styles.title, titleStyle]}>{title}</Text>
           </View>
           <View style={styles.selected}>
-            <Text style={styles.selectedText}>
-              {selected}
-            </Text>
+            <Text style={styles.selectedText}>{selected}</Text>
           </View>
         </View>
         <Text style={[styles.button]} onPress={() => this.increment()}>

@@ -6,7 +6,7 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ACTIONS} from './common/actions';
-import {ACTIONS as USER_ACTIONS } from './../user/common/actions';
+import {ACTIONS as USER_ACTIONS} from './../user/common/actions';
 import {SELECTORS} from './common/selectors';
 import {SELECTORS as APP_SELECTORS} from './../app/common/selectors';
 import CompanyListScene from './scenes/CompanyListScene';
@@ -57,7 +57,7 @@ class CompanyList extends PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators({...ACTIONS,...USER_ACTIONS}, dispatch)};
+  return {actions: bindActionCreators({...ACTIONS, ...USER_ACTIONS}, dispatch)};
 }
 
 function mapStateToProps(state) {

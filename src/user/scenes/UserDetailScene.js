@@ -26,18 +26,20 @@ export default class UserDetailScene extends Component {
 
     return (
       <View style={styles.container}>
-        {user.image
-          ? <Image
-              source={{uri: user.image}}
-              style={styles.logo}
-              resizeMode="cover"
-            />
-          : <FontAwesome
-              name="picture-o"
-              color="white"
-              size={200}
-              style={styles.emptyImageIcon}
-            />}
+        {user.image ? (
+          <Image
+            source={{uri: user.image}}
+            style={styles.logo}
+            resizeMode="cover"
+          />
+        ) : (
+          <FontAwesome
+            name="picture-o"
+            color="white"
+            size={200}
+            style={styles.emptyImageIcon}
+          />
+        )}
 
         <View style={styles.editIconWrapper}>
           <TouchableHighlight onPress={loadScene} underlayColor="transparent">
@@ -51,9 +53,7 @@ export default class UserDetailScene extends Component {
         </View>
 
         <View style={styles.content}>
-          <Text style={styles.username}>
-            {user.name}
-          </Text>
+          <Text style={styles.username}>{user.name}</Text>
           <Text style={styles.date}>
             {I18n.t('member_since')}{' '}
             {moment(user.created_at).format('MMMM D YYYY')}

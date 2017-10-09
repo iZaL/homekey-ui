@@ -30,19 +30,17 @@ export default class ChatListScene extends Component {
           <View />
 
           <View style={styles.rowContentContainer}>
-            {item.property &&
+            {item.property && (
               <Text style={styles.propertyTitle}>
                 {item.property.meta.title}
-              </Text>}
+              </Text>
+            )}
 
-            {user._id !== item.recent.user._id &&
-              <Text style={styles.userName}>
-                {item.recent.user.name}
-              </Text>}
+            {user._id !== item.recent.user._id && (
+              <Text style={styles.userName}>{item.recent.user.name}</Text>
+            )}
 
-            <Text style={styles.messageText}>
-              {item.recent.text}
-            </Text>
+            <Text style={styles.messageText}>{item.recent.text}</Text>
           </View>
 
           <View>

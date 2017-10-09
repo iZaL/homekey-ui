@@ -163,8 +163,7 @@ export default class PropertyDetailScene extends Component {
                 {
                   useNativeDriver: true,
                 },
-              )}
-            >
+              )}>
               <TouchableHighlight
                 onPress={() => setSceneType('galleryScene')}
                 underlayColor="transparent">
@@ -174,7 +173,7 @@ export default class PropertyDetailScene extends Component {
               <View style={styles.contentContainerStyle}>
                 {/*  Chat */}
 
-                {property.user._id != currentUserID &&
+                {property.user._id != currentUserID && (
                   <View style={styles.chatButtonContainer}>
                     <TouchableHighlight
                       onPress={() => initiateChat()}
@@ -184,7 +183,8 @@ export default class PropertyDetailScene extends Component {
                         {I18n.t('start_chat')}
                       </Text>
                     </TouchableHighlight>
-                  </View>}
+                  </View>
+                )}
 
                 <View
                   style={{
@@ -227,16 +227,14 @@ export default class PropertyDetailScene extends Component {
                   />
                 </View>
 
-                {property.user.isCompany &&
+                {property.user.isCompany && (
                   <View
                     style={{
                       flex: 1,
                       flexDirection: 'row',
                       alignItems: 'center',
                     }}>
-                    <Text style={styles.lightText}>
-                      {I18n.t('added_by')}
-                    </Text>
+                    <Text style={styles.lightText}>{I18n.t('added_by')}</Text>
                     <TouchableHighlight
                       underlayColor="transparent"
                       onPress={() => loadProfile(property.user)}
@@ -247,33 +245,31 @@ export default class PropertyDetailScene extends Component {
                         ar={property.user.name_ar}
                       />
                     </TouchableHighlight>
-                  </View>}
+                  </View>
+                )}
 
                 <View style={styles.extraInfo}>
-                  {!!property.meta.area &&
+                  {!!property.meta.area && (
                     <View style={styles.infoRow}>
-                      <Text style={styles.infoTitle}>
-                        {I18n.t('area')}
-                      </Text>
+                      <Text style={styles.infoTitle}>{I18n.t('area')}</Text>
                       <Text style={styles.infoResult}>
                         {property.meta.area} metre
                       </Text>
-                    </View>}
+                    </View>
+                  )}
 
                   {/*{!!property.meta.gender &&*/}
-                    {/*<View style={styles.infoRow}>*/}
-                      {/*<Text style={styles.infoTitle}>*/}
-                        {/*{I18n.t('social_status')}*/}
-                      {/*</Text>*/}
-                      {/*<Text style={styles.infoResult}>*/}
-                        {/*{property.meta.gender}*/}
-                      {/*</Text>*/}
-                    {/*</View>}*/}
+                  {/*<View style={styles.infoRow}>*/}
+                  {/*<Text style={styles.infoTitle}>*/}
+                  {/*{I18n.t('social_status')}*/}
+                  {/*</Text>*/}
+                  {/*<Text style={styles.infoResult}>*/}
+                  {/*{property.meta.gender}*/}
+                  {/*</Text>*/}
+                  {/*</View>}*/}
 
                   <View style={styles.infoRow}>
-                    <Text style={styles.infoTitle}>
-                      {I18n.t('address')}
-                    </Text>
+                    <Text style={styles.infoTitle}>{I18n.t('address')}</Text>
 
                     <Text style={styles.infoResult}>
                       {isRTL
@@ -295,7 +291,7 @@ export default class PropertyDetailScene extends Component {
                   {property.meta.description}
                 </Text>
 
-                {!!property.nearByPlaces.length &&
+                {!!property.nearByPlaces.length && (
                   <View>
                     <Separator
                       style={[styles.separator, {marginVertical: 15}]}
@@ -305,15 +301,16 @@ export default class PropertyDetailScene extends Component {
                       <Text style={[styles.descTitle, {marginBottom: 10}]}>
                         {I18n.t('near_by_places')}
                       </Text>
-                      {property.nearByPlaces.map(place =>
+                      {property.nearByPlaces.map(place => (
                         <Text key={place} style={styles.amenity}>
                           {I18n.t(place)}
-                        </Text>,
-                      )}
+                        </Text>
+                      ))}
                     </View>
-                  </View>}
+                  </View>
+                )}
 
-                {!!property.amenities.length &&
+                {!!property.amenities.length && (
                   <View>
                     <Separator
                       style={[styles.separator, {marginVertical: 15}]}
@@ -323,15 +320,16 @@ export default class PropertyDetailScene extends Component {
                       <Text style={[styles.descTitle, {marginBottom: 10}]}>
                         {I18n.t('amenities')}
                       </Text>
-                      {property.amenities.map(amenity =>
+                      {property.amenities.map(amenity => (
                         <Text key={amenity} style={styles.amenity}>
                           {I18n.t(amenity)}
-                        </Text>,
-                      )}
+                        </Text>
+                      ))}
                     </View>
-                  </View>}
+                  </View>
+                )}
 
-                {!!property.meta.email &&
+                {!!property.meta.email && (
                   <View>
                     <Separator
                       style={[styles.separator, {marginVertical: 15}]}
@@ -343,9 +341,7 @@ export default class PropertyDetailScene extends Component {
                         style={{width: 20, height: 15, alignSelf: 'center'}}
                         color={colors.darkGrey}
                       />
-                      <Text style={styles.infoTitle}>
-                        {I18n.t('email')}
-                      </Text>
+                      <Text style={styles.infoTitle}>{I18n.t('email')}</Text>
                       <Text
                         style={styles.infoResult}
                         onPress={() => {
@@ -354,7 +350,8 @@ export default class PropertyDetailScene extends Component {
                         {property.meta.email}
                       </Text>
                     </View>
-                  </View>}
+                  </View>
+                )}
 
                 <Separator style={[styles.separator, {marginVertical: 15}]} />
 
@@ -371,9 +368,7 @@ export default class PropertyDetailScene extends Component {
                     }}
                     color={colors.darkGrey}
                   />
-                  <Text style={styles.infoTitle}>
-                    {I18n.t('mobile')}
-                  </Text>
+                  <Text style={styles.infoTitle}>{I18n.t('mobile')}</Text>
                   <Text
                     style={styles.infoResult}
                     onPress={() => {
@@ -383,7 +378,7 @@ export default class PropertyDetailScene extends Component {
                   </Text>
                 </View>
 
-                {!!property.meta.phone &&
+                {!!property.meta.phone && (
                   <View>
                     <Separator
                       style={[styles.separator, {marginVertical: 15}]}
@@ -401,9 +396,7 @@ export default class PropertyDetailScene extends Component {
                         }}
                         color={colors.darkGrey}
                       />
-                      <Text style={styles.infoTitle}>
-                        {I18n.t('phone')}
-                      </Text>
+                      <Text style={styles.infoTitle}>{I18n.t('phone')}</Text>
                       <Text
                         style={styles.infoResult}
                         onPress={() => {
@@ -412,7 +405,8 @@ export default class PropertyDetailScene extends Component {
                         {property.meta.phone}
                       </Text>
                     </View>
-                  </View>}
+                  </View>
+                )}
 
                 <Separator style={[styles.separator, {marginVertical: 15}]} />
 

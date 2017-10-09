@@ -84,9 +84,7 @@ export default class LoginScene extends Component {
             style={{paddingTop: 100}}
             underlayColor="transparent"
             disabled={busy}>
-            <Text style={[styles.link]}>
-              {I18n.t('forgot_password')}
-            </Text>
+            <Text style={[styles.link]}>{I18n.t('forgot_password')}</Text>
           </TouchableHighlight>
         </View>
       </View>

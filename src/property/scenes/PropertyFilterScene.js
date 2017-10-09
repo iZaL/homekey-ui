@@ -21,10 +21,7 @@ import CountryPicker from '../components/filters/CountryPicker';
 import {CountryPropType} from '../common/proptypes';
 import I18n from './../../app/common/locale';
 
-import {
-  TabBar,
-  TabViewAnimated, TabViewPagerPan,
-} from 'react-native-tab-view';
+import {TabBar, TabViewAnimated, TabViewPagerPan} from 'react-native-tab-view';
 import {isRTL} from '../../app/common/locale';
 
 export default class PropertyFilterScene extends Component {
@@ -261,43 +258,45 @@ export default class PropertyFilterScene extends Component {
               backgroundColor: '#E3E3E3',
               borderRadius: 30,
             }}>
-            {isEmpty(searchString)
-              ? <Text
+            {isEmpty(searchString) ? (
+              <Text
+                style={{
+                  padding: 3,
+                  paddingLeft: 10,
+                  fontWeight: '500',
+                  color: colors.darkGrey,
+                  textAlign: 'left',
+                }}>
+                {I18n.t('search_by_location')}
+              </Text>
+            ) : (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <Text
                   style={{
+                    flex: 1,
                     padding: 3,
                     paddingLeft: 10,
                     fontWeight: '500',
                     color: colors.darkGrey,
                     textAlign: 'left',
                   }}>
-                  {I18n.t('search_by_location')}
+                  {searchString}
                 </Text>
-              : <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}>
-                  <Text
-                    style={{
-                      flex: 1,
-                      padding: 3,
-                      paddingLeft: 10,
-                      fontWeight: '500',
-                      color: colors.darkGrey,
-                      textAlign: 'left',
-                    }}>
-                    {searchString}
-                  </Text>
-                  <TouchableHighlight
-                    onPress={() => onSearch('')}
-                    style={styles.closeButtonContainer}>
-                    <Ionicons
-                      name="ios-close-circle-outline"
-                      size={16}
-                      color={colors.primary}
-                    />
-                  </TouchableHighlight>
-                </View>}
+                <TouchableHighlight
+                  onPress={() => onSearch('')}
+                  style={styles.closeButtonContainer}>
+                  <Ionicons
+                    name="ios-close-circle-outline"
+                    size={16}
+                    color={colors.primary}
+                  />
+                </TouchableHighlight>
+              </View>
+            )}
           </View>
         </TouchableWithoutFeedback>
       </View>
@@ -356,9 +355,7 @@ export default class PropertyFilterScene extends Component {
           underlayColor="transparent"
           onPress={onSearchPress}
           style={styles.footer}>
-          <Text style={styles.footerText}>
-            {I18n.t('apply_filter')}
-          </Text>
+          <Text style={styles.footerText}>{I18n.t('apply_filter')}</Text>
         </TouchableHighlight>
       </View>
     );

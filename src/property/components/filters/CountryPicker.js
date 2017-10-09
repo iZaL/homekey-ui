@@ -60,9 +60,7 @@ export default class CountryPicker extends Component {
         key={country.id}
         onPress={() => this._handlePressUpdateLocation(country.id)}>
         <View style={styles.menuOption}>
-          <Text>
-            {country.name}
-          </Text>
+          <Text>{country.name}</Text>
         </View>
       </TouchableWithoutFeedback>
     );
@@ -106,9 +104,7 @@ export default class CountryPicker extends Component {
               paddingLeft: 5,
             }}>
             <CountryFlagIcon country={country} />
-            <Text style={styles.navigationBarTitle}>
-              {country.abbr}
-            </Text>
+            <Text style={styles.navigationBarTitle}>{country.abbr}</Text>
 
             <View
               style={{

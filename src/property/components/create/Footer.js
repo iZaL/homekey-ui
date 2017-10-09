@@ -11,9 +11,7 @@ const Footer = ({title, updateListing, disabled = false}) => {
       onPress={() => updateListing()}
       style={[styles.container, disabled && {opacity: 0.5}]}
       disabled={disabled}>
-      <Text style={styles.text}>
-        {title ? title : I18n.t('next')}
-      </Text>
+      <Text style={styles.text}>{title ? title : I18n.t('next')}</Text>
     </TouchableHighlight>
   );
 };

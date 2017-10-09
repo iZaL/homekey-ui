@@ -3,12 +3,11 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {View, Animated} from "react-native";
-import SortBar from "./SortBar";
-import ResultHint from "./ResultHint";
-import EmptyResult from "./EmptyResult";
+import {View, Animated} from 'react-native';
+import SortBar from './SortBar';
+import ResultHint from './ResultHint';
+import EmptyResult from './EmptyResult';
 import {CountryPropType} from './../common/proptypes';
-
 
 const TAB_BAR_HEIGHT = 90;
 const STATUS_BAR_HEIGHT = 20;
@@ -55,7 +54,6 @@ export default class PropertyListTopBar extends Component {
         TAB_BAR_HEIGHT - STATUS_BAR_HEIGHT,
       ),
     };
-
   }
 
   _clampedScrollValue = 0;
@@ -105,9 +103,18 @@ export default class PropertyListTopBar extends Component {
 
   render() {
     let {
-      mapView, sortOptions, selectedSortOption, onSortItemPress, country,
-      showRelated, propertyType, location, isFetching, isRelatedFetching,
-      relatedProperties, onMapViewPress
+      mapView,
+      sortOptions,
+      selectedSortOption,
+      onSortItemPress,
+      country,
+      showRelated,
+      propertyType,
+      location,
+      isFetching,
+      isRelatedFetching,
+      relatedProperties,
+      onMapViewPress,
     } = this.props;
     return (
       <View>
@@ -118,22 +125,24 @@ export default class PropertyListTopBar extends Component {
           selectedSortOption={selectedSortOption}
           onSortItemPress={onSortItemPress}
         />
-        {!showRelated &&
-        <ResultHint
-          country={country}
-          propertyType={propertyType.key}
-          searchLocation={location}
-          isFetching={isFetching}
-        />}
+        {!showRelated && (
+          <ResultHint
+            country={country}
+            propertyType={propertyType.key}
+            searchLocation={location}
+            isFetching={isFetching}
+          />
+        )}
 
         {showRelated &&
-        !isRelatedFetching &&
-        <EmptyResult
-          country={country}
-          propertyType={propertyType.key}
-          searchLocation={location}
-          hasRelatedProperties={relatedProperties.length > 0}
-        />}
+          !isRelatedFetching && (
+            <EmptyResult
+              country={country}
+              propertyType={propertyType.key}
+              searchLocation={location}
+              hasRelatedProperties={relatedProperties.length > 0}
+            />
+          )}
       </View>
     );
   }

@@ -20,9 +20,7 @@ export default class FormSubmit extends Component {
         underlayColor="transparent"
         disabled={disabled}
         style={[styles.button, style, disabled && {opacity: 0.4}]}>
-        <Text style={[styles.buttonText, titleStyle]}>
-          {title}
-        </Text>
+        <Text style={[styles.buttonText, titleStyle]}>{title}</Text>
       </TouchableHighlight>
     );
   }

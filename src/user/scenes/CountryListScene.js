@@ -9,7 +9,7 @@ import {
   Text,
   TouchableHighlight,
   View,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import colors from '../../common/colors';
 import {CountryPropType} from '../../property/common/proptypes';
@@ -27,9 +27,8 @@ export default class CountryListScene extends Component {
       <TouchableHighlight
         onPress={() => onCountrySelect(item.id)}
         underlayColor="transparent"
-        key={index}
-      >
-        <View style={styles.row} >
+        key={index}>
+        <View style={styles.row}>
           <Text
             style={[
               styles.title,
@@ -42,7 +41,6 @@ export default class CountryListScene extends Component {
           </Text>
         </View>
       </TouchableHighlight>
-
     );
   };
 
@@ -72,9 +70,9 @@ const styles = StyleSheet.create({
   },
   list: {},
   row: {
-    height: (Dimensions.get('window').width / 2) - 40,
-    width: (Dimensions.get('window').width / 2) - 40,
-    borderRadius: ((Dimensions.get('window').width / 2) - 40 )/2,
+    height: Dimensions.get('window').width / 2 - 40,
+    width: Dimensions.get('window').width / 2 - 40,
+    borderRadius: (Dimensions.get('window').width / 2 - 40) / 2,
     justifyContent: 'center',
     borderColor: colors.mediumGrey,
     backgroundColor: 'white',
@@ -90,7 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
     fontSize: 20,
-    backgroundColor:'transparent'
+    backgroundColor: 'transparent',
   },
   separator: {
     flex: 1,

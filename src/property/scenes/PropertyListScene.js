@@ -38,15 +38,15 @@ export default class PropertyListScene extends PureComponent {
 
   imageSlider = item => {
     let {loadScene} = this.props;
-    return item.images.map(image =>
+    return item.images.map(image => (
       <TouchableHighlight
         key={image}
         onPress={() => loadScene(item)}
         underlayColor="transparent"
         style={{flex: 1}}>
         <Image style={styles.image} source={{uri: image}} resizeMode="cover" />
-      </TouchableHighlight>,
-    );
+      </TouchableHighlight>
+    ));
   };
 
   renderRow = ({item, index}) => {
@@ -57,9 +57,7 @@ export default class PropertyListScene extends PureComponent {
         <TouchableHighlight
           onPress={() => loadScene(item)}
           underlayColor="transparent">
-          <Text style={styles.title}>
-            {item.title}
-          </Text>
+          <Text style={styles.title}>{item.title}</Text>
         </TouchableHighlight>
 
         <Swiper
@@ -79,7 +77,6 @@ export default class PropertyListScene extends PureComponent {
             paddingHorizontal: 10,
             paddingTop: 10,
           }}>
-
           <PropertyIcons
             services={item.meta || []}
             items={['bedroom', 'bathroom', 'parking']}
@@ -136,8 +133,9 @@ export default class PropertyListScene extends PureComponent {
         initialListSize={20}
         onEndReachedThreshold={1}
         onEndReached={() => !isFetching && fetchProperties()}
-        ItemSeparatorComponent={() =>
-          <Separator style={{marginVertical: 10}} />}
+        ItemSeparatorComponent={() => (
+          <Separator style={{marginVertical: 10}} />
+        )}
         getItemLayout={(data, index) => ({
           length: 348,
           offset: 348 * index,

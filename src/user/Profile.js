@@ -10,7 +10,6 @@ import {SELECTORS as APP_SELECTORS} from '../app/common/selectors';
 import ProfileScene from './scenes/ProfileScene';
 
 class Profile extends PureComponent {
-
   static propTypes = {
     user: PropTypes.object.isRequired,
   };
@@ -31,11 +30,9 @@ class Profile extends PureComponent {
   };
 
   fetchProperties = () => {
-
     this.props.actions.fetchUserProperties({
       userID: this.props.navigation.state.params.user._id,
     });
-
   };
 
   render() {

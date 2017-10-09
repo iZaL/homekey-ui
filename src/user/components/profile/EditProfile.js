@@ -15,26 +15,24 @@ const EditProfile = ({loadScene, user}) => {
       underlayColor="transparent">
       <View style={styles.container}>
         <View style={styles.leftCol}>
-          <Text style={styles.username}>
-            {user.name}
-          </Text>
-          <Text style={styles.hint}>
-            {I18n.t('edit_profile')}
-          </Text>
+          <Text style={styles.username}>{user.name}</Text>
+          <Text style={styles.hint}>{I18n.t('edit_profile')}</Text>
         </View>
 
         <View style={styles.rightCol}>
-          {user.image
-            ? <Image
-                source={{uri: user.image}}
-                style={styles.logo}
-                resizeMode="cover"
-              />
-            : <FontAwesome
-                name="user-circle-o"
-                color={colors.darkGrey}
-                size={80}
-              />}
+          {user.image ? (
+            <Image
+              source={{uri: user.image}}
+              style={styles.logo}
+              resizeMode="cover"
+            />
+          ) : (
+            <FontAwesome
+              name="user-circle-o"
+              color={colors.darkGrey}
+              size={80}
+            />
+          )}
         </View>
       </View>
     </TouchableHighlight>

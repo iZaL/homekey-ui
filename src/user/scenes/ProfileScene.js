@@ -10,7 +10,6 @@ import {CountryPropType} from '../../property/common/proptypes';
 import I18n from './../../app/common/locale';
 
 export default class ProfileScene extends Component {
-
   static propTypes = {
     user: PropTypes.object.isRequired,
     properties: PropTypes.array.isRequired,
@@ -80,7 +79,7 @@ export default class ProfileScene extends Component {
   };
 
   render() {
-    const {user,isFetching} = this.props;
+    const {user, isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
         {user.image && <UserLogo user={user} />}

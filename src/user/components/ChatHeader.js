@@ -9,9 +9,7 @@ import colors from '../../common/colors';
 const ChatHeader = ({text}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>
-        {text}
-      </Text>
+      <Text style={styles.header}>{text}</Text>
     </View>
   );
 };

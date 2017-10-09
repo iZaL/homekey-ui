@@ -27,18 +27,20 @@ export default class NavButton extends React.Component {
         underlayColor="transparent"
         activeOpacity={0.4}
         style={[styles.container, containerStyle]}>
-        {icon
-          ? typeof icon === 'string'
-            ? <Ionicons
-                name={icon}
-                size={iconSize ? iconSize : 40}
-                color={colors.primary}
-                style={[styles.icon, style]}
-              />
-            : icon
-          : <Text style={[styles.title, style]}>
-              {title}
-            </Text>}
+        {icon ? (
+          typeof icon === 'string' ? (
+            <Ionicons
+              name={icon}
+              size={iconSize ? iconSize : 40}
+              color={colors.primary}
+              style={[styles.icon, style]}
+            />
+          ) : (
+            icon
+          )
+        ) : (
+          <Text style={[styles.title, style]}>{title}</Text>
+        )}
       </TouchableHighlight>
     );
   }

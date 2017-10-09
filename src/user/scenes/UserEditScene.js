@@ -48,20 +48,22 @@ export default class UserEditScene extends Component {
 
     return (
       <ScrollView style={styles.container}>
-        {uploaded
-          ? <Image source={{uri: image}} style={styles.logo} />
-          : user.image
-            ? <Image
-                source={{uri: user.image}}
-                style={styles.logo}
-                resizeMode="cover"
-              />
-            : <FontAwesome
-                name="picture-o"
-                color="white"
-                size={200}
-                style={styles.emptyImageIcon}
-              />}
+        {uploaded ? (
+          <Image source={{uri: image}} style={styles.logo} />
+        ) : user.image ? (
+          <Image
+            source={{uri: user.image}}
+            style={styles.logo}
+            resizeMode="cover"
+          />
+        ) : (
+          <FontAwesome
+            name="picture-o"
+            color="white"
+            size={200}
+            style={styles.emptyImageIcon}
+          />
+        )}
 
         <View style={styles.editIconWrapper}>
           <TouchableHighlight onPress={pickImage} underlayColor="transparent">
@@ -99,9 +101,7 @@ export default class UserEditScene extends Component {
           />
           <Separator style={{marginVertical: 20}} />
 
-          <Text style={styles.label}>
-            {I18n.t('mobile')}
-          </Text>
+          <Text style={styles.label}>{I18n.t('mobile')}</Text>
           <TextInput
             style={styles.textInput}
             defaultValue={user.mobile}
@@ -111,11 +111,9 @@ export default class UserEditScene extends Component {
           />
           <Separator style={{marginVertical: 20}} />
 
-          {user.isCompany &&
+          {user.isCompany && (
             <View style={{flex: 1}}>
-              <Text style={styles.label}>
-                {I18n.t('company_description')}
-              </Text>
+              <Text style={styles.label}>{I18n.t('company_description')}</Text>
               <TextInput
                 style={styles.textInput}
                 defaultValue={user.company.description}
@@ -126,9 +124,7 @@ export default class UserEditScene extends Component {
               />
               <Separator style={{marginVertical: 20}} />
 
-              <Text style={styles.label}>
-                {I18n.t('company_address')}
-              </Text>
+              <Text style={styles.label}>{I18n.t('company_address')}</Text>
               <TextInput
                 style={styles.textInput}
                 defaultValue={user.company.address}
@@ -139,7 +135,8 @@ export default class UserEditScene extends Component {
               />
 
               <Separator style={{marginVertical: 20}} />
-            </View>}
+            </View>
+          )}
         </View>
       </ScrollView>
     );

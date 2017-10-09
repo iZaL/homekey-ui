@@ -13,7 +13,7 @@ import {getFileExtension, getFileName} from './../../common/functions';
 import {NavigationActions} from 'react-navigation';
 import find from 'lodash/find';
 import {hasArabicChar, parseArabicChar} from '../../common/functions';
-import I18n,{isRTL} from './../../app/common/locale';
+import I18n, {isRTL} from './../../app/common/locale';
 import omit from 'lodash/omit';
 
 function* fetchProperties() {
@@ -256,7 +256,10 @@ function* favoriteProperty(action) {
     const apiToken = AUTH_SELECTORS.getAuthToken(state);
 
     if (isEmpty(apiToken)) {
-      yield put({type: ACTION_TYPES.PROPERTY_FAVORITE_FAILURE, error:'not logged in'});
+      yield put({
+        type: ACTION_TYPES.PROPERTY_FAVORITE_FAILURE,
+        error: 'not logged in',
+      });
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
       return yield put(
         NavigationActions.navigate({

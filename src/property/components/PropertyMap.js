@@ -13,7 +13,6 @@ const LATITUDE_DELTA = 0.8;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class PropertyMap extends Component {
-
   static propTypes = {
     onPinPress: PropTypes.func.isRequired,
     address: PropTypes.object.isRequired,
@@ -26,12 +25,13 @@ export default class PropertyMap extends Component {
     const {latitude, longitude} = address;
     return (
       <View style={{flex: 1}}>
-        {sceneType === 'mapScene' &&
+        {sceneType === 'mapScene' && (
           <TouchableHighlight
             style={styles.shrinkButton}
             onPress={() => setSceneType('detailScene')}>
             <FontAwesome name="arrows" size={25} color={colors.darkGrey} />
-          </TouchableHighlight>}
+          </TouchableHighlight>
+        )}
 
         <MapView
           ref={ref => {
@@ -45,17 +45,19 @@ export default class PropertyMap extends Component {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }}>
-          {sceneType === 'mapScene'
-            ? <MapView.Marker
-                coordinate={address}
-                onSelect={() => onPinPress()}
-                scrollEnabled={true}
-              />
-            : <MapView.Marker
-                coordinate={address}
-                onSelect={() => setSceneType('mapScene')}
-                scrollEnabled={true}
-              />}
+          {sceneType === 'mapScene' ? (
+            <MapView.Marker
+              coordinate={address}
+              onSelect={() => onPinPress()}
+              scrollEnabled={true}
+            />
+          ) : (
+            <MapView.Marker
+              coordinate={address}
+              onSelect={() => setSceneType('mapScene')}
+              scrollEnabled={true}
+            />
+          )}
         </MapView>
       </View>
     );

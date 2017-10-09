@@ -10,21 +10,21 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const UserLogo = ({user}) => {
   return (
     <View style={styles.container}>
-      {user.image
-        ? <Image
-            source={{uri: user.image}}
-            style={styles.logo}
-            resizeMode="cover"
-          />
-        : <FontAwesome
-            name="picture-o"
-            color="white"
-            size={200}
-            style={styles.emptyImageIcon}
-          />}
-      <Text style={styles.username}>
-        {user.name}
-      </Text>
+      {user.image ? (
+        <Image
+          source={{uri: user.image}}
+          style={styles.logo}
+          resizeMode="cover"
+        />
+      ) : (
+        <FontAwesome
+          name="picture-o"
+          color="white"
+          size={200}
+          style={styles.emptyImageIcon}
+        />
+      )}
+      <Text style={styles.username}>{user.name}</Text>
     </View>
   );
 };

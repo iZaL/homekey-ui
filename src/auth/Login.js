@@ -29,25 +29,24 @@ class Login extends Component {
   };
 
   handleRegisterRoute = () => {
-
     return Alert.alert(I18n.t('choose_account_type'), '', [
-      {text: I18n.t('individual'),
+      {
+        text: I18n.t('individual'),
         onPress: () => {
-          this.props.navigation.navigate('Register',{
-            isCompany:false
+          this.props.navigation.navigate('Register', {
+            isCompany: false,
           });
         },
       },
       {
         text: I18n.t('company'),
         onPress: () => {
-          this.props.navigation.navigate('Register',{
-            isCompany:true
+          this.props.navigation.navigate('Register', {
+            isCompany: true,
           });
         },
       },
     ]);
-
   };
 
   handleForgotPasswordRoute = () => {

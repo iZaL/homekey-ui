@@ -35,18 +35,17 @@ export default class PropertyAmenities extends React.Component {
         underlayColor="transparent"
         key={item}>
         <View style={styles.row}>
-          <Text style={styles.title}>
-            {item.value}
-          </Text>
+          <Text style={styles.title}>{item.value}</Text>
           <View style={styles.checkbox}>
             {selected &&
-              selected.includes(item.key) &&
-              <FontAwesome
-                key={item.key}
-                name="check"
-                size={16}
-                color="green"
-              />}
+              selected.includes(item.key) && (
+                <FontAwesome
+                  key={item.key}
+                  name="check"
+                  size={16}
+                  color="green"
+                />
+              )}
           </View>
         </View>
       </TouchableHighlight>
@@ -58,9 +57,7 @@ export default class PropertyAmenities extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.menuContainer}>
-          {header}
-        </View>
+        <View style={styles.menuContainer}>{header}</View>
         <View style={{flex: 5}}>
           <FlatList
             data={collection}
@@ -70,8 +67,9 @@ export default class PropertyAmenities extends React.Component {
             automaticallyAdjustContentInsets={false}
             showsVerticalScrollIndicator={false}
             contentInset={{bottom: 50}}
-            ItemSeparatorComponent={() =>
-              <Separator style={{marginVertical: 10}} />}
+            ItemSeparatorComponent={() => (
+              <Separator style={{marginVertical: 10}} />
+            )}
           />
         </View>
         {footer}

@@ -12,9 +12,7 @@ const UserInfo = ({user}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.rowContainer}>
-        <Text style={styles.label}>
-          {I18n.t('name')}
-        </Text>
+        <Text style={styles.label}>{I18n.t('name')}</Text>
 
         <LocalizedText
           en={user.name_en}

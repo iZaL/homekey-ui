@@ -45,27 +45,27 @@ class PropertyFavorites extends Component {
     const {properties, isFetching, country, countries} = this.props;
     return (
       <View style={styles.container}>
-        {properties.length > 0
-          ? <PropertyListScene
-              collection={properties}
-              loadScene={this.loadScene}
-              handleFavoritePress={this.handleFavoritePress}
-              isFetching={isFetching}
-              fetchProperties={this.fetchProperties}
-              country={country}
-              refreshProperties={() => {}}
-              countries={countries}
-            />
-          : <View
-              style={{
-                padding: 10,
-                backgroundColor: 'white',
-                alignItems: 'center',
-              }}>
-              <Text>
-                {I18n.t('no_favorites')}
-              </Text>
-            </View>}
+        {properties.length > 0 ? (
+          <PropertyListScene
+            collection={properties}
+            loadScene={this.loadScene}
+            handleFavoritePress={this.handleFavoritePress}
+            isFetching={isFetching}
+            fetchProperties={this.fetchProperties}
+            country={country}
+            refreshProperties={() => {}}
+            countries={countries}
+          />
+        ) : (
+          <View
+            style={{
+              padding: 10,
+              backgroundColor: 'white',
+              alignItems: 'center',
+            }}>
+            <Text>{I18n.t('no_favorites')}</Text>
+          </View>
+        )}
       </View>
     );
   }

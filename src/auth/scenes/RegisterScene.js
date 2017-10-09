@@ -35,7 +35,7 @@ export default class RegisterScene extends Component {
       handleRegister,
       busy,
       onRightButtonPress,
-      isCompany
+      isCompany,
     } = this.props;
 
     return (
@@ -51,7 +51,9 @@ export default class RegisterScene extends Component {
         />
 
         <View style={styles.container}>
-          <FormLabel title={isCompany ? I18n.t('company_name_en') : I18n.t('name_en')} />
+          <FormLabel
+            title={isCompany ? I18n.t('company_name_en') : I18n.t('name_en')}
+          />
           <FormTextInput
             onChangeText={value => onFieldChange('name_en', value)}
             value={name_en}
@@ -60,7 +62,9 @@ export default class RegisterScene extends Component {
             autoFocus={true}
           />
 
-          <FormLabel title={isCompany ? I18n.t('company_name_ar') : I18n.t('name_ar')} />
+          <FormLabel
+            title={isCompany ? I18n.t('company_name_ar') : I18n.t('name_ar')}
+          />
           <FormTextInput
             onChangeText={value => onFieldChange('name_ar', value)}
             value={name_ar}

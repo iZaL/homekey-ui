@@ -86,8 +86,8 @@ class PropertyDetail extends Component {
 
   openMaps(property, buttonIndex) {
     let address = encodeURIComponent(
-      `${property.address.city_en},${property.address.state_en},${property.address
-        .country}`,
+      `${property.address.city_en},${property.address.state_en},${property
+        .address.country}`,
     );
     switch (buttonIndex) {
       case 0:

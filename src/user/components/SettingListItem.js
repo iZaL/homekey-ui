@@ -15,9 +15,7 @@ const SettingListItem = ({title, icon, route, loadScene}) => {
       style={styles.container}>
       <View style={styles.rowContainer}>
         <View style={{flex: 9}}>
-          <Text style={styles.title}>
-            {title}
-          </Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
         <View style={{flex: 1, alignItems: 'center'}}>
           <FontAwesome

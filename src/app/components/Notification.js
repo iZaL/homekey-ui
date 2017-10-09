@@ -59,9 +59,7 @@ export default class Notification extends React.Component {
         <TouchableHighlight
           onPress={() => this.hideMessage()}
           underlayColor="transparent">
-          <Text style={styles.title}>
-            {message}
-          </Text>
+          <Text style={styles.title}>{message}</Text>
         </TouchableHighlight>
       </Animated.View>
     );

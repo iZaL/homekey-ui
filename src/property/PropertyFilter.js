@@ -109,33 +109,35 @@ class PropertyFilter extends Component {
 
     return (
       <View style={{flex: 1}}>
-        {searchMode
-          ? <LocationSearchScene
-              searchString={this.props.filters.searchString}
-              onSearch={this.onSearch}
-              country={country}
-              onLeftButtonPress={this.goBack}
-              onRightButtonPress={this.hideSearch}
-            />
-          : <PropertyFilterScene
-              onSearch={this.onSearch}
-              onPriceFromSelect={this.onPriceFromSelect}
-              onPriceToSelect={this.onPriceToSelect}
-              onMetaSelect={this.onMetaSelect}
-              onSearchPress={this.search}
-              onCategorySelect={this.onCategorySelect}
-              onShowSearch={this.showSearch}
-              onNavigateBack={this.goBack}
-              onCountryChange={this.changeCountry}
-              onTypeChange={this.changeType}
-              propertyType={propertyType.key}
-              categories={categoriesWithAny}
-              country={country}
-              countries={countries}
-              filters={filters}
-              prices={prices}
-              searchMetas={searchMetas}
-            />}
+        {searchMode ? (
+          <LocationSearchScene
+            searchString={this.props.filters.searchString}
+            onSearch={this.onSearch}
+            country={country}
+            onLeftButtonPress={this.goBack}
+            onRightButtonPress={this.hideSearch}
+          />
+        ) : (
+          <PropertyFilterScene
+            onSearch={this.onSearch}
+            onPriceFromSelect={this.onPriceFromSelect}
+            onPriceToSelect={this.onPriceToSelect}
+            onMetaSelect={this.onMetaSelect}
+            onSearchPress={this.search}
+            onCategorySelect={this.onCategorySelect}
+            onShowSearch={this.showSearch}
+            onNavigateBack={this.goBack}
+            onCountryChange={this.changeCountry}
+            onTypeChange={this.changeType}
+            propertyType={propertyType.key}
+            categories={categoriesWithAny}
+            country={country}
+            countries={countries}
+            filters={filters}
+            prices={prices}
+            searchMetas={searchMetas}
+          />
+        )}
       </View>
     );
   }

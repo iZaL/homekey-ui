@@ -51,9 +51,9 @@ class AnimatedPicker extends Component {
         <Picker
           selectedValue={selectedItem}
           onValueChange={item => changeItem('gender', item)}>
-          {items.map(item =>
-            <Picker.Item key={item} value={item} label={item} />,
-          )}
+          {items.map(item => (
+            <Picker.Item key={item} value={item} label={item} />
+          ))}
         </Picker>
       </View>
     );
@@ -196,9 +196,7 @@ export default class PropertyInfo extends Component {
 
               <View style={{flexDirection: 'row'}}>
                 <FormLabel title={I18n.t('space')} />
-                <Text style={styles.hint}>
-                  {I18n.t('metre')}
-                </Text>
+                <Text style={styles.hint}>{I18n.t('metre')}</Text>
               </View>
               <FormTextInput
                 onChangeText={value => onFieldChange('area', value)}
@@ -225,21 +223,20 @@ export default class PropertyInfo extends Component {
                 underlayColor="transparent"
                 hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
                 <View style={{flex: 1, flexDirection: 'row'}}>
-                  <Text style={styles.textBox}>
-                    {gender}{' '}
-                  </Text>
+                  <Text style={styles.textBox}>{gender} </Text>
                   <FontAwesome name="angle-down" size={20} color="black" />
                 </View>
               </TouchableHighlight>
 
-              {this.state.modal &&
+              {this.state.modal && (
                 <AnimatedPicker
                   closeModal={() => this.setState({modal: false})}
                   offset={this.state.offset}
                   changeItem={this.selectItem}
                   selectedItem={gender}
                   items={genders}
-                />}
+                />
+              )}
             </View>
           </KeyboardAvoidingView>
         </ScrollView>

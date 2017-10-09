@@ -56,28 +56,30 @@ export default class SettingsScene extends Component {
         />
         <Separator />
 
-        {isAuthenticated
-          ? <View>
-              <SettingListItem
-                title={I18n.t('my_properties')}
-                route="manageProperties"
-                loadScene={loadScene}
-                icon="building"
-              />
-              <Separator />
-              <SettingListItem
-                title={I18n.t('logout')}
-                route="logout"
-                loadScene={loadScene}
-                icon="key"
-              />
-            </View>
-          : <SettingListItem
-              title={I18n.t('login')}
-              route="login"
+        {isAuthenticated ? (
+          <View>
+            <SettingListItem
+              title={I18n.t('my_properties')}
+              route="manageProperties"
+              loadScene={loadScene}
+              icon="building"
+            />
+            <Separator />
+            <SettingListItem
+              title={I18n.t('logout')}
+              route="logout"
               loadScene={loadScene}
               icon="key"
-            />}
+            />
+          </View>
+        ) : (
+          <SettingListItem
+            title={I18n.t('login')}
+            route="login"
+            loadScene={loadScene}
+            icon="key"
+          />
+        )}
       </ScrollView>
     );
   }

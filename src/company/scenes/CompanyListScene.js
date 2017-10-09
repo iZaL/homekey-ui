@@ -35,7 +35,7 @@ export default class CompanyListScene extends PureComponent {
     return prev.item !== next.item;
   };
 
-  renderRow = ({item,index}) => {
+  renderRow = ({item, index}) => {
     const {loadScene} = this.props;
 
     return (
@@ -47,7 +47,6 @@ export default class CompanyListScene extends PureComponent {
         <View style={styles.companyInfoContainer}>
           <View>
             <Image source={{uri: item.image}} style={styles.companyLogo} />
-
           </View>
 
           <View
@@ -57,7 +56,6 @@ export default class CompanyListScene extends PureComponent {
               alignSelf: 'flex-start',
               paddingTop: 10,
             }}>
-
             <LocalizedText
               style={styles.companyTitle}
               en={item.name_en}
@@ -69,9 +67,7 @@ export default class CompanyListScene extends PureComponent {
               en={item.name_en}
               ar={item.name_ar}
             />
-
           </View>
-
         </View>
       </TouchableHighlight>
     );
@@ -98,8 +94,9 @@ export default class CompanyListScene extends PureComponent {
         initialListSize={20}
         onEndReachedThreshold={1}
         onEndReached={() => !isFetching && fetchCollection()}
-        ItemSeparatorComponent={() =>
-          <Separator style={{marginVertical: 10}} />}
+        ItemSeparatorComponent={() => (
+          <Separator style={{marginVertical: 10}} />
+        )}
         getItemLayout={(data, index) => ({
           length: 348,
           offset: 348 * index,
@@ -125,9 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  row: {
-
-  },
+  row: {},
   image: {
     flex: 1,
     width: Dimensions.get('window').width,
@@ -159,7 +154,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 2,
     borderRadius: 4,
-    backgroundColor:colors.fadedWhite
+    backgroundColor: colors.fadedWhite,
   },
   companyInfoContainer: {
     flex: 1,

@@ -28,12 +28,13 @@ export default class Gallery extends Component {
     const {images, sceneType, setSceneType} = this.props;
     return (
       <View style={styles.container}>
-        {sceneType === 'galleryScene' &&
+        {sceneType === 'galleryScene' && (
           <TouchableHighlight
             style={styles.shrinkButton}
             onPress={() => setSceneType('detailScene')}>
             <Ionicons name="ios-close" size={40} color="white" />
-          </TouchableHighlight>}
+          </TouchableHighlight>
+        )}
         <Swiper showsButtons={false} buttonWrapperStyle={styles.navButtons}>
           {images.map((image, i) => {
             return (

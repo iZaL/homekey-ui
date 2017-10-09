@@ -13,11 +13,12 @@ const EmptyResult = props => {
         {I18n.t('no_properties_found_for')} {I18n.t([propertyType])}{' '}
         {I18n.t('in')} {searchLocation ? searchLocation : country.name}{' '}
         {/*{I18n.t('matching_your_criteria')}*/}
-        {hasRelatedProperties &&
+        {hasRelatedProperties && (
           <Text style={styles.relatedText}>
             {'\n'}
             {I18n.t('showing_related_properties')}
-          </Text>}
+          </Text>
+        )}
       </Text>
     </View>
   );

@@ -1,15 +1,14 @@
 import I18n from './../app/common/locale';
 
 export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
-
   let delimiter = url.indexOf('?') === -1 ? '?' : '&';
 
-  let localeAwareUrl = `${url+delimiter}lang=${I18n.locale}`;
+  let localeAwareUrl = `${url + delimiter}lang=${I18n.locale}`;
 
   let request;
 
   if (__DEV__) {
-    if(console.group) {
+    if (console.group) {
       console.groupCollapsed('action', 'NETWORK_REQUEST');
       console.log({
         method: method,
@@ -45,7 +44,7 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
     )
     .then(({status, statusType, json}) => {
       if (__DEV__) {
-        if(console.group) {
+        if (console.group) {
           console.groupCollapsed('action', 'NETWORK_RESPONSE');
           console.log('payload', json);
           console.groupEnd();

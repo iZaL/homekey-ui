@@ -33,9 +33,7 @@ export default class HistoryList extends Component {
             removeFilter(rowID, rowData);
           }}
           underlayColor="transparent">
-          <Text style={styles.buttonText}>
-            {I18n.t('remove')}
-          </Text>
+          <Text style={styles.buttonText}>{I18n.t('remove')}</Text>
         </TouchableHighlight>
       </View>
     );

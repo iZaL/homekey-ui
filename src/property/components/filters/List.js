@@ -55,9 +55,7 @@ export default class List extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={[styles.title, titleStyle]}>
-          {title}
-        </Text>
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
         <FlatList
           data={ranges}
           renderItem={this.renderRow}

@@ -54,12 +54,13 @@ class App extends Component {
 
     return (
       <View style={{flex: 1}}>
-        {app.notifications.message &&
+        {app.notifications.message && (
           <Notification
             message={app.notifications.message}
             messageType={app.notifications.messageType}
             dismissNotification={this.dismissNotification}
-          />}
+          />
+        )}
 
         <PushNotificationManager
           setPushToken={this.setPushToken}

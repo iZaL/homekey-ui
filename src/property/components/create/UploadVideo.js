@@ -44,8 +44,9 @@ export default class UploadVideo extends Component {
         </TouchableHighlight>
 
         <View style={styles.menuContainer}>
-          {video &&
-            <VideoPlayer video={video} removeMedia={this.removeVideo} />}
+          {video && (
+            <VideoPlayer video={video} removeMedia={this.removeVideo} />
+          )}
         </View>
 
         {footer}

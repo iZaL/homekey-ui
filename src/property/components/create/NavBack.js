@@ -9,22 +9,23 @@ const NavBack = ({style, text, icon, stage, onPress}) => {
   return (
     <View style={{flex: 1}}>
       {!isNull(stage) &&
-        stage > 1 &&
-        <TouchableHighlight
-          style={styles.container}
-          onPress={() => onPress()}
-          underlayColor="transparent">
-          {icon
-            ? <Ionicons
+        stage > 1 && (
+          <TouchableHighlight
+            style={styles.container}
+            onPress={() => onPress()}
+            underlayColor="transparent">
+            {icon ? (
+              <Ionicons
                 name={icon}
                 size={33}
                 color={colors.primary}
                 style={[styles.icon]}
               />
-            : <Text style={[styles.title, style]}>
-                {text}
-              </Text>}
-        </TouchableHighlight>}
+            ) : (
+              <Text style={[styles.title, style]}>{text}</Text>
+            )}
+          </TouchableHighlight>
+        )}
     </View>
   );
 };

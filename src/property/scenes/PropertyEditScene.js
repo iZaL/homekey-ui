@@ -169,19 +169,16 @@ export default class PropertyEditScene extends Component {
   };
 
   updateCategory = (field, value) => {
-
     let {categories} = this.props;
-    let selectedCategory = categories.find(
-      category => category.key === value,
-    );
+    let selectedCategory = categories.find(category => category.key === value);
 
-    if(selectedCategory && !selectedCategory.showMetas) {
-      this.updateAttributes('meta', {bedroom:'0'});
-      this.updateAttributes('meta', {bathroom:'0'});
-      this.updateAttributes('meta', {parking:'0'});
+    if (selectedCategory && !selectedCategory.showMetas) {
+      this.updateAttributes('meta', {bedroom: '0'});
+      this.updateAttributes('meta', {bathroom: '0'});
+      this.updateAttributes('meta', {parking: '0'});
     }
 
-    this.onListItemSelect(field,value);
+    this.onListItemSelect(field, value);
   };
 
   render() {
@@ -216,23 +213,23 @@ export default class PropertyEditScene extends Component {
       <Animated.View style={{flex: 1, opacity: containerOpacity}}>
         <NavBar
           middle={
-            <Text style={{fontWeight: '500', fontSize: 17}}>
-              {navBarTitle}
-            </Text>
+            <Text style={{fontWeight: '500', fontSize: 17}}>{navBarTitle}</Text>
           }
           left={
-            stage > 1
-              ? <NavButton
-                  icon={isRTL ? 'ios-arrow-forward' : 'ios-arrow-back'}
-                  iconSize={33}
-                  onPress={() => this.goToPrevStage()}
-                  style={{height: 33, width: 30, marginLeft: -5}}
-                />
-              : navigateBack
+            stage > 1 ? (
+              <NavButton
+                icon={isRTL ? 'ios-arrow-forward' : 'ios-arrow-back'}
+                iconSize={33}
+                onPress={() => this.goToPrevStage()}
+                style={{height: 33, width: 30, marginLeft: -5}}
+              />
+            ) : (
+              navigateBack
+            )
           }
         />
 
-        {stage === 1 &&
+        {stage === 1 && (
           <List
             field="type"
             collection={types}
@@ -243,18 +240,20 @@ export default class PropertyEditScene extends Component {
             }
             updateListing={this.onListItemSelect}
             selected={attributes.type}
-          />}
+          />
+        )}
 
-        {stage === 2 &&
+        {stage === 2 && (
           <List
             field="category"
             header={<Header title={I18n.t('select_category_type')} />}
             collection={categories}
             updateListing={this.updateCategory}
             selected={attributes.category}
-          />}
+          />
+        )}
 
-        {stage === 3 &&
+        {stage === 3 && (
           <AddressPicker
             country={country}
             address={attributes.address}
@@ -271,9 +270,10 @@ export default class PropertyEditScene extends Component {
             }
             updateAddress={this.updateAddress}
             updateListing={this.goToNextStage}
-          />}
+          />
+        )}
 
-        {stage === 4 &&
+        {stage === 4 && (
           <PropertyMeta
             meta={attributes.meta}
             filters={metas}
@@ -293,21 +293,21 @@ export default class PropertyEditScene extends Component {
               />
             }
             footer={<Footer updateListing={this.goToNextStage} />}
-          />}
+          />
+        )}
 
-        {stage === 5 &&
+        {stage === 5 && (
           <UploadImage
             images={attributes.images}
             updateImage={this.updateImage}
             header={
-              <Header
-                title={` ${I18n.t('upload')} ${I18n.t('images')}  `}
-              />
+              <Header title={` ${I18n.t('upload')} ${I18n.t('images')}  `} />
             }
             footer={<Footer updateListing={this.goToNextStage} />}
-          />}
+          />
+        )}
 
-        {stage === 6 &&
+        {stage === 6 && (
           <PropertyInfo
             attributes={attributes}
             genders={genders}
@@ -315,18 +315,20 @@ export default class PropertyEditScene extends Component {
             header={<Header title={I18n.t('you_are_almost_there')} />}
             footer={<Footer updateListing={this.updateInfoScene} />}
             country={country}
-          />}
+          />
+        )}
 
-        {stage === 7 &&
+        {stage === 7 && (
           <PropertyAmenities
             collection={nearByPlaces}
             selected={attributes.nearByPlaces ? attributes.nearByPlaces : []}
             updateListing={this.updateNearByPlaces}
             header={<Header title={I18n.t('near_by_places')} />}
             footer={<Footer updateListing={this.goToNextStage} />}
-          />}
+          />
+        )}
 
-        {stage === 8 &&
+        {stage === 8 && (
           <PropertyAmenities
             collection={amenities}
             selected={attributes.amenities ? attributes.amenities : []}
@@ -339,7 +341,8 @@ export default class PropertyEditScene extends Component {
                 disabled={saving}
               />
             }
-          />}
+          />
+        )}
       </Animated.View>
     );
   }

@@ -1,21 +1,21 @@
 /**
  * @flow
  */
-import PropTypes from "prop-types";
-import React, {PureComponent} from "react";
-import {View} from "react-native";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import {ACTIONS} from "./common/actions";
-import {SELECTORS} from "./common/selectors";
-import {SELECTORS as APP_SELECTORS} from "./../app/common/selectors";
-import PropertyListScene from "./scenes/PropertyListScene";
-import PropertyMapScene from "./scenes/PropertyMapScene";
-import NavButton from "../components/NavButton";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import colors from "./../common/colors";
-import {isRTL} from "../app/common/locale";
-import PropertyListTopBar from "./components/PropertyListTopBar";
+import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
+import {View} from 'react-native';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {ACTIONS} from './common/actions';
+import {SELECTORS} from './common/selectors';
+import {SELECTORS as APP_SELECTORS} from './../app/common/selectors';
+import PropertyListScene from './scenes/PropertyListScene';
+import PropertyMapScene from './scenes/PropertyMapScene';
+import NavButton from '../components/NavButton';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import colors from './../common/colors';
+import {isRTL} from '../app/common/locale';
+import PropertyListTopBar from './components/PropertyListTopBar';
 
 class PropertyList extends PureComponent {
   static propTypes = {
@@ -31,16 +31,16 @@ class PropertyList extends PureComponent {
           style={[{width: 33, height: 33}, isRTL && {marginLeft: -15}]}
           iconSize={33}
           onPress={() =>
-          navigation.state.params &&
-          navigation.state.params.handleLeftButtonPress()}
+            navigation.state.params &&
+            navigation.state.params.handleLeftButtonPress()}
         />
       ),
       headerRight: (
         <NavButton
-          icon={<FontAwesome name="sliders" size={25} color={colors.primary}/>}
+          icon={<FontAwesome name="sliders" size={25} color={colors.primary} />}
           onPress={() =>
-          navigation.state.params &&
-          navigation.state.params.handleRightButtonPress()}
+            navigation.state.params &&
+            navigation.state.params.handleRightButtonPress()}
         />
       ),
     };
@@ -107,25 +107,24 @@ class PropertyList extends PureComponent {
 
     return (
       <View style={{flex: 1}}>
-
         <PropertyListTopBar
           {...this.props}
           onMapViewPress={this.onMapViewPress}
           onSortItemPress={this.onSortItemPress}
         />
 
-        {mapView
-          ? <PropertyMapScene
+        {mapView ? (
+          <PropertyMapScene
             collection={showRelated ? relatedProperties : properties}
             loadScene={this.loadScene}
             handleFavoritePress={this.handleFavoritePress}
             isFetching={showRelated ? isRelatedFetching : isFetching}
             fetchProperties={this.fetchProperties}
-            followLocation={() => {
-            }}
+            followLocation={() => {}}
             country={country}
           />
-          : <PropertyListScene
+        ) : (
+          <PropertyListScene
             collection={showRelated ? relatedProperties : properties}
             loadScene={this.loadScene}
             handleFavoritePress={this.handleFavoritePress}
@@ -133,8 +132,8 @@ class PropertyList extends PureComponent {
             fetchProperties={this.fetchProperties}
             country={country}
             refreshProperties={this.refreshProperties}
-          />}
-
+          />
+        )}
       </View>
     );
   }

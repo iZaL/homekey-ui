@@ -5,11 +5,12 @@ import {StyleSheet, Text, View} from 'react-native';
 const PropertyTags = ({items}) => {
   return (
     <View style={styles.container}>
-      {items.map((item, i) =>
+      {items.map((item, i) => (
         <Text key={i} style={styles.tag}>
-          {' '}#{item}{' '}
-        </Text>,
-      )}
+          {' '}
+          #{item}{' '}
+        </Text>
+      ))}
     </View>
   );
 };

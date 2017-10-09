@@ -234,13 +234,14 @@ export default class PropertyHomeScene extends Component {
             </Text>
             <Text>
               {filters &&
-                filters.searchString &&
-                <Ionicons
-                  name="ios-close-outline"
-                  size={40}
-                  color={colors.darkGrey}
-                  style={[styles.searchIcon, {height: 30}]}
-                />}
+                filters.searchString && (
+                  <Ionicons
+                    name="ios-close-outline"
+                    size={40}
+                    color={colors.darkGrey}
+                    style={[styles.searchIcon, {height: 30}]}
+                  />
+                )}
             </Text>
           </View>
         </TouchableHighlight>
@@ -301,28 +302,30 @@ export default class PropertyHomeScene extends Component {
               />
             </View>
             <View style={styles.historyContainer}>
-              {isEmpty(searchHistory)
-                ? <TouchableHighlight
-                    onPress={() => {}}
-                    underlayColor="transparent">
-                    <View
-                      style={{
-                        flex: 1,
-                        alignItems: 'center',
-                        marginVertical: 30,
-                      }}>
-                      <Image
-                        source={emptyIcon}
-                        style={{width: 150, height: 150}}
-                      />
-                    </View>
-                  </TouchableHighlight>
-                : <HistoryList
-                    collection={searchHistory}
-                    setFilter={setFilter}
-                    removeFilter={removeFilter}
-                    countries={countries}
-                  />}
+              {isEmpty(searchHistory) ? (
+                <TouchableHighlight
+                  onPress={() => {}}
+                  underlayColor="transparent">
+                  <View
+                    style={{
+                      flex: 1,
+                      alignItems: 'center',
+                      marginVertical: 30,
+                    }}>
+                    <Image
+                      source={emptyIcon}
+                      style={{width: 150, height: 150}}
+                    />
+                  </View>
+                </TouchableHighlight>
+              ) : (
+                <HistoryList
+                  collection={searchHistory}
+                  setFilter={setFilter}
+                  removeFilter={removeFilter}
+                  countries={countries}
+                />
+              )}
             </View>
           </View>
         </Animated.ScrollView>

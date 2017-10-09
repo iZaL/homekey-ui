@@ -48,7 +48,9 @@ class Chat extends PureComponent {
       received: true,
       property_id: this.property._id,
       user: {
-        name: this.props.user.name_ar ? this.props.user.name_ar : this.props.user.name_en ,
+        name: this.props.user.name_ar
+          ? this.props.user.name_ar
+          : this.props.user.name_en,
         _id: this.props.user._id,
       },
       thread_id: this.props.thread ? this.props.thread._id : null,

@@ -33,10 +33,9 @@ class Register extends Component {
   };
 
   handleRegister = () => {
-
     let credentials = {
       ...this.state,
-      isCompany:this.props.navigation.state.params.isCompany || false
+      isCompany: this.props.navigation.state.params.isCompany || false,
     };
 
     this.props.actions.register(credentials);

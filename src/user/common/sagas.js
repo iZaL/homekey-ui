@@ -7,7 +7,7 @@ import {getFileName} from '../../common/functions';
 import {SELECTORS as AUTH_SELECTORS} from '../../auth/common/selectors';
 import {NavigationActions} from 'react-navigation';
 import Qs from 'qs';
-import I18n,{isRTL} from './../../app/common/locale';
+import I18n, {isRTL} from './../../app/common/locale';
 
 function* fetchPropertyMessages(action) {
   try {
@@ -110,7 +110,7 @@ function* updateUser(action) {
     const state = yield select();
     const apiToken = AUTH_SELECTORS.getAuthToken(state);
     const urlParams = `api_token=${apiToken}`;
-    const {name_en, name_ar, image, company,mobile} = action.params;
+    const {name_en, name_ar, image, company, mobile} = action.params;
     const params = {
       name_ar,
       name_en,
@@ -124,7 +124,6 @@ function* updateUser(action) {
         payload: response.data,
       });
     } else {
-
       const formData = new FormData();
       formData.append('image', {
         uri: image,

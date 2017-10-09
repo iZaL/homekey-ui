@@ -14,9 +14,7 @@ const Contact = ({user}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.rowContainer}>
-        <Text style={styles.label}>
-          {I18n.t('name')}
-        </Text>
+        <Text style={styles.label}>{I18n.t('name')}</Text>
         <View style={styles.content}>
           <LocalizedText
             en={user.name_en}
@@ -27,75 +25,67 @@ const Contact = ({user}) => {
       </View>
       <Separator style={{marginVertical: 20}} />
 
-      {user.mobile &&
+      {user.mobile && (
         <View>
           <View style={styles.rowContainer}>
-            <Text style={styles.label}>
-              {I18n.t('mobile')}
-            </Text>
+            <Text style={styles.label}>{I18n.t('mobile')}</Text>
             <View style={styles.content}>
               <Ionicons
                 name="md-phone-portrait"
                 size={20}
                 style={styles.icon}
               />
-              <Text style={styles.name}>
-                {user.mobile}
-              </Text>
+              <Text style={styles.name}>{user.mobile}</Text>
             </View>
           </View>
           <Separator style={{marginVertical: 20}} />
-        </View>}
+        </View>
+      )}
 
-      {user.email &&
+      {user.email && (
         <View>
           <View style={styles.rowContainer}>
-            <Text style={styles.label}>
-              {I18n.t('email')}
-            </Text>
+            <Text style={styles.label}>{I18n.t('email')}</Text>
             <View style={styles.content}>
               <Ionicons name="ios-mail" size={22} style={styles.icon} />
-              <Text style={styles.name}>
-                {user.email}
-              </Text>
+              <Text style={styles.name}>{user.email}</Text>
             </View>
           </View>
           <Separator style={{marginVertical: 20}} />
-        </View>}
+        </View>
+      )}
 
       {user.company &&
-        user.company.address &&
-        <View>
-          <View style={styles.rowContainer}>
-            <Text style={styles.label}>
-              {I18n.t('company_address')}
-            </Text>
-            <View style={styles.content}>
-              <Ionicons name="ios-pin-outline" size={22} style={styles.icon} />
-              <Text style={styles.name}>
-                {user.company.address}
-              </Text>
+        user.company.address && (
+          <View>
+            <View style={styles.rowContainer}>
+              <Text style={styles.label}>{I18n.t('company_address')}</Text>
+              <View style={styles.content}>
+                <Ionicons
+                  name="ios-pin-outline"
+                  size={22}
+                  style={styles.icon}
+                />
+                <Text style={styles.name}>{user.company.address}</Text>
+              </View>
             </View>
+            <Separator style={{marginVertical: 20}} />
           </View>
-          <Separator style={{marginVertical: 20}} />
-        </View>}
+        )}
 
       {user.company &&
-        user.company.description &&
-        <View>
-          <View style={styles.rowContainer}>
-            <Text style={styles.label}>
-              {I18n.t('company_description')}
-            </Text>
-            <View style={styles.content}>
-              <Ionicons name="md-bulb" size={22} style={styles.icon} />
-              <Text style={styles.name}>
-                {user.company.description}
-              </Text>
+        user.company.description && (
+          <View>
+            <View style={styles.rowContainer}>
+              <Text style={styles.label}>{I18n.t('company_description')}</Text>
+              <View style={styles.content}>
+                <Ionicons name="md-bulb" size={22} style={styles.icon} />
+                <Text style={styles.name}>{user.company.description}</Text>
+              </View>
             </View>
+            <Separator style={{marginVertical: 20}} />
           </View>
-          <Separator style={{marginVertical: 20}} />
-        </View>}
+        )}
     </ScrollView>
   );
 };

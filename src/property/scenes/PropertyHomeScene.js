@@ -136,11 +136,6 @@ export default class PropertyHomeScene extends Component {
       outputRange: [1.5, 1, 1],
     });
 
-    let logoTranslateY = scrollY.interpolate({
-      inputRange: [-150, 0, 150],
-      outputRange: [0, 0, 0],
-    });
-
     return (
       <View style={styles.hero}>
         <Animated.Image
@@ -148,7 +143,7 @@ export default class PropertyHomeScene extends Component {
           style={[
             styles.countryImage,
             {
-              transform: [{scale: logoScale}, {translateY: logoTranslateY}],
+              transform: [{scale: logoScale}],
             },
           ]}
           resizeMode="cover"

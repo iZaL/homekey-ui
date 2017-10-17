@@ -137,8 +137,8 @@ export default class PropertyListScene extends PureComponent {
           <Separator style={{marginVertical: 10}} />
         )}
         getItemLayout={(data, index) => ({
-          length: 348,
-          offset: 348 * index,
+          length: 389,
+          offset: 389 * index,
           index,
         })}
         onRefresh={() => refreshProperties()}

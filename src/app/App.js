@@ -46,11 +46,11 @@ class App extends Component {
 
   render() {
     const {app} = this.props;
-    if (!app.booted) return null;
-
-    if (!app.bootstrapped) {
-      return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} />;
-    }
+    // if (!app.booted) return null;
+    //
+    // if (!app.bootstrapped) {
+    //   return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} />;
+    // }
 
     return (
       <View style={{flex: 1}}>

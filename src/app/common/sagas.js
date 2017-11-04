@@ -44,7 +44,6 @@ function* boot() {
   if (isNull(currentLanguage)) {
     currentLanguage = state.appReducer.language;
   }
-
   currentLanguage === 'ar' ? moment.locale('ar-kw') : moment.locale('en-au');
 
   yield put({

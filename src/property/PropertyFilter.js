@@ -37,6 +37,10 @@ class PropertyFilter extends Component {
     });
   };
 
+  changePropertyType = value => {
+    this.props.actions.changePropertyType(value);
+  };
+
   onCategorySelect = value => {
     this.updateFilterProps('category', value);
   };
@@ -91,6 +95,7 @@ class PropertyFilter extends Component {
     this.props.actions.changePropertyType(type);
   };
 
+
   render() {
     const {
       categories,
@@ -98,6 +103,7 @@ class PropertyFilter extends Component {
       country,
       countries,
       propertyType,
+      propertyTypes,
       prices,
       searchMetas,
     } = this.props;
@@ -119,6 +125,7 @@ class PropertyFilter extends Component {
           />
         ) : (
           <PropertyFilterScene
+            changeActiveTab={this.changePropertyType}
             onSearch={this.onSearch}
             onPriceFromSelect={this.onPriceFromSelect}
             onPriceToSelect={this.onPriceToSelect}
@@ -129,7 +136,8 @@ class PropertyFilter extends Component {
             onNavigateBack={this.goBack}
             onCountryChange={this.changeCountry}
             onTypeChange={this.changeType}
-            propertyType={propertyType.key}
+            propertyType={propertyType}
+            propertyTypes={propertyTypes}
             categories={categoriesWithAny}
             country={country}
             countries={countries}
@@ -155,6 +163,7 @@ function mapStateToProps(state) {
     country: APP_SELECTORS.getSelectedCountry(state),
     countries: APP_SELECTORS.getCountries(state),
     propertyType: SELECTORS.getSelectedPropertyType(state),
+    propertyTypes: SELECTORS.getPropertyTypes(state),
     searchMetas: SELECTORS.getSearchMetas(state),
   };
 }

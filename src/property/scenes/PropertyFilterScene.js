@@ -19,7 +19,7 @@ import NavBar from '../../components/NavBar';
 import NavButton from '../../components/NavButton';
 import CountryPicker from '../components/filters/CountryPicker';
 import {CountryPropType} from '../common/proptypes';
-import I18n,{isRTL} from './../../app/common/locale';
+import I18n, {isRTL} from './../../app/common/locale';
 
 import {TabBar, TabViewAnimated, TabViewPagerPan} from 'react-native-tab-view';
 
@@ -48,76 +48,14 @@ export default class PropertyFilterScene extends Component {
     });
   };
 
-  constructor(props) {
-    super(props);
-    let selectedIndex = this.getTabIndex();
-    this.state = {
-      menuValue: new Animated.Value(0),
-      menuIsVisible: false,
-      tabs: {
-        index: selectedIndex,
-        routes: [
-          {key: '1', title: I18n.t('for_sale')},
-          {key: '2', title: I18n.t('for_rent')},
-          {key: '3', title: I18n.t('for_share')},
-        ],
-        loaded: false,
-      },
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.propertyType !== this.props.propertyType) {
-      let selectedIndex = this.getTabIndex();
-      if (this.state.tabs.index !== selectedIndex) {
-        this.setState({
-          tabs: {
-            ...this.state.tabs,
-            index: selectedIndex,
-          },
-        });
-      }
-    }
-  }
-
-  getTabIndex() {
-    let selectedIndex;
-    switch (this.props.propertyType) {
-      case 'for_sale':
-        selectedIndex = 0;
-        break;
-      case 'for_rent':
-        selectedIndex = 1;
-        break;
-      case 'for_share':
-        selectedIndex = 2;
-        break;
-      default:
-        selectedIndex = 0;
-        break;
-    }
-    return selectedIndex;
-  }
-
-  handleChangeTab = index => {
-    let selectedType;
-    switch (index) {
-      case 0:
-        selectedType = 'for_sale';
-        break;
-      case 1:
-        selectedType = 'for_rent';
-        break;
-      case 2:
-        selectedType = 'for_share';
-        break;
-      default:
-        break;
-    }
-    this.props.onTypeChange(selectedType);
+  changeTab = name => {
+    this.props.changeActiveTab(name);
   };
 
-  renderScene = () => {
+  renderTabs() {
+    let {propertyType, propertyTypes} = this.props;
+
+    let {filters} = this.props;
     let {
       priceFrom,
       priceTo,
@@ -141,10 +79,42 @@ export default class PropertyFilterScene extends Component {
 
     return (
       <ScrollView
-        style={[styles.container]}
-        showsVerticalScrollIndicator={false}
-        automaticallyAdjustContentInsets={false}
-        contentInset={{bottom: 80}}>
+        style={[
+          styles.searchBar,
+        ]}>
+        <View style={styles.searchTabs}>
+          {propertyTypes.map(type => {
+            let title = '';
+            if (type.key === 'for_sale') {
+              title = I18n.t('buy');
+            } else if (type.key === 'for_share') {
+              title = I18n.t('share');
+            } else if (type.key === 'for_rent') {
+              title = I18n.t('rent');
+            }
+
+            return (
+              <TouchableHighlight
+                key={type.key}
+                underlayColor="transparent"
+                onPress={() => this.changeTab(type.key)}
+                style={[
+                  styles.tab,
+                  propertyType.key === type.key && styles.tabActive,
+                ]}>
+                <Text
+                  style={[
+                    styles.tabTitle,
+                    propertyType.key === type.key && styles.tabTitleActive,
+                  ]}>
+                  {title}
+                </Text>
+              </TouchableHighlight>
+            );
+          })}
+        </View>
+
+
         <List
           selected={category}
           onSelect={onCategorySelect}
@@ -152,7 +122,7 @@ export default class PropertyFilterScene extends Component {
           title={I18n.t('property_type')}
         />
 
-        <Separator style={{marginBottom: 20}} />
+        <Separator style={{marginBottom: 20}}/>
 
         <List
           title={I18n.t('price_range')}
@@ -175,7 +145,7 @@ export default class PropertyFilterScene extends Component {
           hint={country.currency}
         />
 
-        <Separator style={{marginBottom: 20}} />
+        <Separator style={{marginBottom: 20}}/>
 
         <Button
           title={I18n.t('bed')}
@@ -185,7 +155,7 @@ export default class PropertyFilterScene extends Component {
           selected={bedroom}
         />
 
-        <Separator style={{marginTop: 20, marginBottom: 20}} />
+        <Separator style={{marginTop: 20, marginBottom: 20}}/>
 
         <Button
           title={I18n.t('bath')}
@@ -195,7 +165,7 @@ export default class PropertyFilterScene extends Component {
           selected={bathroom}
         />
 
-        <Separator style={{marginTop: 20, marginBottom: 20}} />
+        <Separator style={{marginTop: 20, marginBottom: 20}}/>
 
         <Button
           title={I18n.t('parking')}
@@ -206,30 +176,191 @@ export default class PropertyFilterScene extends Component {
         />
       </ScrollView>
     );
-  };
+  }
 
-  renderHeader = props => {
-    return (
-      <TabBar
-        {...props}
-        scrollEnabled
-        indicatorStyle={styles.indicator}
-        style={styles.tabbar}
-        labelStyle={styles.label}
-      />
-    );
-  };
 
-  renderPager = props => {
-    return (
-      <TabViewPagerPan
-        {...props}
-        swipeEnabled={false}
-        animationEnabled={true}
+  constructor(props) {
+    super(props);
+    // let selectedIndex = this.getTabIndex();
+    this.state = {
+      menuValue: new Animated.Value(0),
+      menuIsVisible: false,
+      // tabs: {
+      //   index: selectedIndex,
+      //   routes: [
+      //     {key: '1', title: I18n.t('for_sale')},
+      //     {key: '2', title: I18n.t('for_rent')},
+      //     {key: '3', title: I18n.t('for_share')},
+      //   ],
+      //   loaded: false,
+      // },
+    };
+  }
 
-      />
-    );
-  };
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.propertyType !== this.props.propertyType) {
+  //     let selectedIndex = this.getTabIndex();
+  //     if (this.state.tabs.index !== selectedIndex) {
+  //       this.setState({
+  //         tabs: {
+  //           ...this.state.tabs,
+  //           index: selectedIndex,
+  //         },
+  //       });
+  //     }
+  //   }
+  // }
+
+  // getTabIndex() {
+  //   let selectedIndex;
+  //   switch (this.props.propertyType) {
+  //     case 'for_sale':
+  //       selectedIndex = 0;
+  //       break;
+  //     case 'for_rent':
+  //       selectedIndex = 1;
+  //       break;
+  //     case 'for_share':
+  //       selectedIndex = 2;
+  //       break;
+  //     default:
+  //       selectedIndex = 0;
+  //       break;
+  //   }
+  //   return selectedIndex;
+  // }
+
+  // handleChangeTab = index => {
+  //   let selectedType;
+  //   switch (index) {
+  //     case 0:
+  //       selectedType = 'for_sale';
+  //       break;
+  //     case 1:
+  //       selectedType = 'for_rent';
+  //       break;
+  //     case 2:
+  //       selectedType = 'for_share';
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   this.props.onTypeChange(selectedType);
+  // };
+
+  // renderScene = () => {
+  //   let {
+  //     priceFrom,
+  //     priceTo,
+  //     bedroom,
+  //     bathroom,
+  //     parking,
+  //     category,
+  //   } = this.props.filters;
+  //
+  //   let {
+  //     onPriceFromSelect,
+  //     onPriceToSelect,
+  //     onCategorySelect,
+  //     onMetaSelect,
+  //     country,
+  //     categories,
+  //     prices,
+  //   } = this.props;
+  //
+  //   let {bedroomsArr, bathroomsArr, parkingArr} = this.props.searchMetas;
+  //
+  //   return (
+  //     <ScrollView
+  //       style={[styles.container]}
+  //       showsVerticalScrollIndicator={false}
+  //       automaticallyAdjustContentInsets={false}
+  //       contentInset={{bottom: 80}}>
+  //       <List
+  //         selected={category}
+  //         onSelect={onCategorySelect}
+  //         ranges={categories}
+  //         title={I18n.t('property_type')}
+  //       />
+  //
+  //       <Separator style={{marginBottom: 20}}/>
+  //
+  //       <List
+  //         title={I18n.t('price_range')}
+  //         ranges={prices}
+  //         selected={priceFrom}
+  //         onSelect={onPriceFromSelect}
+  //         hint={country.currency}
+  //       />
+  //
+  //       <List
+  //         title={I18n.t('to')}
+  //         ranges={prices}
+  //         selected={priceTo}
+  //         onSelect={onPriceToSelect}
+  //         titleStyle={{
+  //           fontSize: 12,
+  //           color: colors.primary,
+  //           fontWeight: '400',
+  //         }}
+  //         hint={country.currency}
+  //       />
+  //
+  //       <Separator style={{marginBottom: 20}}/>
+  //
+  //       <Button
+  //         title={I18n.t('bed')}
+  //         icon="bed"
+  //         onPress={value => onMetaSelect('bedroom', value)}
+  //         range={bedroomsArr}
+  //         selected={bedroom}
+  //       />
+  //
+  //       <Separator style={{marginTop: 20, marginBottom: 20}}/>
+  //
+  //       <Button
+  //         title={I18n.t('bath')}
+  //         icon="bath"
+  //         onPress={value => onMetaSelect('bathroom', value)}
+  //         range={bathroomsArr}
+  //         selected={bathroom}
+  //       />
+  //
+  //       <Separator style={{marginTop: 20, marginBottom: 20}}/>
+  //
+  //       <Button
+  //         title={I18n.t('parking')}
+  //         icon="car"
+  //         onPress={value => onMetaSelect('parking', value)}
+  //         range={parkingArr}
+  //         selected={parking}
+  //       />
+  //     </ScrollView>
+  //   );
+  // };
+
+  // renderHeader = props => {
+  //   return (
+  //     <TabBar
+  //       {...props}
+  //       scrollEnabled
+  //       indicatorStyle={styles.indicator}
+  //       style={styles.tabbar}
+  //       labelStyle={styles.label}
+  //     />
+  //   );
+  // };
+  //
+  // renderPager = props => {
+  //   return (
+  //     <TabViewPagerPan
+  //       {...props}
+  //       swipeEnabled={false}
+  //       animationEnabled={true}
+  //
+  //     />
+  //   );
+  // };
 
   renderSearchBar = () => {
     let {onShowSearch, onSearch} = this.props;
@@ -339,17 +470,19 @@ export default class PropertyFilterScene extends Component {
 
         <Separator />
 
-        <TabViewAnimated
-          // propertyType={propertyType}
-          // filters={filters}
-          style={{flex: 1}}
-          navigationState={this.state.tabs}
-          renderScene={this.renderScene}
-          renderHeader={this.renderHeader}
-          renderPager={this.renderPager}
-          onIndexChange={this.handleChangeTab}
-          scrollEnabled={false}
-        />
+        {this.renderTabs()}
+
+        {/*<TabViewAnimated*/}
+          {/*// propertyType={propertyType}*/}
+          {/*// filters={filters}*/}
+          {/*style={{flex: 1}}*/}
+          {/*navigationState={this.state.tabs}*/}
+          {/*renderScene={this.renderScene}*/}
+          {/*renderHeader={this.renderHeader}*/}
+          {/*renderPager={this.renderPager}*/}
+          {/*onIndexChange={this.handleChangeTab}*/}
+          {/*scrollEnabled={false}*/}
+        {/*/>*/}
 
         <TouchableHighlight
           underlayColor="transparent"
@@ -402,5 +535,35 @@ const styles = StyleSheet.create({
   label: {
     color: colors.darkGrey,
     fontWeight: '400',
+  },
+  tab: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomColor: colors.lightGrey,
+    borderBottomWidth: 1,
+    height: 40,
+  },
+  tabActive: {
+    borderBottomColor: colors.primary,
+    borderBottomWidth: 1,
+  },
+  searchBar: {
+    backgroundColor: 'white',
+    opacity: 1,
+    shadowColor: colors.fadedBlack,
+    shadowOffset: {
+      width: 0.5,
+      height: 0.5,
+    },
+    shadowRadius: 5,
+    shadowOpacity: 0.8,
+    borderRadius: 2,
+    // zIndex: 5000,
+  },
+  searchTabs: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical:20
   },
 });

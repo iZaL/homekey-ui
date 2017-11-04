@@ -26,6 +26,8 @@ import I18n from './../../app/common/locale';
 import {numberWithCommas} from '../../common/functions';
 import PropTypes from 'prop-types';
 import {isRTL} from '../../app/common/locale';
+import LocalizedText from "../../components/LocalizedText";
+
 
 export default class PropertyDetailScene extends Component {
   static propTypes = {

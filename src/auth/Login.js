@@ -58,7 +58,7 @@ class Login extends Component {
   };
 
   goBack = () => {
-    const navigationAction = NavigationActions.back(null);
+    const navigationAction = NavigationActions.back();
     this.props.navigation.dispatch(navigationAction);
   };
 

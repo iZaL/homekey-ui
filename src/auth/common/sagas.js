@@ -113,7 +113,7 @@ function* updatePassword(action) {
       payload: response.data,
     });
 
-    yield put(NavigationActions.back(null));
+    yield put(NavigationActions.back());
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.PASSWORD_UPDATE_FAILURE, error});

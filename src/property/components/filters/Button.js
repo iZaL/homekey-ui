@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 /**
  * @flow
  */
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -117,8 +117,11 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingHorizontal: 10,
-    fontSize: 35,
-    fontWeight: '200',
+    fontSize: 28,
+    fontWeight: '400',
     color: '#202226',
+    borderWidth:1,
+    borderColor:colors.darkGrey,
+    marginHorizontal:10
   },
 });

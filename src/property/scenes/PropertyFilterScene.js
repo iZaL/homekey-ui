@@ -138,9 +138,9 @@ export default class PropertyFilterScene extends Component {
           selected={priceTo}
           onSelect={onPriceToSelect}
           titleStyle={{
-            fontSize: 12,
+            fontSize: 14,
             color: colors.primary,
-            fontWeight: '400',
+            fontWeight: '500',
           }}
           hint={country.currency}
         />
@@ -564,6 +564,6 @@ const styles = StyleSheet.create({
   searchTabs: {
     flex: 1,
     flexDirection: 'row',
-    paddingVertical:20
+    paddingVertical:10
   },
 });

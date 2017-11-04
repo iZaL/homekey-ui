@@ -86,12 +86,18 @@ class ChatThread extends PureComponent {
     });
   };
 
+  onTitlePress = (property: object) => {
+      this.props.navigation.navigate('PropertyDetailScene', {
+        property: property,
+      });
+  };
+
   render() {
     let {thread, user} = this.props;
     const messages = thread && thread.messages ? thread.messages : [];
     return (
       <View style={{backgroundColor: 'white', flex: 1}}>
-        {thread.property && <ChatHeader text={thread.property.meta.title} />}
+        {thread.property && <ChatHeader property={thread.property} onTitlePress={this.onTitlePress} />}
         <GiftedChat
           messages={messages.concat().reverse()}
           text={this.state.text}

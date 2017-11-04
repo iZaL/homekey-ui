@@ -17,6 +17,7 @@ import colors from './../common/colors';
 import {isRTL} from '../app/common/locale';
 import PropertyListTopBar from './components/PropertyListTopBar';
 
+
 class PropertyList extends PureComponent {
   static propTypes = {
     properties: PropTypes.array.isRequired,
@@ -104,6 +105,7 @@ class PropertyList extends PureComponent {
       showRelated,
       relatedProperties,
     } = this.props;
+
 
     return (
       <View style={{flex: 1}}>

@@ -304,4 +304,8 @@ const styles = StyleSheet.create({
   required: {
     color: colors.primary,
   },
+  hint:{
+    paddingHorizontal:5,
+    color:colors.mediumGrey,
+  }
 });

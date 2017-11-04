@@ -26,7 +26,6 @@ import I18n from './../../app/common/locale';
 import {numberWithCommas} from '../../common/functions';
 import PropTypes from 'prop-types';
 import {isRTL} from '../../app/common/locale';
-import LocalizedText from '../../components/LocalizedText';
 
 export default class PropertyDetailScene extends Component {
   static propTypes = {
@@ -338,10 +337,10 @@ export default class PropertyDetailScene extends Component {
                       <FontAwesome
                         name="envelope-o"
                         size={15}
-                        style={{width: 20, height: 15, alignSelf: 'center'}}
+                        style={{width: 20, height: 15, alignSelf: 'center',}}
                         color={colors.darkGrey}
                       />
-                      <Text style={styles.infoTitle}>{I18n.t('email')}</Text>
+                      <Text style={[styles.infoTitle,{paddingHorizontal:5}]}>{I18n.t('email')}</Text>
                       <Text
                         style={styles.infoResult}
                         onPress={() => {

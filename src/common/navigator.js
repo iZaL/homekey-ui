@@ -58,7 +58,7 @@ const PropertyTab = StackNavigator(
     PropertyDetailScene: {
       screen: PropertyDetail,
       navigationOptions: ({navigation}) => ({
-        title: `${navigation.state.params.property.title}!`,
+        title: `${navigation.state.params.property.meta.title}`,
       }),
     },
     ProfileScene: {
@@ -96,7 +96,7 @@ const FavoriteTab = StackNavigator(
     PropertyDetailScene: {
       screen: PropertyDetail,
       navigationOptions: ({navigation}) => ({
-        title: `${navigation.state.params.property.title}!`,
+        title: `${navigation.state.params.property.meta.title}`,
       }),
     },
     ProfileScene: {
@@ -131,7 +131,7 @@ const CompanyTab = StackNavigator(
     PropertyDetailScene: {
       screen: PropertyDetail,
       navigationOptions: ({navigation}) => ({
-        title: `${navigation.state.params.property.title}!`,
+        title: `${navigation.state.params.property.meta.title}`,
       }),
     },
   },
@@ -176,7 +176,7 @@ const SettingTab = StackNavigator(
     PropertyDetailScene: {
       screen: PropertyDetail,
       navigationOptions: ({navigation}) => ({
-        title: `${navigation.state.params.property.title}!`,
+        title: `${navigation.state.params.property.meta.title}`,
       }),
     },
     PropertyEditScene: {

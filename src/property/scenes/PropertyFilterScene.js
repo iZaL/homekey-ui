@@ -19,10 +19,9 @@ import NavBar from '../../components/NavBar';
 import NavButton from '../../components/NavButton';
 import CountryPicker from '../components/filters/CountryPicker';
 import {CountryPropType} from '../common/proptypes';
-import I18n from './../../app/common/locale';
+import I18n,{isRTL} from './../../app/common/locale';
 
 import {TabBar, TabViewAnimated, TabViewPagerPan} from 'react-native-tab-view';
-import {isRTL} from '../../app/common/locale';
 
 export default class PropertyFilterScene extends Component {
   static propTypes = {
@@ -142,7 +141,7 @@ export default class PropertyFilterScene extends Component {
 
     return (
       <ScrollView
-        style={styles.container}
+        style={[styles.container]}
         showsVerticalScrollIndicator={false}
         automaticallyAdjustContentInsets={false}
         contentInset={{bottom: 80}}>
@@ -227,6 +226,7 @@ export default class PropertyFilterScene extends Component {
         {...props}
         swipeEnabled={false}
         animationEnabled={true}
+
       />
     );
   };

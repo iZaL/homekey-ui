@@ -17,6 +17,9 @@ import {I18nManager} from 'react-native';
 import {SELECTORS as AUTH_SELECTORS} from '../../auth/common/selectors';
 import {API} from './api';
 import {NavigationActions} from 'react-navigation';
+import 'moment/locale/ar-kw';
+import 'moment/locale/en-au';
+import moment from 'moment';
 
 function* bootstrapped(action) {
   if (action.value === true) {
@@ -41,6 +44,9 @@ function* boot() {
   if (isNull(currentLanguage)) {
     currentLanguage = state.appReducer.language;
   }
+
+  currentLanguage === 'ar' ? moment.locale('ar-kw') : moment.locale('en-au');
+
   yield put({
     type: ACTION_TYPES.SET_LANGUAGE_SUCCESS,
     language: currentLanguage,

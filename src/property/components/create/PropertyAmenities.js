@@ -66,7 +66,7 @@ export default class PropertyAmenities extends React.Component {
             renderItem={this.renderRow}
             automaticallyAdjustContentInsets={false}
             showsVerticalScrollIndicator={false}
-            contentInset={{bottom: 50}}
+            contentInset={{bottom: 100}}
             ItemSeparatorComponent={() => (
               <Separator style={{marginVertical: 10}} />
             )}

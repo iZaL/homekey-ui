@@ -26,6 +26,21 @@ import ChatList from '../user/ChatList';
 import ChatThread from '../user/ChatThread';
 import CompanyList from './../company/CompanyList';
 
+const AuthStack = StackNavigator(
+  {
+    LoginScreen: {screen:Login},
+    Register: {screen: Register},
+    Forgot: {screen: Forgot},
+  },
+  {
+    navigationOptions: {
+      cardStack: {
+        gesturesEnabled: false,
+      },
+    },
+  }
+);
+
 const PropertyTab = StackNavigator(
   {
     PropertyHomeScene: {
@@ -65,6 +80,7 @@ const PropertyTab = StackNavigator(
       headerTitleStyle: {color: colors.black},
       headerTruncatedBackTitle: '',
     }),
+
     // initialRouteName: 'PropertyListScene',
   },
 );
@@ -274,14 +290,11 @@ export default (Navigator = StackNavigator(
         },
       },
     },
-    Login: {screen: Login},
-    Register: {screen: Register},
-    Forgot: {screen: Forgot},
+    Login: {screen: AuthStack},
   },
   {
     headerMode: 'none',
     mode: 'modal',
-    // initialRouteName: 'Tabs',
     swipeEnabled: false,
   },
 ));

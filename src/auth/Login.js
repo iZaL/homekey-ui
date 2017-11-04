@@ -15,6 +15,10 @@ class Login extends Component {
     auth: PropTypes.object.isRequired,
   };
 
+  static navigationOptions = {
+    header: null,
+  };
+
   state = {
     email: '',
     password: '',

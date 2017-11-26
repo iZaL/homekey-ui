@@ -49,7 +49,7 @@ class App extends Component {
     if (!app.booted) return null;
 
     if (!app.bootstrapped) {
-      return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} />;
+      return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} selectedLanguage="" />;
     }
 
     return (

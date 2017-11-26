@@ -6,6 +6,7 @@ import {ACTIONS as APP_ACTIONS} from './common/actions';
 import LanguageSelectScene from './scenes/LanguageSelectScene';
 
 class LanguageSelect extends Component {
+
   onLanguageSelect = name => {
     if (this.props.app.language === name) {
       return this.props.navigation.goBack();
@@ -15,7 +16,10 @@ class LanguageSelect extends Component {
   };
 
   render() {
-    return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} />;
+    const {app} = this.props;
+
+    console.log('a',app);
+    return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} selectedLanguage={app.language} />;
   }
 }
 

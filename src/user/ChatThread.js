@@ -24,6 +24,7 @@ class ChatThread extends PureComponent {
   });
 
   componentDidMount() {
+
     if (this.props.navigation.state.params.thread_id) {
       this.props.actions.subscribeToSocket({
         thread_id: this.props.navigation.state.params.thread_id,
@@ -96,7 +97,7 @@ class ChatThread extends PureComponent {
     let {thread, user} = this.props;
     const messages = thread && thread.messages ? thread.messages : [];
     return (
-      <View style={{backgroundColor: 'white', flex: 1}}>
+      <View style={{flex: 1}}>
         {thread.property && <ChatHeader property={thread.property} onTitlePress={this.onTitlePress} />}
         <GiftedChat
           messages={messages.concat().reverse()}
@@ -106,11 +107,12 @@ class ChatThread extends PureComponent {
           user={{
             _id: user._id,
           }}
-          renderBubble={this.renderBubble}
           textInputStyle={styles.textInputStyle}
           listViewProps={{
             removeClippedSubviews: false,
           }}
+          forceGetKeyboardHeight={true}
+          bottomOffset={48}
         />
       </View>
     );

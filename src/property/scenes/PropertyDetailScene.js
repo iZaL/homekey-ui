@@ -28,7 +28,6 @@ import PropTypes from 'prop-types';
 import {isRTL} from '../../app/common/locale';
 import LocalizedText from "../../components/LocalizedText";
 
-
 export default class PropertyDetailScene extends Component {
   static propTypes = {
     property: PropTypes.object.isRequired,
@@ -481,7 +480,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir-Light',
   },
   username: {
-    color: 'black',
+    color: colors.primary,
     textAlign: 'left',
     fontWeight: '500',
     paddingHorizontal: 5,

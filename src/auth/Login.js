@@ -50,6 +50,10 @@ class Login extends Component {
           });
         },
       },
+      {
+        text: I18n.t('cancel'),
+        onPress: () => {},
+      },
     ]);
   };
 

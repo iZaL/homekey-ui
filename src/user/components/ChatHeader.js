@@ -15,7 +15,7 @@ const ChatHeader = ({property,onTitlePress}) => {
 };
 
 ChatHeader.propTypes = {
-  text: PropTypes.string.isRequired,
+  property: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

@@ -42,7 +42,7 @@ export default class UserDetailScene extends Component {
         )}
 
         <View style={styles.editIconWrapper}>
-          <TouchableHighlight onPress={loadScene} underlayColor="transparent">
+          <TouchableHighlight onPress={loadScene} underlayColor="transparent" hitSlop={{top:20,right:20,bottom:20,left:20}}>
             <FontAwesome
               name="pencil"
               color={colors.darkGrey}

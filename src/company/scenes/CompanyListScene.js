@@ -52,9 +52,7 @@ export default class CompanyListScene extends PureComponent {
           <View
             style={{
               flex: 1,
-              alignItems: 'flex-start',
-              alignSelf: 'flex-start',
-              paddingTop: 10,
+              paddingHorizontal: 5,
             }}>
             <LocalizedText
               style={styles.companyTitle}
@@ -95,7 +93,7 @@ export default class CompanyListScene extends PureComponent {
         onEndReachedThreshold={1}
         onEndReached={() => !isFetching && fetchCollection()}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}} />
+          <Separator style={{marginVertical: 5}} />
         )}
         getItemLayout={(data, index) => ({
           length: 348,
@@ -115,7 +113,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingTop: 20,
+    padding: 5,
   },
   list: {
     justifyContent: 'center',
@@ -159,8 +157,6 @@ const styles = StyleSheet.create({
   companyInfoContainer: {
     flex: 1,
     flexDirection: 'row',
-    padding: 10,
-    paddingBottom: 10,
     alignItems: 'center',
   },
   companyTitle: {

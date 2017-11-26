@@ -66,7 +66,7 @@ export default class UserEditScene extends Component {
         )}
 
         <View style={styles.editIconWrapper}>
-          <TouchableHighlight onPress={pickImage} underlayColor="transparent">
+          <TouchableHighlight onPress={pickImage} underlayColor="transparent" hitSlop={{top:20,right:20,bottom:20,left:20}}>
             <FontAwesome
               name="camera"
               color={colors.darkGrey}

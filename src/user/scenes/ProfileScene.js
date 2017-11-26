@@ -57,6 +57,9 @@ export default class ProfileScene extends Component {
       refreshProperties,
       countries,
     } = this.props;
+
+    console.log('prop',properties);
+
     switch (route.key) {
       case '1':
         return (

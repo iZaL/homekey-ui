@@ -28,16 +28,7 @@ export default class PasswordUpdateScene extends Component {
     } = this.props;
 
     return (
-      <View style={{flex: 1}}>
-        <NavBar
-          right={
-            <NavButton
-              icon="ios-close"
-              onPress={() => onRightButtonPress()}
-              style={isRTL ? {marginRight: 5} : {marginRight: -10}}
-            />
-          }
-        />
+
 
         <View style={styles.container}>
           <FormLabel title={I18n.t('new_password')} />
@@ -68,7 +59,6 @@ export default class PasswordUpdateScene extends Component {
             style={{marginTop: 50}}
           />
         </View>
-      </View>
     );
   }
 }

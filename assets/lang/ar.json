@@ -45,7 +45,7 @@
   "list" : "قائمة",
   "apply_filter": "تطبيق",
   "home" : "الرئيسية",
-  "add_property" : "أضف العقار",
+  "add_property" : "اضافة عقار",
   "more" : "إعدادات",
   "buy" : "شراء",
   "rent" : "إيجار",
@@ -199,7 +199,7 @@
   "company_address" : "عنوان الشركة",
   "company_description" : "وصف الشركة",
   "edit_profile" : "تعديل الصفحة الخاصة",
-  "upload_property" : "اضف العقار",
+  "upload_property" : "اضافة عقار",
   "change_country" :"تغيير الدولة",
   "my_properties" : "عقاراتي",
   "member_since" : "مُشترك مُنْذُ",
@@ -235,6 +235,6 @@
   "choose_account_type" : "اختر نوعية الحساب",
   "individual" : "شخصي" ,
   "company" : "شركة" ,
-  "please_choose_precise_location" : "اختر المنطقة",
+  "please_choose_precise_location" : "اختار منطقة محددة",
   "required" : "مطلوب"
 }

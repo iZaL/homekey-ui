@@ -38,7 +38,7 @@ export default class PropertyFilterScene extends Component {
     countries: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
     onTypeChange: PropTypes.func.isRequired,
-    propertyType: PropTypes.string.isRequired,
+    propertyType: PropTypes.object.isRequired,
     searchMetas: PropTypes.object.isRequired,
   };
 

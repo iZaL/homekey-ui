@@ -5,7 +5,6 @@ import Separator from '../../components/Separator';
 import colors from "../../common/colors";
 
 const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
-  console.log('s',selectedLanguage);
   return (
     <View style={[styles.container]}>
       <TouchableHighlight

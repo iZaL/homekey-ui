@@ -186,9 +186,12 @@ export function* addMessage(action) {
 
     const urlParams = `api_token=${apiToken}`;
     const {message} = action.params;
+
     const params = {
       ...message,
     };
+    console.log('params',params);
+
     const response = yield call(API.addMessage, params, urlParams);
     yield put({
       type: ACTION_TYPES.MESSAGE_ADD_SUCCESS,

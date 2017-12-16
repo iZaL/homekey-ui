@@ -19,6 +19,7 @@ import UserEdit from './../user/UserEdit';
 import CountryList from './../user/CountryList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {StackNavigator, TabNavigator} from 'react-navigation';
+import {Platform} from 'react-native';
 import colors from './colors';
 import I18n from './../app/common/locale';
 import Chat from '../user/Chat';
@@ -272,11 +273,17 @@ const Tabs = TabNavigator(
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: colors.primary,
-      showLabel:false,
-      tabStyle: {
+      showLabel:Platform.OS !== 'ios',
+      // tabStyle: {
+      // },
+      labelStyle: {
+        fontSize: 12,
+        color:'white',
+        fontWeight:'500'
       },
       style: {
-        backgroundColor:'white',
+        // backgroundColor:'white',
+        height:50,
       },
     },
     animationEnabled: false,

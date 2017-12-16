@@ -5,6 +5,7 @@ import Separator from '../../components/Separator';
 import colors from "../../common/colors";
 
 const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
+  console.log('s',selectedLanguage);
   return (
     <View style={[styles.container]}>
       <TouchableHighlight
@@ -20,7 +21,7 @@ const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
         style={styles.selectLanguageWrapper}
         underlayColor="transparent"
         activeOpacity={0.6}>
-        <Text style={styles.languageTitle}> العربي </Text>
+        <Text style={[styles.languageTitle,selectedLanguage && selectedLanguage === 'ar' && styles.activeLanguage]}> العربي </Text>
       </TouchableHighlight>
     </View>
   );

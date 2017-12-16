@@ -142,9 +142,8 @@ export default class PropertyInfo extends Component {
                 }}
                 onContentSizeChange={event => {
                   this.setState({
-                    text: event.nativeEvent.text,
                     descriptionHeight:
-                      event.nativeEvent.contentSize.height + 10,
+                      event.nativeEvent.contentSize.height,
                   });
                 }}
                 multiline={true}
@@ -153,7 +152,7 @@ export default class PropertyInfo extends Component {
                 enablesReturnKeyAutomatically={true}
                 returnKeyType="done"
                 placeholder={I18n.t('describe_your_property')}
-                autoFocus={true}
+                autoFocus={false}
               />
 
               <View style={{flexDirection: 'row'}}>

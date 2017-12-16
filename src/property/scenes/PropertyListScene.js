@@ -60,7 +60,7 @@ export default class PropertyListScene extends PureComponent {
         <TouchableHighlight
           onPress={() => loadScene(item)}
           underlayColor="transparent">
-          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.title}>{item.meta.title}</Text>
         </TouchableHighlight>
 
         <Swiper

@@ -8,15 +8,15 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let request;
 
   if (__DEV__) {
-    // if (console.group) {
-    //   console.groupCollapsed('action', 'NETWORK_REQUEST');
-    //   console.log({
-    //     method: method,
-    //     body: body,
-    //     url: localeAwareUrl,
-    //   });
-    //   console.groupEnd();
-    // }
+    if (console.group) {
+      console.groupCollapsed('action', 'NETWORK_REQUEST');
+      console.log({
+        method: method,
+        body: body,
+        url: localeAwareUrl,
+      });
+      console.groupEnd();
+    }
   }
 
   if (method === 'POST') {
@@ -44,11 +44,11 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
     )
     .then(({status, statusType, json}) => {
       if (__DEV__) {
-        // if (console.group) {
-        //   console.groupCollapsed('action', 'NETWORK_RESPONSE');
-        //   console.log('payload', json);
-        //   console.groupEnd();
-        // }
+        if (console.group) {
+          console.groupCollapsed('action', 'NETWORK_RESPONSE');
+          console.log('payload', json);
+          console.groupEnd();
+        }
       }
 
       if (status !== 200 || !json.success) {

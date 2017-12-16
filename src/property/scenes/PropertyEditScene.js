@@ -51,6 +51,8 @@ export default class PropertyEditScene extends Component {
       [field]: value.key,
     };
 
+    console.log('payload',payload);
+
     this.updateAttributes('meta', payload);
   };
 
@@ -62,30 +64,32 @@ export default class PropertyEditScene extends Component {
   };
 
   updateAddress = data => {
-    const {
-      state_en,
-      city_en,
-      state_ar,
-      city_ar,
-      country,
-      latitude,
-      longitude,
-      address_en,
-      address_ar,
-    } = data;
-    const payload = {
-      state_en,
-      country,
-      city_en,
-      state_ar,
-      city_ar,
-      latitude,
-      longitude,
-      address_en,
-      address_ar,
-    };
+    console.log('updating',data);
 
-    this.updateAttributes('address', payload);
+    // const {
+    //   state_en,
+    //   city_en,
+    //   state_ar,
+    //   city_ar,
+    //   country,
+    //   latitude,
+    //   longitude,
+    //   address_en,
+    //   address_ar,
+    // } = data;
+    // const payload = {
+    //   state_en,
+    //   country,
+    //   city_en,
+    //   state_ar,
+    //   city_ar,
+    //   latitude,
+    //   longitude,
+    //   address_en,
+    //   address_ar,
+    // };
+
+    this.updateAttributes('address', data);
   };
 
   updateImage = images => {

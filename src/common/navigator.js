@@ -29,6 +29,7 @@ import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Entypo from "react-native-vector-icons/Entypo";
 import Octicons from "react-native-vector-icons/Octicons";
+import Foundation from "react-native-vector-icons/Foundation";
 
 const AuthStack = StackNavigator(
   {
@@ -218,9 +219,9 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('home'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Feather
+          <MaterialCommunityIcons
             name={'home'}
-            size={26}
+            size={33}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -232,8 +233,8 @@ const Tabs = TabNavigator(
         tabBarLabel: I18n.t('favorites'),
         tabBarIcon: ({tintColor, focused}) => (
           <MaterialCommunityIcons
-            name={'account-star'}
-            size={26}
+            name={'star'}
+            size={33}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -246,7 +247,7 @@ const Tabs = TabNavigator(
         tabBarIcon: ({tintColor, focused}) => (
           <Entypo
             name={'network'}
-            size={26}
+            size={28}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -257,9 +258,9 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('more'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Octicons
+          <MaterialCommunityIcons
             name={'settings'}
-            size={26}
+            size={30}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),

@@ -35,13 +35,13 @@ const resolveProperty = (property, User, countries) => {
   let title;
   let {category, type, address} = property;
 
-  title = ` ${I18n.t([category])} ${I18n.t([type])} ${I18n.t('in')} ${isRTL
-    ? address.city_ar
-    : address.city_en}`;
+  // title = ` ${I18n.t([category])} ${I18n.t([type])} ${I18n.t('in')} ${isRTL
+  //   ? address.city_ar
+  //   : address.city_en}`;
 
   return Object.assign({}, property, {
     user: User.hasId(property.user) ? User.withId(property.user).ref : {},
-    title: title,
+    // title: title,
     country: countries.find(country => country.id === address.country),
   });
 };

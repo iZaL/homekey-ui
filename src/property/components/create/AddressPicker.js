@@ -87,20 +87,19 @@ export default class AddressPicker extends Component {
           : address_components[1].long_name,
       };
       updateAddress(params);
-
     } catch (e) {
-      params = {
-        [neighborhood]: isNeighbourhood
-          ? locationData.description
-          : locationData.terms[0].value,
-        [city]: isNeighbourhood
-          ? locationData.terms[1].value
-          : locationData.terms[2].value,
-        [state]: isNeighbourhood
-          ? locationData.terms[2].value
-          : locationData.terms[1].value,
-      };
-      updateAddress(params);
+      // params = {
+      //   [neighborhood]: isNeighbourhood
+      //     ? locationData.description
+      //     : locationData.terms[0].value,
+      //   [city]: isNeighbourhood
+      //     ? locationData.terms[1].value
+      //     : locationData.terms[2].value,
+      //   [state]: isNeighbourhood
+      //     ? locationData.terms[2].value
+      //     : locationData.terms[1].value,
+      // };
+      // updateAddress(params);
     }
   }
 

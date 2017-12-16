@@ -50,7 +50,7 @@ export default class PropertyManagerScene extends Component {
               />
 
               <View style={{flex: 1, paddingLeft: 10}}>
-                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.title}>{item.meta.title}</Text>
 
                 <Text style={styles.price}>{item.price}</Text>
 

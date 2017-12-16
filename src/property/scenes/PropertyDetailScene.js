@@ -273,14 +273,9 @@ export default class PropertyDetailScene extends Component {
 
                     <Text style={styles.infoResult}>
                       {isRTL
-                        ? property.address.city_ar
-                        : property.address.city_en}
-                      ,{' '}
-                      {isRTL
-                        ? property.address.state_ar
-                        : property.address.state_en}
-                      {'. '}
-                      {property.country.name}{' '}
+                        ? `${property.address.address_ar} , ${property.address.city_ar}, ${property.address.state_ar}`
+                        : `${property.address.address_en} , ${property.address.city_en}, ${property.address.state_en}`
+                      }
                     </Text>
                   </View>
                 </View>

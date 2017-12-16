@@ -25,6 +25,10 @@ import Chat from '../user/Chat';
 import ChatList from '../user/ChatList';
 import ChatThread from '../user/ChatThread';
 import CompanyList from './../company/CompanyList';
+import Feather from "react-native-vector-icons/Feather";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Entypo from "react-native-vector-icons/Entypo";
+import Octicons from "react-native-vector-icons/Octicons";
 
 const AuthStack = StackNavigator(
   {
@@ -214,8 +218,8 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('home'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-home' : 'ios-home-outline'}
+          <Feather
+            name={'home'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
@@ -227,8 +231,8 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('favorites'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-star' : 'ios-star-outline'}
+          <MaterialCommunityIcons
+            name={'account-star'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
@@ -240,8 +244,8 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('companies'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-cloud-upload' : 'ios-cloud-upload-outline'}
+          <Entypo
+            name={'network'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
@@ -253,8 +257,8 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('more'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Ionicons
-            name={focused ? 'ios-settings' : 'ios-settings'}
+          <Octicons
+            name={'settings'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
@@ -266,6 +270,12 @@ const Tabs = TabNavigator(
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: colors.primary,
+      showLabel:false,
+      tabStyle: {
+      },
+      style: {
+        backgroundColor:'white',
+      },
     },
     animationEnabled: false,
     swipeEnabled: false,

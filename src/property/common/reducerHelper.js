@@ -822,6 +822,8 @@ let attributes = {
     state_en: '',
     city_ar: '',
     state_ar: '',
+    address_en : '',
+    address_ar: '',
     country: 'Kuwait',
     latitude: 0,
     longitude: 0,

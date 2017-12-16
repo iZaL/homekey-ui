@@ -27,19 +27,6 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 1;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-// async function requestData(placeID) {
-//   let params = Qs.stringify({
-//     key: GOOGLE_MAPS_KEY,
-//     placeid: placeID,
-//     language: 'ar',
-//   });
-//
-//   let req = await fetch(
-//     `https://maps.googleapis.com/maps/api/place/details/json?${params}`,
-//   );
-//   return await req.json();
-// }
-
 export default class AddressPicker extends Component {
   static propTypes = {
     country: CountryPropType.isRequired,
@@ -63,73 +50,182 @@ export default class AddressPicker extends Component {
   }
 
   jumpToRegion = () => {
-    // console.log('region',this.mapMarkerRegion());
-    this.map.animateToRegion(this.mapMarkerRegion());
+    const region = this.mapMarkerRegion();
+    this.map.animateToRegion(region);
   };
 
-  async reverseGeoCode(locationData, locationDetails, lang) {
-    const {updateAddress, country} = this.props;
-
+  async geoCode(locationData, lang) {
+    const {updateAddress} = this.props;
+    let isNeighbourhood = false;
+    if (locationData.terms[3]) {
+      isNeighbourhood = true;
+    }
     let urlParams = Qs.stringify({
       key: GOOGLE_MAPS_KEY,
       placeid: locationData.place_id,
       language: lang,
     });
-
-    let params = {
-      latitude: locationDetails.geometry.location.lat,
-      longitude: locationDetails.geometry.location.lng,
-      country: country.id,
-    };
-
-    updateAddress(params);
-
+    let params;
     let city = `city_${lang}`;
     let state = `state_${lang}`;
-    // let country = `country_${lang}`;
-
+    let neighborhood = `address_${lang}`;
     try {
       let request = await fetch(
         `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
       );
       let response = await request.json();
-
-      let {address_components} = response.result;
-
+      let {address_components, formatted_address} = response.result;
       params = {
-        ...params,
-        [city]: address_components[0].long_name,
-        [state]: address_components[1].long_name,
+        [neighborhood]: isNeighbourhood
+          ? formatted_address
+          : address_components[0].long_name,
+        [city]: isNeighbourhood
+          ? address_components[1].long_name
+          : address_components[0].long_name,
+        [state]: isNeighbourhood
+          ? address_components[2].long_name
+          : address_components[1].long_name,
       };
-
       updateAddress(params);
+
     } catch (e) {
       params = {
-        ...params,
-        [city]: locationData.terms[0].value,
-        [state]: locationData.terms[1].value,
+        [neighborhood]: isNeighbourhood
+          ? locationData.description
+          : locationData.terms[0].value,
+        [city]: isNeighbourhood
+          ? locationData.terms[1].value
+          : locationData.terms[2].value,
+        [state]: isNeighbourhood
+          ? locationData.terms[2].value
+          : locationData.terms[1].value,
       };
       updateAddress(params);
     }
   }
 
+  async reverseGeoCode(coordinates, lang) {
+    const {updateAddress} = this.props;
+    let {latitude, longitude} = coordinates;
+
+    let isNeighbourhood = false;
+
+    let urlParams = Qs.stringify({
+      key: GOOGLE_MAPS_KEY,
+      language: lang,
+    });
+    let city = `city_${lang}`;
+    let state = `state_${lang}`;
+    let neighborhood = `address_${lang}`;
+    try {
+      let request = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&${urlParams}`,
+      );
+      let response = await request.json();
+      let {address_components, formatted_address} = response.results[0];
+      if (address_components[3]) {
+        isNeighbourhood = true;
+      }
+      let params = {
+        [neighborhood]: isNeighbourhood
+          ? formatted_address
+          : address_components[0].long_name,
+        [city]: isNeighbourhood
+          ? address_components[1].long_name
+          : address_components[0].long_name,
+        [state]: isNeighbourhood
+          ? address_components[2].long_name
+          : address_components[1].long_name,
+      };
+      updateAddress(params);
+      console.log('reverseGeoCode',params);
+
+    } catch (e) {}
+  }
+
+  // async reverseGeoCode(locationData, locationDetails, lang) {
+  //   const {updateAddress, country} = this.props;
+  //
+  //   let urlParams = Qs.stringify({
+  //     key: GOOGLE_MAPS_KEY,
+  //     placeid: locationData.place_id,
+  //     language: lang,
+  //   });
+  //
+  //   let params = {
+  //     latitude: locationDetails.geometry.location.lat,
+  //     longitude: locationDetails.geometry.location.lng,
+  //     country: country.id,
+  //   };
+  //
+  //   updateAddress(params);
+  //
+  //   let city = `city_${lang}`;
+  //   let state = `state_${lang}`;
+  //   // let country = `country_${lang}`;
+  //
+  //   try {
+  //     let request = await fetch(
+  //       `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
+  //     );
+  //     let response = await request.json();
+  //
+  //     let {address_components} = response.result;
+  //
+  //     params = {
+  //       ...params,
+  //       [city]: address_components[0].long_name,
+  //       [state]: address_components[1].long_name,
+  //     };
+  //
+  //     updateAddress(params);
+  //   } catch (e) {
+  //     params = {
+  //       ...params,
+  //       [city]: locationData.terms[0].value,
+  //       [state]: locationData.terms[1].value,
+  //     };
+  //     updateAddress(params);
+  //   }
+  // }
+
   onSearchPress = (locationData, locationDetails) => {
     if (!locationData.terms[2]) {
       alert(I18n.t('please_choose_precise_location'));
     } else {
-      this.reverseGeoCode(locationData, locationDetails, 'en');
-      this.reverseGeoCode(locationData, locationDetails, 'ar');
+      let params = {
+        latitude: locationDetails.geometry.location.lat,
+        longitude: locationDetails.geometry.location.lng,
+        // country: 'KW',
+      };
+      this.props.updateAddress(params);
+      this.jumpToRegion();
+      this.geoCode(locationData, 'en');
+      this.geoCode(locationData, 'ar');
     }
   };
 
-  onDragEnd = e => {
-    const {address, updateAddress} = this.props;
-    updateAddress({
-      ...address,
-      latitude: e.nativeEvent.coordinate.latitude,
-      longitude: e.nativeEvent.coordinate.longitude,
-    });
-  };
+  // onSearchPress = (locationData, locationDetails) => {
+  //   if (!locationData.terms[2]) {
+  //     alert(I18n.t('please_choose_precise_location'));
+  //   } else {
+  //     this.reverseGeoCode(locationData, locationDetails, 'en');
+  //     this.reverseGeoCode(locationData, locationDetails, 'ar');
+  //   }
+  // };
+
+  onDragEnd(e) {
+    let {latitude, longitude} = e.nativeEvent.coordinate;
+    let params = {
+      latitude: latitude,
+      longitude: longitude,
+      // country: 'Kuwait',
+    };
+    this.props.updateAddress(params);
+    this.reverseGeoCode({latitude, longitude}, 'en');
+    this.reverseGeoCode({latitude, longitude}, 'ar');
+  }
+
 
   updateListing = () => {
     const {address, updateListing} = this.props;
@@ -173,22 +269,24 @@ export default class AddressPicker extends Component {
           <GooglePlacesAutocomplete
             placeholder={I18n.t('select_area')}
             minLength={1}
-            autoFocus={!address.city_ar}
+            autoFocus={false}
             fetchDetails={true}
-            renderDescription={row => row.terms[0].value}
+            listViewDisplayed={false}
+            enablePoweredByContainer={false}
+            renderDescription={row => row.description}
             onPress={(data, details = null) => {
               this.onSearchPress(data, details);
             }}
             query={{
               key: GOOGLE_MAPS_KEY,
               language: 'en',
-              types: '(regions)',
+              // types: '(regions)',
               components: `country:${country.abbr}`,
             }}
             styles={autoCompleteStyle}
-            enablePoweredByContainer={false}
             placeholderTextColor={colors.lightGrey}
-            getDefaultValue={() => (isRTL ? address.city_ar : address.city_en)}
+            // getDefaultValue={() => (isRTL ? address.city_ar : address.city_en)}
+            text={isRTL ? address.address_ar : address.address_en}
             textInputProps={{
               autoCapitalize: 'none',
               autoCorrect: false,

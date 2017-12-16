@@ -70,6 +70,8 @@ export default class PropertyEditScene extends Component {
       country,
       latitude,
       longitude,
+      address_en,
+      address_ar,
     } = data;
     const payload = {
       state_en,
@@ -79,6 +81,8 @@ export default class PropertyEditScene extends Component {
       city_ar,
       latitude,
       longitude,
+      address_en,
+      address_ar,
     };
 
     this.updateAttributes('address', payload);

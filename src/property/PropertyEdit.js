@@ -32,9 +32,6 @@ class PropertyEdit extends Component {
   render() {
     let {categories, listing} = this.props;
 
-    console.log('categories',categories);
-    console.log('listing',listing);
-
     let currentCategories = listing.attributes.type
       ? categories[listing.attributes.type]
       : [];

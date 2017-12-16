@@ -58,8 +58,6 @@ export default class ProfileScene extends Component {
       countries,
     } = this.props;
 
-    console.log('prop',properties);
-
     switch (route.key) {
       case '1':
         return (

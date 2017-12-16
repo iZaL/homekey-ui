@@ -209,6 +209,7 @@ const SettingTab = StackNavigator(
       headerTitleStyle: {color: colors.black},
       headerTruncatedBackTitle: '',
     }),
+    initialRouteName:'PropertyManager'
   },
 );
 
@@ -286,7 +287,7 @@ const Tabs = TabNavigator(
         gesturesEnabled: false,
       },
     },
-    // initialRouteName: 'CompanyTab',
+    initialRouteName: 'SettingsTab',
   },
 );
 

@@ -36,8 +36,6 @@ class PropertyList extends PureComponent {
   };
 
   editProperty = item => {
-    console.log('edit item',item);
-
     this.props.actions.editProperty(item);
     this.props.navigation.navigate('PropertyEditScene');
   };

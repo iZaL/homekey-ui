@@ -17,8 +17,6 @@ class LanguageSelect extends Component {
 
   render() {
     const {app} = this.props;
-
-    console.log('a',app);
     return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} selectedLanguage={app.language} />;
   }
 }

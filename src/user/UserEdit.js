@@ -91,7 +91,7 @@ class UserEdit extends Component {
 
   onSave = () => {
     this.props.actions.updateUser(this.state);
-    this.props.navigation.goBack(null);
+    // this.props.navigation.goBack(null);
   };
 
   render() {

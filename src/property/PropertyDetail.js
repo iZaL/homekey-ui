@@ -27,6 +27,10 @@ class PropertyDetail extends Component {
     sceneType: 'detailScene',
   };
 
+  // shouldComponentUpdate(nextProps) {
+    // return nextProps.property !== this.props.property;
+  // }
+
   componentDidMount() {
     this.props.navigation.setParams({
       visibility: undefined,

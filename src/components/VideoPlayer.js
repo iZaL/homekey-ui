@@ -11,7 +11,7 @@ import colors from './../common/colors';
 export default class UploadVideo extends Component {
   static propTypes = {
     video: PropTypes.string.isRequired,
-    style: View.propTypes.style,
+    // style: View.propTypes.style,
   };
 
   state = {

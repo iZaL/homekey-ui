@@ -29,6 +29,10 @@ export default class PropertyListTopBar extends Component {
     location: PropTypes.string.isRequired,
   };
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.mapView !== this.props.mapView || nextProps.selectedSortOption !== this.selectedSortOption
+  }
+
   constructor(props) {
     super(props);
 
@@ -116,6 +120,8 @@ export default class PropertyListTopBar extends Component {
       relatedProperties,
       onMapViewPress,
     } = this.props;
+
+    console.log('topbar');
     return (
       <View>
         <SortBar

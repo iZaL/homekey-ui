@@ -309,7 +309,8 @@ export default class PropertyHomeScene extends Component {
                     }}>
                     <Image
                       source={emptyIcon}
-                      style={{width: 150, height: 150}}
+                      style={{height: 125}}
+                      resizeMode="contain"
                     />
                   </View>
                 </TouchableHighlight>

@@ -107,6 +107,8 @@ class PropertyFilter extends Component {
       prices,
       searchMetas,
     } = this.props;
+    console.log('filter');
+
     const {searchMode} = this.state;
 
     let currentCategories = categories[propertyType.key];

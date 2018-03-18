@@ -19,18 +19,12 @@ import UserEdit from './../user/UserEdit';
 import CountryList from './../user/CountryList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {StackNavigator, TabNavigator} from 'react-navigation';
-import {Platform} from 'react-native';
 import colors from './colors';
 import I18n from './../app/common/locale';
 import Chat from '../user/Chat';
 import ChatList from '../user/ChatList';
 import ChatThread from '../user/ChatThread';
 import CompanyList from './../company/CompanyList';
-import Feather from "react-native-vector-icons/Feather";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Entypo from "react-native-vector-icons/Entypo";
-import Octicons from "react-native-vector-icons/Octicons";
-import Foundation from "react-native-vector-icons/Foundation";
 
 const AuthStack = StackNavigator(
   {
@@ -210,7 +204,6 @@ const SettingTab = StackNavigator(
       headerTitleStyle: {color: colors.black},
       headerTruncatedBackTitle: '',
     }),
-    // initialRouteName:'PropertyManager'
   },
 );
 
@@ -221,9 +214,9 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('home'),
         tabBarIcon: ({tintColor, focused}) => (
-          <MaterialCommunityIcons
-            name={'home'}
-            size={33}
+          <Ionicons
+            name={focused ? 'ios-home' : 'ios-home-outline'}
+            size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -234,9 +227,9 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('favorites'),
         tabBarIcon: ({tintColor, focused}) => (
-          <MaterialCommunityIcons
-            name={'star'}
-            size={33}
+          <Ionicons
+            name={focused ? 'ios-star' : 'ios-star-outline'}
+            size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -247,9 +240,9 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('companies'),
         tabBarIcon: ({tintColor, focused}) => (
-          <Entypo
-            name={'network'}
-            size={28}
+          <Ionicons
+            name={focused ? 'ios-cloud-upload' : 'ios-cloud-upload-outline'}
+            size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -260,9 +253,9 @@ const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: I18n.t('more'),
         tabBarIcon: ({tintColor, focused}) => (
-          <MaterialCommunityIcons
-            name={'settings'}
-            size={30}
+          <Ionicons
+            name={focused ? 'ios-settings' : 'ios-settings'}
+            size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
         ),
@@ -273,18 +266,6 @@ const Tabs = TabNavigator(
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: colors.primary,
-      showLabel:Platform.OS !== 'ios',
-      // tabStyle: {
-      // },
-      labelStyle: {
-        fontSize: 12,
-        color:'white',
-        fontWeight:'500'
-      },
-      style: {
-        // backgroundColor:'white',
-        height:50,
-      },
     },
     animationEnabled: false,
     swipeEnabled: false,
@@ -294,7 +275,7 @@ const Tabs = TabNavigator(
         gesturesEnabled: false,
       },
     },
-    // initialRouteName: 'SettingsTab',
+    // initialRouteName: 'CompanyTab',
   },
 );
 

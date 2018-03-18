@@ -71,10 +71,10 @@ class App extends Component {
           ref={nav => {
             this.navigator = nav ? nav.props.navigation : nav;
           }}
-          navigation={addNavigationHelpers({
-            dispatch: this.props.dispatch,
-            state: this.props.navigation,
-          })}
+          // navigation={addNavigationHelpers({
+          //   dispatch: this.props.dispatch,
+          //   state: this.props.navigation,
+          // })}
         />
       </View>
     );

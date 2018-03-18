@@ -17,7 +17,7 @@ import colors from './../common/colors';
 export default class YoutubePlayer extends Component {
   static propTypes = {
     video: PropTypes.string.isRequired,
-    style: View.propTypes.style,
+    // style: View.propTypes.style,
   };
 
   state = {

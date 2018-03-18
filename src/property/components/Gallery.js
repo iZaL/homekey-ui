@@ -13,7 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default class Gallery extends Component {
   static propTypes = {
-    style: View.propTypes.style,
+    // style: View.propTypes.style,
     images: PropTypes.array.isRequired,
     setSceneType: PropTypes.func.isRequired,
   };

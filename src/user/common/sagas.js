@@ -136,8 +136,12 @@ function* updateUser(action) {
         type: ACTION_TYPES.USER_UPDATE_SUCCESS,
         payload: imageResponse.data,
       });
+      return yield put(
+        NavigationActions.back(),
+      );
     }
   } catch (error) {
+    yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.USER_UPDATE_FAILURE, error});
   }
 }

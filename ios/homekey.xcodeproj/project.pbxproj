@@ -44,8 +44,9 @@
 		354997A51F7A964E0037E7EB /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354997A31F7A964E0037E7EB /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		354997A71F7A964E0037E7EB /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354997A61F7A964E0037E7EB /* QBImagePicker.framework */; };
 		354997A81F7A964E0037E7EB /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354997A61F7A964E0037E7EB /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3550D2371F850D6300BA58B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3550D2361F850D6300BA58B3 /* Default-568h@2x.png */; };
-		3550D2651F850D6D00BA58B3 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3550D2641F850D6D00BA58B3 /* Splash@2x.png */; };
+		3596A72920065DEF0057AE19 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3596A72820065DEF0057AE19 /* Splash@2x.png */; };
+		3596A72B20065E510057AE19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3596A72A20065E510057AE19 /* Default-568h@2x.png */; };
+		3596A72C20065E510057AE19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3596A72A20065E510057AE19 /* Default-568h@2x.png */; };
 		35C5BF241F7BD3F300C72040 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C5BEFF1F7BD3D700C72040 /* libRCTPushNotification.a */; };
 		40E098973E7642409E06B4AA /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD56B6C105FC46EBA9C2B9C6 /* Feather.ttf */; };
 		4BB60AEFB0444A4B93384C28 /* libRCTRestart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7766372713A24531B40B6541 /* libRCTRestart.a */; };
@@ -466,8 +467,8 @@
 		35345DB71FE5751A0087245B /* homekey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = homekey.entitlements; path = homekey/homekey.entitlements; sourceTree = "<group>"; };
 		354997A31F7A964E0037E7EB /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		354997A61F7A964E0037E7EB /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3550D2361F850D6300BA58B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3550D2641F850D6D00BA58B3 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
+		3596A72820065DEF0057AE19 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
+		3596A72A20065E510057AE19 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		35C5BEE91F7BD3D700C72040 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		3DDD78C5FD2541C69DBA2221 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		3E678EA78A7546CD81C585FB /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -676,6 +677,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		35497449201F722D00351D8A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C77BBE8C2C394BD0945C2122 /* libCodePush.a */,
+				4E0AF61A5DD24548BAE9B5EC /* libRNI18n.a */,
+				259D0663CE784FCA8A4A9931 /* libimageCropPicker.a */,
+				CD05AE63FA76416480D17E34 /* libAirMaps.a */,
+				D95922E1D42D4415A657794B /* libRNVectorIcons.a */,
+				3F858C502BC947BB887607E5 /* libRCTVideo.a */,
+				067F95D215064E0FA34B3FDB /* libRCTYouTube.a */,
+				7766372713A24531B40B6541 /* libRCTRestart.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		354997461F7A8A150037E7EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,8 +826,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				3550D2641F850D6D00BA58B3 /* Splash@2x.png */,
-				3550D2361F850D6300BA58B3 /* Default-568h@2x.png */,
+				3596A72A20065E510057AE19 /* Default-568h@2x.png */,
+				3596A72820065DEF0057AE19 /* Splash@2x.png */,
 				354997A61F7A964E0037E7EB /* QBImagePicker.framework */,
 				354997A31F7A964E0037E7EB /* RSKImageCropper.framework */,
 				13B07FAE1A68108700A75B9A /* homekey */,
@@ -820,6 +836,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				84E34C45FE7D4DF98163F03B /* Frameworks */,
 				D035D1F806FB43F186D609D3 /* Resources */,
+				35497449201F722D00351D8A /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1446,11 +1463,11 @@
 				5B2D4B398BC94E53BFD422DD /* Entypo.ttf in Resources */,
 				11A37629BAAE4834839119EC /* EvilIcons.ttf in Resources */,
 				40E098973E7642409E06B4AA /* Feather.ttf in Resources */,
-				3550D2371F850D6300BA58B3 /* Default-568h@2x.png in Resources */,
 				1BA5EAAE8314448FADC5B7EA /* FontAwesome.ttf in Resources */,
 				1996287D391845B3B253F8E1 /* Foundation.ttf in Resources */,
 				A6CCAC8D560040F6AE35F1D3 /* Ionicons.ttf in Resources */,
-				3550D2651F850D6D00BA58B3 /* Splash@2x.png in Resources */,
+				3596A72B20065E510057AE19 /* Default-568h@2x.png in Resources */,
+				3596A72920065DEF0057AE19 /* Splash@2x.png in Resources */,
 				B2133D5F6480421DA110FBA0 /* MaterialCommunityIcons.ttf in Resources */,
 				9874552F82E24E63B3A59618 /* MaterialIcons.ttf in Resources */,
 				5853851038694ACE8F63F8AC /* Octicons.ttf in Resources */,
@@ -1464,6 +1481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				3596A72C20065E510057AE19 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

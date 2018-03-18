@@ -12,7 +12,7 @@ const LoadingIndicator = ({style}) => (
 );
 
 LoadingIndicator.propTypes = {
-  style: View.propTypes.style,
+  // style: View.propTypes.style,
 };
 
 export default LoadingIndicator;

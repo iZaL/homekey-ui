@@ -1,4 +1,4 @@
-package com.homekey;
+package com.homekeyapp;
 
 import com.facebook.react.ReactActivity;
 

@@ -266,6 +266,20 @@ const Tabs = TabNavigator(
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: colors.primary,
+      inactiveTintColor: colors.darkGrey,
+      inactiveBackgroundColor:colors.white,
+      activeBackgroundColor:colors.white,
+      labelStyle: {
+        fontSize: 12,
+      },
+      style: {
+        backgroundColor: colors.white,
+      },
+      // showIcon:true,
+      upperCaseLabel:false,
+      iconStyle:{
+        height:20
+      }
     },
     animationEnabled: false,
     swipeEnabled: false,
@@ -275,6 +289,7 @@ const Tabs = TabNavigator(
         gesturesEnabled: false,
       },
     },
+
     // initialRouteName: 'CompanyTab',
   },
 );

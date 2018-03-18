@@ -13,7 +13,7 @@ import {SELECTORS} from './selectors';
 import {forgetItem, getItem, setItem} from '../../common/storage';
 import {ACTION_TYPES as USER_ACTION_TYPES} from '../../user/common/actions';
 import I18n from './../../app/common/locale';
-import {PUSH_TOKEN_KEY} from '../../app/common/reducer';
+import {PUSH_TOKEN_KEY} from './../../app/common/reducer';
 
 function* login(action) {
   try {

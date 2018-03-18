@@ -14,7 +14,7 @@ import {
 import CodePush from 'react-native-code-push';
 
 import {I18nManager} from 'react-native';
-import {SELECTORS as AUTH_SELECTORS} from '../../auth/common/selectors';
+import {SELECTORS as AUTH_SELECTORS} from './../../auth/common/selectors';
 import {API} from './api';
 import {NavigationActions} from 'react-navigation';
 import 'moment/locale/ar-kw';

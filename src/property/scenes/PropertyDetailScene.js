@@ -23,10 +23,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Separator from './../../components/Separator';
 import {CountryPropType} from './../common/proptypes';
 import I18n from './../../app/common/locale';
-import {numberWithCommas} from '../../common/functions';
+import {numberWithCommas} from './../../common/functions';
 import PropTypes from 'prop-types';
-import {isRTL} from '../../app/common/locale';
-import LocalizedText from "../../components/LocalizedText";
+import {isRTL} from './../../app/common/locale';
+import LocalizedText from "./../../components/LocalizedText";
 
 export default class PropertyDetailScene extends Component {
   static propTypes = {

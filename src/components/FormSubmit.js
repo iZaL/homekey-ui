@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, TouchableHighlight} from 'react-native';
-import I18n from './../app/common/locale';
 import PropTypes from 'prop-types';
 import colors from '../common/colors';
-import {isRTL} from '../app/common/locale';
 
 export default class FormSubmit extends Component {
   static propTypes = {

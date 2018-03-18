@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
-import NavBar from './../../components/NavBar';
-import NavButton from './../../components/NavButton';
 import FormLabel from '../../components/FormLabel';
 import I18n from './../../app/common/locale';
 import FormTextInput from '../../components/FormTextInput';
 import FormSubmit from '../../components/FormSubmit';
-import {isRTL} from '../../app/common/locale';
 
 export default class PasswordUpdateScene extends Component {
   static propTypes = {

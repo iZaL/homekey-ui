@@ -1,23 +1,72 @@
 import {NavigationActions} from 'react-navigation';
+import type {NavigationParams, NavigationRoute} from 'react-navigation';
 
-const config = {};
+let _container; // eslint-disable-line
 
-export function setNavigator(nav) {
-  if (nav) {
-    config.navigator = nav;
-  }
+function setContainer(container: Object) {
+  _container = container;
 }
 
-export function navigate(routeName, params) {
-  if (config.navigator && routeName) {
-    let action = NavigationActions.navigate({routeName, params});
-    config.navigator.dispatch(action);
-  }
+function reset(routeName: string, params?: NavigationParams) {
+  _container.dispatch(
+    NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          type: 'Navigation/NAVIGATE',
+          routeName,
+          params,
+        }),
+      ],
+    }),
+  );
 }
 
-export function goBack() {
-  if (config.navigator) {
-    let action = NavigationActions.back({});
-    config.navigator.dispatch(action);
-  }
+function navigate(routeName: string, params?: NavigationParams) {
+  _container.dispatch(
+    NavigationActions.navigate({
+      type: 'Navigation/NAVIGATE',
+      routeName,
+      params,
+    }),
+  );
 }
+
+function navigateDeep(
+  actions: {routeName: string, params?: NavigationParams}[],
+) {
+  _container.dispatch(
+    actions.reduceRight(
+      (prevAction, action): any =>
+        NavigationActions.navigate({
+          type: 'Navigation/NAVIGATE',
+          routeName: action.routeName,
+          params: action.params,
+          action: prevAction,
+        }),
+      undefined,
+    ),
+  );
+}
+
+function back() {
+  _container.dispatch(NavigationActions.back());
+}
+
+function getCurrentRoute(): NavigationRoute | null {
+  if (!_container || !_container.state.nav) {
+    return null;
+  }
+
+  return _container.state.nav.routes[_container.state.nav.index] || null;
+}
+
+export default {
+  setContainer,
+  navigateDeep,
+  navigate,
+  reset,
+  getCurrentRoute,
+  back,
+
+};

@@ -1,5 +1,5 @@
 import {call, fork, put, select, takeLatest, all} from 'redux-saga/effects';
-import {NavigationActions} from 'react-navigation';
+import NavigationService from './../../components/NavigationService';
 
 import {ACTION_TYPES} from './actions';
 import {
@@ -37,7 +37,7 @@ function* login(action) {
       type: USER_ACTION_TYPES.SYNC_USER_TO_SOCKET,
     });
 
-    yield put(NavigationActions.back());
+    yield NavigationService.back();
   } catch (error) {
     yield put({type: ACTION_TYPES.LOGIN_FAILURE, error});
     yield put(APP_ACTIONS.setNotification(error, 'error'));
@@ -52,7 +52,7 @@ function* register(action) {
     yield put(
       APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
     );
-    yield put(NavigationActions.back());
+    yield NavigationService.back();
   } catch (error) {
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
     yield put({
@@ -113,7 +113,7 @@ function* updatePassword(action) {
       payload: response.data,
     });
 
-    yield put(NavigationActions.back());
+    yield NavigationService.back();
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.PASSWORD_UPDATE_FAILURE, error});

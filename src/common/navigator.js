@@ -18,7 +18,7 @@ import UserDetail from './../user/UserDetail';
 import UserEdit from './../user/UserEdit';
 import CountryList from './../user/CountryList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {StackNavigator, TabNavigator} from 'react-navigation';
+import {createStackNavigator, createTabNavigator} from 'react-navigation';
 import colors from './colors';
 import I18n from './../app/common/locale';
 import Chat from '../user/Chat';
@@ -26,7 +26,7 @@ import ChatList from '../user/ChatList';
 import ChatThread from '../user/ChatThread';
 import CompanyList from './../company/CompanyList';
 
-const AuthStack = StackNavigator(
+const AuthStack = createStackNavigator(
   {
     LoginScreen: {screen:Login},
     Register: {screen: Register},
@@ -41,7 +41,7 @@ const AuthStack = StackNavigator(
   }
 );
 
-const PropertyTab = StackNavigator(
+const PropertyTab = createStackNavigator(
   {
     PropertyHomeScene: {
       screen: PropertyHome,
@@ -80,12 +80,11 @@ const PropertyTab = StackNavigator(
       headerTitleStyle: {color: colors.black},
       headerTruncatedBackTitle: '',
     }),
-
     // initialRouteName: 'PropertyListScene',
   },
 );
 
-const FavoriteTab = StackNavigator(
+const FavoriteTab = createStackNavigator(
   {
     FavoritesScene: {
       screen: PropertyFavorites,
@@ -115,7 +114,7 @@ const FavoriteTab = StackNavigator(
   },
 );
 
-const CompanyTab = StackNavigator(
+const CompanyTab = createStackNavigator(
   {
     CompanyListScene: {
       screen: CompanyList,
@@ -145,7 +144,7 @@ const CompanyTab = StackNavigator(
   },
 );
 
-const SettingTab = StackNavigator(
+const SettingTab = createStackNavigator(
   {
     SettingsScene: {
       screen: Settings,
@@ -207,7 +206,7 @@ const SettingTab = StackNavigator(
   },
 );
 
-const Tabs = TabNavigator(
+const Tabs = createTabNavigator(
   {
     PropertyTab: {
       screen: PropertyTab,
@@ -294,7 +293,7 @@ const Tabs = TabNavigator(
   },
 );
 
-export default (Navigator = StackNavigator(
+export default (Navigator = createStackNavigator(
   {
     Tabs: {screen: Tabs},
     PropertyFilter: {

@@ -10,7 +10,8 @@ import {SELECTORS} from './selectors';
 import {SELECTORS as APP_SELECTORS} from './../../app/common/selectors';
 import {SELECTORS as AUTH_SELECTORS} from './../../auth/common/selectors';
 import {getFileExtension, getFileName} from './../../common/functions';
-import {NavigationActions} from 'react-navigation';
+import NavigationService from './../../components/NavigationService';
+
 import find from 'lodash/find';
 import {hasArabicChar, parseArabicChar} from '../../common/functions';
 import I18n, {isRTL} from './../../app/common/locale';
@@ -261,11 +262,7 @@ function* favoriteProperty(action) {
         error: 'not logged in',
       });
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
-      return yield put(
-        NavigationActions.navigate({
-          routeName: 'Login',
-        }),
-      );
+      yield NavigationService.navigate('Login');
     }
 
     yield put({
@@ -290,11 +287,7 @@ function* deleteProperty(action) {
 
     if (isEmpty(apiToken)) {
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
-      return yield put(
-        NavigationActions.navigate({
-          routeName: 'Login',
-        }),
-      );
+      return yield NavigationService.navigate('Login')
     }
     const urlParams = `?api_token=${apiToken}`;
     const response = yield call(API.deleteProperty, urlParams, action.params);
@@ -318,11 +311,8 @@ function* saveProperty(action) {
     if (isEmpty(apiToken)) {
       yield put({type: ACTION_TYPES.PROPERTY_SAVE_FAILURE});
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
-      return yield put(
-        NavigationActions.navigate({
-          routeName: 'Login',
-        }),
-      );
+      return yield NavigationService.navigate('Login')
+
     }
 
     let attributes = action.payload;

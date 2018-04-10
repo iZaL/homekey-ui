@@ -7,6 +7,7 @@ import {Dimensions, StyleSheet, TouchableHighlight, View} from 'react-native';
 import MapView from 'react-native-maps';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from './../../common/colors';
+
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.8;
@@ -20,6 +21,21 @@ export default class PropertyMap extends Component {
     setSceneType: PropTypes.func.isRequired,
   };
 
+  state = {
+    initialized: false
+  };
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.sceneType !== nextProps.sceneType;
+  }
+
+  onMapReady = () => {
+    console.log('on Map ready');
+    this.setState({
+      initialized: true
+    })
+  };
+
   render() {
     const {address, onPinPress, sceneType, setSceneType} = this.props;
     const {latitude, longitude} = address;
@@ -29,7 +45,7 @@ export default class PropertyMap extends Component {
           <TouchableHighlight
             style={styles.shrinkButton}
             onPress={() => setSceneType('detailScene')}>
-            <FontAwesome name="arrows" size={25} color={colors.darkGrey} />
+            <FontAwesome name="arrows" size={25} color={colors.darkGrey}/>
           </TouchableHighlight>
         )}
 
@@ -44,21 +60,27 @@ export default class PropertyMap extends Component {
             longitude: longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
-          }}>
-          {sceneType === 'mapScene' ? (
-            <MapView.Marker
-              coordinate={address}
-              onSelect={() => onPinPress()}
-              scrollEnabled={true}
-            />
-          ) : (
-            <MapView.Marker
-              coordinate={address}
-              onSelect={() => setSceneType('mapScene')}
-              scrollEnabled={true}
-            />
-          )}
+          }}
+          onMapReady={this.onMapReady}
+          cacheEnabled={true}
+        >
+          {
+            this.state.initialized &&
+            sceneType === 'mapScene' ? (
+              <MapView.Marker
+                coordinate={address}
+                onSelect={() => onPinPress()}
+                scrollEnabled={true}
+              />
+            ) : (
+              <MapView.Marker
+                coordinate={address}
+                onSelect={() => setSceneType('mapScene')}
+                scrollEnabled={true}
+              />
+            )}
         </MapView>
+
       </View>
     );
   }

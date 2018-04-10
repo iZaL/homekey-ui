@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ACTIONS} from './common/actions';
-import * as NavigationService from './../components/NavigationService';
 import LoginScene from './scenes/LoginScene';
 import {NavigationActions} from 'react-navigation';
 import {Alert} from 'react-native';

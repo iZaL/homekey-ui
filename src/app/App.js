@@ -3,9 +3,8 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {ACTIONS} from './common/actions';
-import {addNavigationHelpers} from 'react-navigation';
 import Navigator from './../common/navigator';
-import * as NavigationService from '../components/NavigationService';
+import NavigationService from './../components/NavigationService';
 import LanguageSelectScene from './../app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
 import {CODEPUSH_ENABLED} from './../env';
@@ -24,7 +23,7 @@ class App extends Component {
       CodePush.sync();
     }
     this.props.dispatch(ACTIONS.boot());
-    NavigationService.setNavigator(this.navigator);
+    // this.props.dispatch(ACTIONS.setLanguage('en'));
   }
 
   onLanguageSelect = name => {
@@ -68,13 +67,9 @@ class App extends Component {
         />
 
         <Navigator
-          ref={nav => {
-            this.navigator = nav ? nav.props.navigation : nav;
+          ref={navigatorRef => {
+            NavigationService.setContainer(navigatorRef);
           }}
-          // navigation={addNavigationHelpers({
-          //   dispatch: this.props.dispatch,
-          //   state: this.props.navigation,
-          // })}
         />
       </View>
     );

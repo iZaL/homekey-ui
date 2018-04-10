@@ -16,10 +16,10 @@ import CodePush from 'react-native-code-push';
 import {I18nManager} from 'react-native';
 import {SELECTORS as AUTH_SELECTORS} from './../../auth/common/selectors';
 import {API} from './api';
-import {NavigationActions} from 'react-navigation';
 import 'moment/locale/ar-kw';
 import 'moment/locale/en-au';
 import moment from 'moment';
+import NavigationService from "../../components/NavigationService";
 
 function* bootstrapped(action) {
   if (action.value === true) {
@@ -95,6 +95,7 @@ function* changeCountrySaga(action) {
 }
 
 function* setLanguage(action) {
+  console.log('setting lang');
   if (action.language === 'en') {
     I18nManager.allowRTL(false);
     I18nManager.forceRTL(false);
@@ -137,16 +138,16 @@ function* setPushToken(action) {
   }
 }
 
-function* navigate(action) {
-  try {
-    return yield put(
-      NavigationActions.navigate({
-        routeName: action.scene,
-        params: action.params,
-      }),
-    );
-  } catch (error) {}
-}
+// function* navigate(action) {
+//   try {
+//     yield NavigationService.navigate(action.scene,
+//       {
+//         params: action.params,
+//       }
+//     );
+//   } catch (error) {
+//   }
+// }
 
 function* bootMonitor() {
   yield takeLatest(ACTION_TYPES.BOOT_REQUEST, boot);
@@ -168,9 +169,9 @@ export function* setPushTokenMonitor() {
   yield takeLatest(ACTION_TYPES.SET_PUSH_TOKEN_REQUEST, setPushToken);
 }
 
-export function* navigationMonitor() {
-  yield takeLatest(ACTION_TYPES.NAVIGATE, navigate);
-}
+// export function* navigationMonitor() {
+//   yield takeLatest(ACTION_TYPES.NAVIGATE, navigate);
+// }
 
 const APP_SAGA = all([
   fork(bootMonitor),
@@ -178,7 +179,7 @@ const APP_SAGA = all([
   fork(changeCountryMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
-  fork(navigationMonitor),
+  // fork(navigationMonitor),
 ]);
 
 export default APP_SAGA;

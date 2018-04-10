@@ -43,7 +43,17 @@ export default class PropertyDetailScene extends Component {
 
   state = {
     scrollY: new Animated.Value(0),
+    initialized: false
   };
+
+  componentDidMount() {
+    setTimeout(() =>
+        this.setState({
+          initialized: true
+        })
+      , 1000)
+
+  }
 
   renderImage = () => {
     let {property} = this.props;
@@ -167,7 +177,7 @@ export default class PropertyDetailScene extends Component {
               <TouchableHighlight
                 onPress={() => setSceneType('galleryScene')}
                 underlayColor="transparent">
-                <View style={styles.heroSpacer} />
+                <View style={styles.heroSpacer}/>
               </TouchableHighlight>
 
               <View style={styles.contentContainerStyle}>
@@ -280,7 +290,7 @@ export default class PropertyDetailScene extends Component {
                   </View>
                 </View>
 
-                <Separator />
+                <Separator/>
 
                 <Text style={styles.description}>
                   {property.meta.description}
@@ -336,7 +346,7 @@ export default class PropertyDetailScene extends Component {
                         style={{width: 20, height: 15, alignSelf: 'center',}}
                         color={colors.darkGrey}
                       />
-                      <Text style={[styles.infoTitle,{paddingHorizontal:5}]}>{I18n.t('email')}</Text>
+                      <Text style={[styles.infoTitle, {paddingHorizontal: 5}]}>{I18n.t('email')}</Text>
                       <Text
                         style={styles.infoResult}
                         onPress={() => {
@@ -348,7 +358,7 @@ export default class PropertyDetailScene extends Component {
                   </View>
                 )}
 
-                <Separator style={[styles.separator, {marginVertical: 15}]} />
+                <Separator style={[styles.separator, {marginVertical: 15}]}/>
 
                 <View style={[styles.infoRow, {paddingVertical: 5}]}>
                   <FontAwesome
@@ -403,16 +413,18 @@ export default class PropertyDetailScene extends Component {
                   </View>
                 )}
 
-                <Separator style={[styles.separator, {marginVertical: 15}]} />
+                <Separator style={[styles.separator, {marginVertical: 15}]}/>
 
-                {property.video && <YoutubePlayer video={property.video} />}
+                {property.video && <YoutubePlayer video={property.video}/>}
 
+                {this.state.initialized &&
                 <PropertyMap
                   address={property.address}
                   onPinPress={onPinPress}
                   sceneType={sceneType}
                   setSceneType={setSceneType}
                 />
+                }
               </View>
             </Animated.ScrollView>
           </View>

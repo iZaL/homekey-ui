@@ -19,7 +19,7 @@ import {API} from './api';
 import 'moment/locale/ar-kw';
 import 'moment/locale/en-au';
 import moment from 'moment';
-import NavigationService from "../../components/NavigationService";
+import NavigationService from '../../components/NavigationService';
 
 function* bootstrapped(action) {
   if (action.value === true) {

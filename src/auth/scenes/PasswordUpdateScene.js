@@ -25,37 +25,34 @@ export default class PasswordUpdateScene extends Component {
     } = this.props;
 
     return (
+      <View style={styles.container}>
+        <FormLabel title={I18n.t('new_password')} />
 
+        <FormTextInput
+          onChangeText={value => onFieldChange('password', value)}
+          value={password}
+          maxLength={40}
+          placeholder={I18n.t('new_password')}
+          secureTextEntry={true}
+        />
 
-        <View style={styles.container}>
-          <FormLabel title={I18n.t('new_password')} />
+        <FormLabel title={I18n.t('confirm_new_password')} />
+        <FormTextInput
+          onChangeText={value => onFieldChange('password_confirmation', value)}
+          value={confirmedPassword}
+          maxLength={40}
+          placeholder={I18n.t('confirm_new_password')}
+          secureTextEntry={true}
+        />
 
-          <FormTextInput
-            onChangeText={value => onFieldChange('password', value)}
-            value={password}
-            maxLength={40}
-            placeholder={I18n.t('new_password')}
-            secureTextEntry={true}
-          />
-
-          <FormLabel title={I18n.t('confirm_new_password')} />
-          <FormTextInput
-            onChangeText={value =>
-              onFieldChange('password_confirmation', value)}
-            value={confirmedPassword}
-            maxLength={40}
-            placeholder={I18n.t('confirm_new_password')}
-            secureTextEntry={true}
-          />
-
-          <FormSubmit
-            onPress={() => onUpdatePassword()}
-            underlayColor="transparent"
-            disabled={!password || !confirmedPassword}
-            title={I18n.t('confirm')}
-            style={{marginTop: 50}}
-          />
-        </View>
+        <FormSubmit
+          onPress={() => onUpdatePassword()}
+          underlayColor="transparent"
+          disabled={!password || !confirmedPassword}
+          title={I18n.t('confirm')}
+          style={{marginTop: 50}}
+        />
+      </View>
     );
   }
 }

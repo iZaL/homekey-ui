@@ -20,7 +20,7 @@ import moment from 'moment';
 import Separator from './../../components/Separator';
 import {CountryPropType} from './../common/proptypes';
 import {numberWithCommas} from '../../common/functions';
-import I18n,{isRTL} from './../../app/common/locale';
+import I18n, {isRTL} from './../../app/common/locale';
 // import 'moment/locale/ar-kw';
 // import 'moment/locale/en-au';
 
@@ -33,7 +33,6 @@ export default class PropertyListScene extends PureComponent {
     isFetching: PropTypes.bool.isRequired,
     refreshProperties: PropTypes.func.isRequired,
   };
-
 
   shouldItemUpdate = (prev, next) => {
     return prev.item !== next.item;
@@ -122,7 +121,6 @@ export default class PropertyListScene extends PureComponent {
       fetchProperties,
       refreshProperties,
     } = this.props;
-
 
     return (
       <FlatList

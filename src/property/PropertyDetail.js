@@ -28,7 +28,7 @@ class PropertyDetail extends Component {
   };
 
   // shouldComponentUpdate(nextProps) {
-    // return nextProps.property !== this.props.property;
+  // return nextProps.property !== this.props.property;
   // }
 
   componentDidMount() {
@@ -90,26 +90,30 @@ class PropertyDetail extends Component {
 
   openMaps(property, buttonIndex) {
     let address = encodeURIComponent(
-      `${property.address.city_en},${property.address.state_en},${property
-        .address.country}`,
+      `${property.address.city_en},${property.address.state_en},${
+        property.address.country
+      }`,
     );
     switch (buttonIndex) {
       case 0:
         Linking.openURL(
-          `http://maps.apple.com/?dll=${property.address.latitude},${property
-            .address.longitude}`,
+          `http://maps.apple.com/?dll=${property.address.latitude},${
+            property.address.longitude
+          }`,
         );
         break;
       case 1:
-        const nativeGoogleUrl = `comgooglemaps://?daddr=${property.address
-          .latitude},${property.address.longitude}&center=${property.address
-          .latitude},${property.address
-          .longitude}&zoom=14&views=traffic&directionsmode=driving`;
+        const nativeGoogleUrl = `comgooglemaps://?daddr=${
+          property.address.latitude
+        },${property.address.longitude}&center=${property.address.latitude},${
+          property.address.longitude
+        }&zoom=14&views=traffic&directionsmode=driving`;
         Linking.canOpenURL(nativeGoogleUrl).then(supported => {
           const url = supported
             ? nativeGoogleUrl
-            : `http://maps.google.com/?q=loc:${property.address
-                .latitude}+${property.address.longitude}`;
+            : `http://maps.google.com/?q=loc:${property.address.latitude}+${
+                property.address.longitude
+              }`;
           Linking.openURL(url);
         });
         break;

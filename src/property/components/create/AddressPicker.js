@@ -55,7 +55,6 @@ export default class AddressPicker extends Component {
   };
 
   async geoCode(locationData, lang) {
-
     const {updateAddress} = this.props;
     let isNeighbourhood = false;
     if (locationData.terms[3]) {
@@ -90,8 +89,7 @@ export default class AddressPicker extends Component {
       // console.log('params',params);
 
       updateAddress(params);
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   async reverseGeoCode(coordinates, lang) {
@@ -164,7 +162,6 @@ export default class AddressPicker extends Component {
     this.reverseGeoCode({latitude, longitude}, 'en');
     this.reverseGeoCode({latitude, longitude}, 'ar');
   }
-
 
   updateListing = () => {
     const {address, updateListing} = this.props;

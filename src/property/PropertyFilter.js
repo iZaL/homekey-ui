@@ -95,7 +95,6 @@ class PropertyFilter extends Component {
     this.props.actions.changePropertyType(type);
   };
 
-
   render() {
     const {
       categories,

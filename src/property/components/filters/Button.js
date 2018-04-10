@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '400',
     color: '#202226',
-    borderWidth:1,
-    borderColor:colors.darkGrey,
-    marginHorizontal:10
+    borderWidth: 1,
+    borderColor: colors.darkGrey,
+    marginHorizontal: 10,
   },
 });

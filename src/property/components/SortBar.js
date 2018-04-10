@@ -45,7 +45,7 @@ let SortBar = ({
           underlayColor="transparent">
           <View style={styles.buttonWrapperInner}>
             <Ionicons name="ios-arrow-down" color={colors.black} size={20} />
-            <Text style={styles.button}>{I18n.t('sort')}  </Text>
+            <Text style={styles.button}>{I18n.t('sort')} </Text>
             <Text style={styles.sortByText}>
               {I18n.t([selectedSortOption])}
             </Text>

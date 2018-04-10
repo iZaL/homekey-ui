@@ -41,13 +41,13 @@ export default class RegisterScene extends Component {
     return (
       <View style={{flex: 1}}>
         {/*<NavBar*/}
-          {/*right={*/}
-            {/*<NavButton*/}
-              {/*icon="ios-close"*/}
-              {/*onPress={() => onRightButtonPress()}*/}
-              {/*style={isRTL ? {marginRight: 5} : {marginRight: -10}}*/}
-            {/*/>*/}
-          {/*}*/}
+        {/*right={*/}
+        {/*<NavButton*/}
+        {/*icon="ios-close"*/}
+        {/*onPress={() => onRightButtonPress()}*/}
+        {/*style={isRTL ? {marginRight: 5} : {marginRight: -10}}*/}
+        {/*/>*/}
+        {/*}*/}
         {/*/>*/}
 
         <View style={styles.container}>
@@ -105,7 +105,8 @@ export default class RegisterScene extends Component {
           <FormLabel title={I18n.t('confirm_password')} />
           <FormTextInput
             onChangeText={value =>
-              onFieldChange('password_confirmation', value)}
+              onFieldChange('password_confirmation', value)
+            }
             value={password_confirmation}
             maxLength={40}
             secureTextEntry={true}

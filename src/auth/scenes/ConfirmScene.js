@@ -28,35 +28,33 @@ export default class ConfirmScene extends Component {
     } = this.props;
 
     return (
+      <View style={styles.container}>
+        <FormLabel title={I18n.t('confirmation_code')} />
 
+        <FormTextInput
+          onChangeText={value => onFieldChange('confirmationCode', value)}
+          value={confirmationCode}
+          maxLength={40}
+          placeholder={I18n.t('confirmation_code')}
+        />
 
-        <View style={styles.container}>
-          <FormLabel title={I18n.t('confirmation_code')} />
+        <FormSubmit
+          onPress={() => onRecoverPassword()}
+          underlayColor="transparent"
+          disabled={!confirmationCode}
+          title={I18n.t('confirm')}
+          style={{marginTop: 50}}
+        />
 
-          <FormTextInput
-            onChangeText={value => onFieldChange('confirmationCode', value)}
-            value={confirmationCode}
-            maxLength={40}
-            placeholder={I18n.t('confirmation_code')}
-          />
-
-          <FormSubmit
-            onPress={() => onRecoverPassword()}
-            underlayColor="transparent"
-            disabled={!confirmationCode}
-            title={I18n.t('confirm')}
-            style={{marginTop: 50}}
-          />
-
-          <TouchableHighlight
-            onPress={() => onForgotPassword()}
-            style={[{paddingTop: 100}]}
-            underlayColor="transparent">
-            <Text style={[styles.link]}>
-              {I18n.t('resend_confirmation_code')}
-            </Text>
-          </TouchableHighlight>
-        </View>
+        <TouchableHighlight
+          onPress={() => onForgotPassword()}
+          style={[{paddingTop: 100}]}
+          underlayColor="transparent">
+          <Text style={[styles.link]}>
+            {I18n.t('resend_confirmation_code')}
+          </Text>
+        </TouchableHighlight>
+      </View>
     );
   }
 }

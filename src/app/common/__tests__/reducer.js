@@ -15,13 +15,13 @@ describe('App Component Store', () => {
   });
 
   test('app bootstraps', () => {
-    expect(
-      appReducer(initialState, {type: ACTION_TYPES.BOOT_SUCCESS}),
-    ).toEqual({
-      booted: true,
-      bootstrapped: false,
-      selectedCountry: 'Kuwait',
-    });
+    expect(appReducer(initialState, {type: ACTION_TYPES.BOOT_SUCCESS})).toEqual(
+      {
+        booted: true,
+        bootstrapped: false,
+        selectedCountry: 'Kuwait',
+      },
+    );
   });
 
   test('should change country', () => {

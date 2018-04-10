@@ -136,9 +136,7 @@ function* updateUser(action) {
         type: ACTION_TYPES.USER_UPDATE_SUCCESS,
         payload: imageResponse.data,
       });
-      return yield put(
-        NavigationActions.back(),
-      );
+      return yield put(NavigationActions.back());
     }
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
@@ -194,7 +192,7 @@ export function* addMessage(action) {
     const params = {
       ...message,
     };
-    console.log('params',params);
+    console.log('params', params);
 
     const response = yield call(API.addMessage, params, urlParams);
     yield put({

@@ -32,7 +32,8 @@ class PropertyList extends PureComponent {
           iconSize={33}
           onPress={() =>
             navigation.state.params &&
-            navigation.state.params.handleLeftButtonPress()}
+            navigation.state.params.handleLeftButtonPress()
+          }
         />
       ),
       headerRight: (
@@ -40,7 +41,8 @@ class PropertyList extends PureComponent {
           icon={<FontAwesome name="sliders" size={25} color={colors.primary} />}
           onPress={() =>
             navigation.state.params &&
-            navigation.state.params.handleRightButtonPress()}
+            navigation.state.params.handleRightButtonPress()
+          }
         />
       ),
     };

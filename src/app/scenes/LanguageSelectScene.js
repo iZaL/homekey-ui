@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import Separator from '../../components/Separator';
-import colors from "../../common/colors";
+import colors from '../../common/colors';
 
-const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
+const LanguageSelectScene = ({onLanguageSelect, selectedLanguage}) => {
   return (
     <View style={[styles.container]}>
       <TouchableHighlight
@@ -12,7 +12,16 @@ const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
         style={styles.selectLanguageWrapper}
         underlayColor="transparent"
         activeOpacity={0.6}>
-        <Text style={[styles.languageTitle, selectedLanguage && selectedLanguage === 'en' && styles.activeLanguage  ]}> English </Text>
+        <Text
+          style={[
+            styles.languageTitle,
+            selectedLanguage &&
+              selectedLanguage === 'en' &&
+              styles.activeLanguage,
+          ]}>
+          {' '}
+          English{' '}
+        </Text>
       </TouchableHighlight>
       <Separator />
       <TouchableHighlight
@@ -20,7 +29,16 @@ const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
         style={styles.selectLanguageWrapper}
         underlayColor="transparent"
         activeOpacity={0.6}>
-        <Text style={[styles.languageTitle,selectedLanguage && selectedLanguage === 'ar' && styles.activeLanguage]}> العربي </Text>
+        <Text
+          style={[
+            styles.languageTitle,
+            selectedLanguage &&
+              selectedLanguage === 'ar' &&
+              styles.activeLanguage,
+          ]}>
+          {' '}
+          العربي{' '}
+        </Text>
       </TouchableHighlight>
     </View>
   );
@@ -28,7 +46,7 @@ const LanguageSelectScene = ({onLanguageSelect,selectedLanguage}) => {
 
 LanguageSelectScene.propTypes = {
   onLanguageSelect: PropTypes.func.isRequired,
-  selectedLanguage:PropTypes.string.isRequired
+  selectedLanguage: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -46,9 +64,9 @@ const styles = StyleSheet.create({
     fontSize: 70,
     textAlign: 'center',
   },
-  activeLanguage : {
-    color:colors.primary
-  }
+  activeLanguage: {
+    color: colors.primary,
+  },
 });
 
 export default LanguageSelectScene;

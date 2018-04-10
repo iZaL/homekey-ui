@@ -26,7 +26,7 @@ import I18n from './../../app/common/locale';
 import {numberWithCommas} from './../../common/functions';
 import PropTypes from 'prop-types';
 import {isRTL} from './../../app/common/locale';
-import LocalizedText from "./../../components/LocalizedText";
+import LocalizedText from './../../components/LocalizedText';
 
 export default class PropertyDetailScene extends Component {
   static propTypes = {
@@ -43,16 +43,17 @@ export default class PropertyDetailScene extends Component {
 
   state = {
     scrollY: new Animated.Value(0),
-    initialized: false
+    initialized: false,
   };
 
   componentDidMount() {
-    setTimeout(() =>
+    setTimeout(
+      () =>
         this.setState({
-          initialized: true
-        })
-      , 1000)
-
+          initialized: true,
+        }),
+      1000,
+    );
   }
 
   renderImage = () => {
@@ -177,7 +178,7 @@ export default class PropertyDetailScene extends Component {
               <TouchableHighlight
                 onPress={() => setSceneType('galleryScene')}
                 underlayColor="transparent">
-                <View style={styles.heroSpacer}/>
+                <View style={styles.heroSpacer} />
               </TouchableHighlight>
 
               <View style={styles.contentContainerStyle}>
@@ -283,14 +284,17 @@ export default class PropertyDetailScene extends Component {
 
                     <Text style={styles.infoResult}>
                       {isRTL
-                        ? `${property.address.address_ar} , ${property.address.city_ar}, ${property.address.state_ar}`
-                        : `${property.address.address_en} , ${property.address.city_en}, ${property.address.state_en}`
-                      }
+                        ? `${property.address.address_ar} , ${
+                            property.address.city_ar
+                          }, ${property.address.state_ar}`
+                        : `${property.address.address_en} , ${
+                            property.address.city_en
+                          }, ${property.address.state_en}`}
                     </Text>
                   </View>
                 </View>
 
-                <Separator/>
+                <Separator />
 
                 <Text style={styles.description}>
                   {property.meta.description}
@@ -343,10 +347,12 @@ export default class PropertyDetailScene extends Component {
                       <FontAwesome
                         name="envelope-o"
                         size={15}
-                        style={{width: 20, height: 15, alignSelf: 'center',}}
+                        style={{width: 20, height: 15, alignSelf: 'center'}}
                         color={colors.darkGrey}
                       />
-                      <Text style={[styles.infoTitle, {paddingHorizontal: 5}]}>{I18n.t('email')}</Text>
+                      <Text style={[styles.infoTitle, {paddingHorizontal: 5}]}>
+                        {I18n.t('email')}
+                      </Text>
                       <Text
                         style={styles.infoResult}
                         onPress={() => {
@@ -358,7 +364,7 @@ export default class PropertyDetailScene extends Component {
                   </View>
                 )}
 
-                <Separator style={[styles.separator, {marginVertical: 15}]}/>
+                <Separator style={[styles.separator, {marginVertical: 15}]} />
 
                 <View style={[styles.infoRow, {paddingVertical: 5}]}>
                   <FontAwesome
@@ -413,18 +419,18 @@ export default class PropertyDetailScene extends Component {
                   </View>
                 )}
 
-                <Separator style={[styles.separator, {marginVertical: 15}]}/>
+                <Separator style={[styles.separator, {marginVertical: 15}]} />
 
-                {property.video && <YoutubePlayer video={property.video}/>}
+                {property.video && <YoutubePlayer video={property.video} />}
 
-                {this.state.initialized &&
-                <PropertyMap
-                  address={property.address}
-                  onPinPress={onPinPress}
-                  sceneType={sceneType}
-                  setSceneType={setSceneType}
-                />
-                }
+                {this.state.initialized && (
+                  <PropertyMap
+                    address={property.address}
+                    onPinPress={onPinPress}
+                    sceneType={sceneType}
+                    setSceneType={setSceneType}
+                  />
+                )}
               </View>
             </Animated.ScrollView>
           </View>

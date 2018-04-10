@@ -30,7 +30,10 @@ export default class PropertyListTopBar extends Component {
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.mapView !== this.props.mapView || nextProps.selectedSortOption !== this.selectedSortOption
+    return (
+      nextProps.mapView !== this.props.mapView ||
+      nextProps.selectedSortOption !== this.selectedSortOption
+    );
   }
 
   constructor(props) {

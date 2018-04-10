@@ -24,7 +24,6 @@ class ChatThread extends PureComponent {
   });
 
   componentDidMount() {
-
     if (this.props.navigation.state.params.thread_id) {
       this.props.actions.subscribeToSocket({
         thread_id: this.props.navigation.state.params.thread_id,
@@ -88,9 +87,9 @@ class ChatThread extends PureComponent {
   };
 
   onTitlePress = (property: object) => {
-      this.props.navigation.navigate('PropertyDetailScene', {
-        property: property,
-      });
+    this.props.navigation.navigate('PropertyDetailScene', {
+      property: property,
+    });
   };
 
   render() {
@@ -98,7 +97,12 @@ class ChatThread extends PureComponent {
     const messages = thread && thread.messages ? thread.messages : [];
     return (
       <View style={{flex: 1}}>
-        {thread.property && <ChatHeader property={thread.property} onTitlePress={this.onTitlePress} />}
+        {thread.property && (
+          <ChatHeader
+            property={thread.property}
+            onTitlePress={this.onTitlePress}
+          />
+        )}
         <GiftedChat
           messages={messages.concat().reverse()}
           text={this.state.text}

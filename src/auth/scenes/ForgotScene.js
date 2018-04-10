@@ -28,13 +28,13 @@ export default class ForgotScene extends Component {
     return (
       <View style={{flex: 1}}>
         {/*<NavBar*/}
-          {/*right={*/}
-            {/*<NavButton*/}
-              {/*icon="ios-close"*/}
-              {/*onPress={() => onRightButtonPress()}*/}
-              {/*style={isRTL ? {marginRight: 5} : {marginRight: -10}}*/}
-            {/*/>*/}
-          {/*}*/}
+        {/*right={*/}
+        {/*<NavButton*/}
+        {/*icon="ios-close"*/}
+        {/*onPress={() => onRightButtonPress()}*/}
+        {/*style={isRTL ? {marginRight: 5} : {marginRight: -10}}*/}
+        {/*/>*/}
+        {/*}*/}
         {/*/>*/}
 
         <View style={styles.container}>

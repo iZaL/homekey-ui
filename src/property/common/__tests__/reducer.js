@@ -140,13 +140,13 @@ describe('Property Component Store', () => {
       nextPageUrl: 'http://abc.com',
     };
 
-    expect(
-      propertyReducer(state, {type: ACTION_TYPES.PROPERTY_RESET}),
-    ).toEqual({
-      ...state,
-      results: [],
-      nextPageUrl: undefined,
-    });
+    expect(propertyReducer(state, {type: ACTION_TYPES.PROPERTY_RESET})).toEqual(
+      {
+        ...state,
+        results: [],
+        nextPageUrl: undefined,
+      },
+    );
   });
 
   test('filter change', () => {

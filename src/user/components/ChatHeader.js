@@ -6,9 +6,12 @@ import React from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from '../../common/colors';
 
-const ChatHeader = ({property,onTitlePress}) => {
+const ChatHeader = ({property, onTitlePress}) => {
   return (
-    <TouchableHighlight underlayColor="transparent" style={styles.container} onPress={()=>onTitlePress(property)}>
+    <TouchableHighlight
+      underlayColor="transparent"
+      style={styles.container}
+      onPress={() => onTitlePress(property)}>
       <Text style={styles.header}>{property.meta.title}</Text>
     </TouchableHighlight>
   );

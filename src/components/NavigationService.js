@@ -68,5 +68,4 @@ export default {
   reset,
   getCurrentRoute,
   back,
-
 };

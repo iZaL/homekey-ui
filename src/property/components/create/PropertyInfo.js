@@ -142,8 +142,7 @@ export default class PropertyInfo extends Component {
                 }}
                 onContentSizeChange={event => {
                   this.setState({
-                    descriptionHeight:
-                      event.nativeEvent.contentSize.height,
+                    descriptionHeight: event.nativeEvent.contentSize.height,
                   });
                 }}
                 multiline={true}
@@ -303,8 +302,8 @@ const styles = StyleSheet.create({
   required: {
     color: colors.primary,
   },
-  hint:{
-    paddingHorizontal:5,
-    color:colors.mediumGrey,
-  }
+  hint: {
+    paddingHorizontal: 5,
+    color: colors.mediumGrey,
+  },
 });

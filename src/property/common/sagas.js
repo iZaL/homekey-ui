@@ -287,7 +287,7 @@ function* deleteProperty(action) {
 
     if (isEmpty(apiToken)) {
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
-      return yield NavigationService.navigate('Login')
+      return yield NavigationService.navigate('Login');
     }
     const urlParams = `?api_token=${apiToken}`;
     const response = yield call(API.deleteProperty, urlParams, action.params);
@@ -311,8 +311,7 @@ function* saveProperty(action) {
     if (isEmpty(apiToken)) {
       yield put({type: ACTION_TYPES.PROPERTY_SAVE_FAILURE});
       yield put(APP_ACTIONS.setNotification(I18n.t('login_required'), 'error'));
-      return yield NavigationService.navigate('Login')
-
+      return yield NavigationService.navigate('Login');
     }
 
     let attributes = action.payload;
@@ -344,9 +343,9 @@ function* saveProperty(action) {
 
     let title;
 
-    title = `${I18n.t(category)} ${I18n.t(type)} ${I18n.t('in')} ${isRTL
-      ? address.city_ar
-      : address.city_en}`;
+    title = `${I18n.t(category)} ${I18n.t(type)} ${I18n.t('in')} ${
+      isRTL ? address.city_ar : address.city_en
+    }`;
 
     const params = {
       _id: propertyID,

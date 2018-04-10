@@ -92,9 +92,7 @@ export default class CompanyListScene extends PureComponent {
         initialListSize={20}
         onEndReachedThreshold={1}
         onEndReached={() => !isFetching && fetchCollection()}
-        ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 5}} />
-        )}
+        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}} />}
         getItemLayout={(data, index) => ({
           length: 348,
           offset: 348 * index,

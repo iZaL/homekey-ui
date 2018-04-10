@@ -28,7 +28,7 @@ import CompanyList from './../company/CompanyList';
 
 const AuthStack = createStackNavigator(
   {
-    LoginScreen: {screen:Login},
+    LoginScreen: {screen: Login},
     Register: {screen: Register},
     Forgot: {screen: Forgot},
   },
@@ -38,7 +38,7 @@ const AuthStack = createStackNavigator(
         gesturesEnabled: false,
       },
     },
-  }
+  },
 );
 
 const PropertyTab = createStackNavigator(
@@ -266,8 +266,8 @@ const Tabs = createTabNavigator(
     tabBarOptions: {
       activeTintColor: colors.primary,
       inactiveTintColor: colors.darkGrey,
-      inactiveBackgroundColor:colors.white,
-      activeBackgroundColor:colors.white,
+      inactiveBackgroundColor: colors.white,
+      activeBackgroundColor: colors.white,
       labelStyle: {
         fontSize: 12,
       },
@@ -275,10 +275,10 @@ const Tabs = createTabNavigator(
         backgroundColor: colors.white,
       },
       // showIcon:true,
-      upperCaseLabel:false,
-      iconStyle:{
-        height:20
-      }
+      upperCaseLabel: false,
+      iconStyle: {
+        height: 20,
+      },
     },
     animationEnabled: false,
     swipeEnabled: false,

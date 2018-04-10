@@ -22,7 +22,7 @@ export default class PropertyMap extends Component {
   };
 
   state = {
-    initialized: false
+    initialized: false,
   };
 
   shouldComponentUpdate(nextProps) {
@@ -32,8 +32,8 @@ export default class PropertyMap extends Component {
   onMapReady = () => {
     console.log('on Map ready');
     this.setState({
-      initialized: true
-    })
+      initialized: true,
+    });
   };
 
   render() {
@@ -45,7 +45,7 @@ export default class PropertyMap extends Component {
           <TouchableHighlight
             style={styles.shrinkButton}
             onPress={() => setSceneType('detailScene')}>
-            <FontAwesome name="arrows" size={25} color={colors.darkGrey}/>
+            <FontAwesome name="arrows" size={25} color={colors.darkGrey} />
           </TouchableHighlight>
         )}
 
@@ -62,25 +62,21 @@ export default class PropertyMap extends Component {
             longitudeDelta: LONGITUDE_DELTA,
           }}
           onMapReady={this.onMapReady}
-          cacheEnabled={true}
-        >
-          {
-            this.state.initialized &&
-            sceneType === 'mapScene' ? (
-              <MapView.Marker
-                coordinate={address}
-                onSelect={() => onPinPress()}
-                scrollEnabled={true}
-              />
-            ) : (
-              <MapView.Marker
-                coordinate={address}
-                onSelect={() => setSceneType('mapScene')}
-                scrollEnabled={true}
-              />
-            )}
+          cacheEnabled={true}>
+          {this.state.initialized && sceneType === 'mapScene' ? (
+            <MapView.Marker
+              coordinate={address}
+              onSelect={() => onPinPress()}
+              scrollEnabled={true}
+            />
+          ) : (
+            <MapView.Marker
+              coordinate={address}
+              onSelect={() => setSceneType('mapScene')}
+              scrollEnabled={true}
+            />
+          )}
         </MapView>
-
       </View>
     );
   }

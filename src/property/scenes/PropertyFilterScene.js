@@ -78,10 +78,7 @@ export default class PropertyFilterScene extends Component {
     let {bedroomsArr, bathroomsArr, parkingArr} = this.props.searchMetas;
 
     return (
-      <ScrollView
-        style={[
-          styles.searchBar,
-        ]}>
+      <ScrollView style={[styles.searchBar]}>
         <View style={styles.searchTabs}>
           {propertyTypes.map(type => {
             let title = '';
@@ -114,7 +111,6 @@ export default class PropertyFilterScene extends Component {
           })}
         </View>
 
-
         <List
           selected={category}
           onSelect={onCategorySelect}
@@ -122,7 +118,7 @@ export default class PropertyFilterScene extends Component {
           title={I18n.t('property_type')}
         />
 
-        <Separator style={{marginBottom: 20}}/>
+        <Separator style={{marginBottom: 20}} />
 
         <List
           title={I18n.t('price_range')}
@@ -145,7 +141,7 @@ export default class PropertyFilterScene extends Component {
           hint={country.currency}
         />
 
-        <Separator style={{marginBottom: 20}}/>
+        <Separator style={{marginBottom: 20}} />
 
         <Button
           title={I18n.t('bed')}
@@ -155,7 +151,7 @@ export default class PropertyFilterScene extends Component {
           selected={bedroom}
         />
 
-        <Separator style={{marginTop: 20, marginBottom: 20}}/>
+        <Separator style={{marginTop: 20, marginBottom: 20}} />
 
         <Button
           title={I18n.t('bath')}
@@ -165,7 +161,7 @@ export default class PropertyFilterScene extends Component {
           selected={bathroom}
         />
 
-        <Separator style={{marginTop: 20, marginBottom: 20}}/>
+        <Separator style={{marginTop: 20, marginBottom: 20}} />
 
         <Button
           title={I18n.t('parking')}
@@ -177,7 +173,6 @@ export default class PropertyFilterScene extends Component {
       </ScrollView>
     );
   }
-
 
   constructor(props) {
     super(props);
@@ -473,15 +468,15 @@ export default class PropertyFilterScene extends Component {
         {this.renderTabs()}
 
         {/*<TabViewAnimated*/}
-          {/*// propertyType={propertyType}*/}
-          {/*// filters={filters}*/}
-          {/*style={{flex: 1}}*/}
-          {/*navigationState={this.state.tabs}*/}
-          {/*renderScene={this.renderScene}*/}
-          {/*renderHeader={this.renderHeader}*/}
-          {/*renderPager={this.renderPager}*/}
-          {/*onIndexChange={this.handleChangeTab}*/}
-          {/*scrollEnabled={false}*/}
+        {/*// propertyType={propertyType}*/}
+        {/*// filters={filters}*/}
+        {/*style={{flex: 1}}*/}
+        {/*navigationState={this.state.tabs}*/}
+        {/*renderScene={this.renderScene}*/}
+        {/*renderHeader={this.renderHeader}*/}
+        {/*renderPager={this.renderPager}*/}
+        {/*onIndexChange={this.handleChangeTab}*/}
+        {/*scrollEnabled={false}*/}
         {/*/>*/}
 
         <TouchableHighlight
@@ -564,6 +559,6 @@ const styles = StyleSheet.create({
   searchTabs: {
     flex: 1,
     flexDirection: 'row',
-    paddingVertical:10
+    paddingVertical: 10,
   },
 });

@@ -74,9 +74,7 @@ export default class HistoryList extends Component {
 
               <Text style={styles.title}>
                 <Text style={{fontWeight: '500'}}>{I18n.t('price')}:</Text>{' '}
-                {filter.priceFrom === 'any'
-                  ? I18n.t('any')
-                  : filter.priceFrom}{' '}
+                {filter.priceFrom === 'any' ? I18n.t('any') : filter.priceFrom}{' '}
                 - {filter.priceTo === 'any' ? I18n.t('any') : filter.priceTo}
               </Text>
 

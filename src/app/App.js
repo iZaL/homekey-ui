@@ -23,7 +23,6 @@ class App extends Component {
       CodePush.sync();
     }
     this.props.dispatch(ACTIONS.boot());
-    // this.props.dispatch(ACTIONS.setLanguage('en'));
   }
 
   onLanguageSelect = name => {

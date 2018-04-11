@@ -41,6 +41,8 @@ class CompanyList extends PureComponent {
   };
 
   render() {
+    console.log('company list');
+
     const {companies, isFetching, country} = this.props;
 
     return (

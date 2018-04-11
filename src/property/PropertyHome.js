@@ -29,7 +29,9 @@ class PropertyHome extends Component {
   };
 
   changeCountry = country => {
-    this.props.actions.changeCountry(country);
+    this.props.actions.setLanguage('en');
+
+    // this.props.actions.changeCountry(country);
   };
 
   removeFromHistory = (propertyType, filters) => {
@@ -40,6 +42,9 @@ class PropertyHome extends Component {
   };
 
   setFilter = (propertyType, filters) => {
+
+    // this.props.actions.setLanguage('ar');
+
     const {actions, navigation} = this.props;
 
     actions.setFilters({

@@ -42,6 +42,7 @@ class PropertyFavorites extends Component {
   };
 
   render() {
+    console.log('fa');
     const {properties, isFetching, country, countries} = this.props;
     return (
       <View style={styles.container}>

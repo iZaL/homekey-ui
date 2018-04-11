@@ -28,7 +28,11 @@ class SettingList extends Component {
       case 'login':
         return navigation.navigate('Login');
       case 'chat':
-        return navigation.navigate('ChatListScene');
+        if (!user.isAuthenticated) {
+          return navigation.navigate('Login');
+        } else {
+          return navigation.navigate('ChatListScene');
+        }
       case 'logout': {
         return Alert.alert(I18n.t('logout'), '', [
           {text: I18n.t('cancel')},
@@ -57,6 +61,8 @@ class SettingList extends Component {
   };
 
   render() {
+    console.log('settings');
+
     const {isAuthenticated, user, country} = this.props;
     return (
       <SettingsScene

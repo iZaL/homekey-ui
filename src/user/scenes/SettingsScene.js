@@ -28,15 +28,15 @@ export default class SettingsScene extends Component {
           icon="plus-square-o"
         />
 
-        <Separator />
+        {/*<Separator />*/}
 
-        <SettingListItem
-          title={I18n.t('change_country')}
-          route="countrySelect"
-          loadScene={loadScene}
-          icon="globe"
-          selected={country.fullName}
-        />
+        {/*<SettingListItem*/}
+          {/*title={I18n.t('change_country')}*/}
+          {/*route="countrySelect"*/}
+          {/*loadScene={loadScene}*/}
+          {/*icon="globe"*/}
+          {/*selected={country.fullName}*/}
+        {/*/>*/}
 
         <Separator />
 

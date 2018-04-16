@@ -450,15 +450,15 @@ export default class PropertyFilterScene extends Component {
               style={isRTL ? {marginRight: 5} : {marginRight: -10}}
             />
           }
-          left={
-            <CountryPicker
-              {...this.state}
-              toggleMenuVisible={this.toggleMenuVisible}
-              countries={countries}
-              country={country}
-              changeCountry={onCountryChange}
-            />
-          }
+          // left={
+          //   <CountryPicker
+          //     {...this.state}
+          //     toggleMenuVisible={this.toggleMenuVisible}
+          //     countries={countries}
+          //     country={country}
+          //     changeCountry={onCountryChange}
+          //   />
+          // }
         />
 
         {this.renderSearchBar()}

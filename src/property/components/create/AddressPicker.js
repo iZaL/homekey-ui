@@ -56,9 +56,9 @@ export default class AddressPicker extends Component {
 
   async geoCode(locationData, lang) {
     const {updateAddress} = this.props;
-    let isNeighbourhood = false;
+    let isEstablishment = false;
     if (locationData.terms[3]) {
-      isNeighbourhood = true;
+      isEstablishment = true;
     }
 
     let urlParams = Qs.stringify({
@@ -77,12 +77,14 @@ export default class AddressPicker extends Component {
       let response = await request.json();
       let {address_components, formatted_address} = response.result;
 
+      console.log('address_components',address_components);
+
       params = {
         [address]: formatted_address,
-        [city]: isNeighbourhood
+        [city]: isEstablishment
           ? address_components[1].long_name
           : address_components[0].long_name,
-        [state]: isNeighbourhood
+        [state]: isEstablishment
           ? address_components[2].long_name
           : address_components[1].long_name,
       };
@@ -96,7 +98,7 @@ export default class AddressPicker extends Component {
     const {updateAddress} = this.props;
     let {latitude, longitude} = coordinates;
 
-    let isNeighbourhood = false;
+    let isEstablishment = false;
 
     let urlParams = Qs.stringify({
       key: GOOGLE_MAPS_KEY,
@@ -112,14 +114,14 @@ export default class AddressPicker extends Component {
       let response = await request.json();
       let {address_components, formatted_address} = response.results[0];
       if (address_components[3]) {
-        isNeighbourhood = true;
+        isEstablishment = true;
       }
       let params = {
         [address]: formatted_address,
-        [city]: isNeighbourhood
+        [city]: isEstablishment
           ? address_components[1].long_name
           : address_components[0].long_name,
-        [state]: isNeighbourhood
+        [state]: isEstablishment
           ? address_components[2].long_name
           : address_components[1].long_name,
       };
@@ -128,7 +130,9 @@ export default class AddressPicker extends Component {
   }
 
   onSearchPress = (locationData, locationDetails) => {
-    if (!locationData.terms[3]) {
+    // console.log('locationData',locationData);
+    // console.log('locationDetails',locationDetails);
+    if (!locationData.terms[1]) {
       alert(I18n.t('please_choose_precise_location'));
     } else {
       let params = {
@@ -142,14 +146,6 @@ export default class AddressPicker extends Component {
       this.geoCode(locationData, 'ar');
     }
   };
-  // onSearchPress = (locationData, locationDetails) => {
-  //   if (!locationData.terms[2]) {
-  //     alert(I18n.t('please_choose_precise_location'));
-  //   } else {
-  //     this.reverseGeoCode(locationData, locationDetails, 'en');
-  //     this.reverseGeoCode(locationData, locationDetails, 'ar');
-  //   }
-  // };
 
   onDragEnd(e) {
     let {latitude, longitude} = e.nativeEvent.coordinate;
@@ -172,7 +168,17 @@ export default class AddressPicker extends Component {
   };
 
   onRegionChange = region => {
-    this.setState({region});
+    // this.setState({region});
+    let params = {
+      latitude:region.latitude,
+      longitude:region.longitude
+    };
+
+    this.props.updateAddress(params);
+    // this.jumpToRegion();
+    this.reverseGeoCode(params, 'en');
+    this.reverseGeoCode(params, 'ar');
+
   };
 
   mapMarkerRegion = () => {
@@ -210,21 +216,16 @@ export default class AddressPicker extends Component {
             fetchDetails={true}
             listViewDisplayed={false}
             enablePoweredByContainer={false}
-            renderDescription={row => {
-              return row.description;
-            }}
-            onPress={(data, details = null) => {
-              this.onSearchPress(data, details);
-            }}
+            renderDescription={row => row.description}
+            onPress={(data, details = null) => this.onSearchPress(data, details)}
             query={{
               key: GOOGLE_MAPS_KEY,
-              language: 'en',
-              // types: '(regions)',
+              language: isRTL ? 'ar' : 'en',
+              // types: '(cities)',
               components: `country:${country.abbr}`,
             }}
             styles={autoCompleteStyle}
             placeholderTextColor={colors.lightGrey}
-            // getDefaultValue={() => (isRTL ? address.city_ar : address.city_en)}
             text={isRTL ? address.address_ar : address.address_en}
             textInputProps={{
               autoCapitalize: 'none',

@@ -117,7 +117,7 @@ export default class PropertyHomeScene extends Component {
   };
 
   toggleMenuVisible = value => {
-    this.props.countrySelectScene(value);
+    // this.props.countrySelectScene(value);
   };
 
   changeTab = name => {
@@ -411,6 +411,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     textAlign: 'left',
+    // paddingTop:10
   },
   hero: {
     position: 'absolute',

@@ -203,7 +203,7 @@ const SettingTab = createStackNavigator(
       headerTitleStyle: {color: colors.black},
       headerTruncatedBackTitle: '',
     }),
-    initialRouteName: 'PropertyCreateScene',
+    // initialRouteName: 'PropertyCreateScene',
   },
 );
 
@@ -290,7 +290,7 @@ const Tabs = createTabNavigator(
       },
     },
 
-    initialRouteName: 'SettingsTab',
+    // initialRouteName: 'SettingsTab',
   },
 );
 

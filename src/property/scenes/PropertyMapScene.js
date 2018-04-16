@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView,{PROVIDER_GOOGLE} from 'react-native-maps';
 import colors from './../../common/colors';
 import PropertyIcons from './../components/PropertyIcons';
 import moment from 'moment';
@@ -35,6 +35,7 @@ export default class PropertyMapScene extends PureComponent {
     let {latitude, longitude} = this.props.country.coords;
 
     this.state = {
+      initialized: true,
       region: {
         latitude: latitude,
         longitude: longitude,
@@ -48,6 +49,21 @@ export default class PropertyMapScene extends PureComponent {
   //   return nextProps.collection !== this.props.collection;
   // }
 
+  componentDidMount() {
+    setTimeout(() => {
+      // this.setState({
+      //     initialized: true
+      // }, () => {
+      //
+      // }
+      this.map.fitToCoordinates(this.props.collection.map(property => property.address), {
+        edgePadding: {top: 100, right: 100, bottom: 100, left: 100},
+        animated: true,
+      });
+
+    }, 1000);
+  }
+
   onRegionChange = region => {
     this.setState({region});
   };
@@ -57,54 +73,61 @@ export default class PropertyMapScene extends PureComponent {
 
     return (
       <View style={styles.container}>
-        <MapView
-          ref="map"
-          style={styles.map}
-          initialRegion={this.state.region}
-          onRegionChangeComplete={this.onRegionChange}>
-          {collection.map(property => {
-            let {meta, address} = property;
-            return (
-              <MapView.Marker
-                ref={'ref' + property._id}
-                key={'key' + property._id}
-                coordinate={{
-                  latitude: parseFloat(address.latitude),
-                  longitude: parseFloat(address.longitude),
-                }}
-                pinColor="red">
-                <MapView.Callout onPress={() => loadScene(property)}>
-                  <View style={styles.mapContent}>
-                    <View style={styles.leftCol}>
-                      <Image
-                        source={{uri: property.images[0]}}
-                        style={styles.image}
-                        resizeMode="contain"
-                      />
-                    </View>
-                    <View style={styles.rightCol}>
-                      <View>
-                        <Text style={styles.title}>{property.title}</Text>
+
+        {
+          this.state.initialized &&
+          <MapView
+            ref={ref => {
+              this.map = ref;
+            }}
+            style={styles.map}
+            initialRegion={this.state.region}
+            onRegionChangeComplete={this.onRegionChange}>
+            {collection.map(property => {
+              let {meta, address} = property;
+              return (
+                <MapView.Marker
+                  provider={PROVIDER_GOOGLE}
+                  ref={'ref' + property._id}
+                  key={'key' + property._id}
+                  coordinate={{
+                    latitude: parseFloat(address.latitude),
+                    longitude: parseFloat(address.longitude),
+                  }}
+                  pinColor="red">
+                  <MapView.Callout onPress={() => loadScene(property)}>
+                    <View style={styles.mapContent}>
+                      <View style={styles.leftCol}>
+                        <Image
+                          source={{uri: property.images[0]}}
+                          style={styles.image}
+                          resizeMode="contain"
+                        />
                       </View>
-                      <Text style={styles.price}>
-                        {numberWithCommas(property.meta.price)}{' '}
-                        {property.country.currency}
-                      </Text>
-                      <PropertyIcons
-                        services={meta || []}
-                        items={['bedroom', 'bathroom', 'parking']}
-                      />
-                      <Text style={styles.lightText}>
-                        {I18n.t('added')}{' '}
-                        {moment(property.created_at).fromNow()}
-                      </Text>
+                      <View style={styles.rightCol}>
+                        <View>
+                          <Text style={styles.title}>{property.title}</Text>
+                        </View>
+                        <Text style={styles.price}>
+                          {numberWithCommas(property.meta.price)}{' '}
+                          {property.country.currency}
+                        </Text>
+                        <PropertyIcons
+                          services={meta || []}
+                          items={['bedroom', 'bathroom', 'parking']}
+                        />
+                        <Text style={styles.lightText}>
+                          {I18n.t('added')}{' '}
+                          {moment(property.created_at).fromNow()}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                </MapView.Callout>
-              </MapView.Marker>
-            );
-          })}
-        </MapView>
+                  </MapView.Callout>
+                </MapView.Marker>
+              );
+            })}
+          </MapView>
+        }
 
         <TouchableHighlight
           style={[styles.loadMoreButton, isFetching && {opacity: 0.5}]}

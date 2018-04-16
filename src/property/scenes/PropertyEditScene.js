@@ -51,8 +51,6 @@ export default class PropertyEditScene extends Component {
       [field]: value.key,
     };
 
-    console.log('payload', payload);
-
     this.updateAttributes('meta', payload);
   };
 
@@ -64,8 +62,6 @@ export default class PropertyEditScene extends Component {
   };
 
   updateAddress = data => {
-    console.log('updating', data);
-
     // const {
     //   state_en,
     //   city_en,

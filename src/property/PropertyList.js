@@ -107,8 +107,6 @@ class PropertyList extends PureComponent {
       relatedProperties,
     } = this.props;
 
-    console.log('list');
-
     return (
       <View style={{flex: 1}}>
         <PropertyListTopBar

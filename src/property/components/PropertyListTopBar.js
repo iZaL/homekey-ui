@@ -124,7 +124,6 @@ export default class PropertyListTopBar extends Component {
       onMapViewPress,
     } = this.props;
 
-    console.log('topbar');
     return (
       <View>
         <SortBar

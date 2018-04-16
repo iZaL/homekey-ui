@@ -192,8 +192,6 @@ export function* addMessage(action) {
     const params = {
       ...message,
     };
-    console.log('params', params);
-
     const response = yield call(API.addMessage, params, urlParams);
     yield put({
       type: ACTION_TYPES.MESSAGE_ADD_SUCCESS,

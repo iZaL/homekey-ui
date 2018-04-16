@@ -42,7 +42,6 @@ class PropertyHome extends Component {
   };
 
   setFilter = (propertyType, filters) => {
-
     // this.props.actions.setLanguage('ar');
 
     const {actions, navigation} = this.props;

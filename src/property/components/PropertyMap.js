@@ -30,7 +30,6 @@ export default class PropertyMap extends Component {
   }
 
   onMapReady = () => {
-    console.log('on Map ready');
     this.setState({
       initialized: true,
     });

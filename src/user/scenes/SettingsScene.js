@@ -31,11 +31,11 @@ export default class SettingsScene extends Component {
         {/*<Separator />*/}
 
         {/*<SettingListItem*/}
-          {/*title={I18n.t('change_country')}*/}
-          {/*route="countrySelect"*/}
-          {/*loadScene={loadScene}*/}
-          {/*icon="globe"*/}
-          {/*selected={country.fullName}*/}
+        {/*title={I18n.t('change_country')}*/}
+        {/*route="countrySelect"*/}
+        {/*loadScene={loadScene}*/}
+        {/*icon="globe"*/}
+        {/*selected={country.fullName}*/}
         {/*/>*/}
 
         <Separator />

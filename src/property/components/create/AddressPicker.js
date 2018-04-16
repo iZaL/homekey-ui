@@ -77,7 +77,7 @@ export default class AddressPicker extends Component {
       let response = await request.json();
       let {address_components, formatted_address} = response.result;
 
-      console.log('address_components',address_components);
+      // console.log('address_components',address_components);
 
       params = {
         [address]: formatted_address,
@@ -170,15 +170,14 @@ export default class AddressPicker extends Component {
   onRegionChange = region => {
     // this.setState({region});
     let params = {
-      latitude:region.latitude,
-      longitude:region.longitude
+      latitude: region.latitude,
+      longitude: region.longitude,
     };
 
     this.props.updateAddress(params);
     // this.jumpToRegion();
     this.reverseGeoCode(params, 'en');
     this.reverseGeoCode(params, 'ar');
-
   };
 
   mapMarkerRegion = () => {
@@ -217,7 +216,9 @@ export default class AddressPicker extends Component {
             listViewDisplayed={false}
             enablePoweredByContainer={false}
             renderDescription={row => row.description}
-            onPress={(data, details = null) => this.onSearchPress(data, details)}
+            onPress={(data, details = null) =>
+              this.onSearchPress(data, details)
+            }
             query={{
               key: GOOGLE_MAPS_KEY,
               language: isRTL ? 'ar' : 'en',

@@ -61,8 +61,6 @@ class SettingList extends Component {
   };
 
   render() {
-    console.log('settings');
-
     const {isAuthenticated, user, country} = this.props;
     return (
       <SettingsScene

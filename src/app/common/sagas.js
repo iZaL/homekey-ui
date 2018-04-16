@@ -95,7 +95,7 @@ function* changeCountrySaga(action) {
 }
 
 function* setLanguage(action) {
-  console.log('setting lang');
+  // console.log('setting lang');
   if (action.language === 'en') {
     I18nManager.allowRTL(false);
     I18nManager.forceRTL(false);

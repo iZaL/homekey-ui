@@ -106,11 +106,11 @@ export default class CountryPicker extends Component {
             <CountryFlagIcon country={country} />
             {/*<Text style={styles.navigationBarTitle}>{country.abbr}</Text>*/}
             {/*<View*/}
-              {/*style={{*/}
-                {/*marginLeft: 2,*/}
-                {/*marginTop: 2,*/}
-              {/*}}>*/}
-              {/*<Ionicons name="ios-arrow-down" size={22} />*/}
+            {/*style={{*/}
+            {/*marginLeft: 2,*/}
+            {/*marginTop: 2,*/}
+            {/*}}>*/}
+            {/*<Ionicons name="ios-arrow-down" size={22} />*/}
             {/*</View>*/}
           </View>
         </TouchableWithoutFeedback>

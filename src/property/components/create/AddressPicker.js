@@ -55,6 +55,10 @@ export default class AddressPicker extends Component {
   };
 
   async geoCode(locationData, lang) {
+
+    console.log('location',locationData);
+    // console.log('placeid',locationData);
+
     const {updateAddress} = this.props;
     let isEstablishment = false;
     if (locationData.terms[3]) {
@@ -75,6 +79,8 @@ export default class AddressPicker extends Component {
         `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
       );
       let response = await request.json();
+      console.log('response',response);
+
       let {address_components, formatted_address} = response.result;
 
       // console.log('address_components',address_components);
@@ -112,6 +118,8 @@ export default class AddressPicker extends Component {
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&${urlParams}`,
       );
       let response = await request.json();
+      console.log('res',response);
+
       let {address_components, formatted_address} = response.results[0];
       if (address_components[3]) {
         isEstablishment = true;

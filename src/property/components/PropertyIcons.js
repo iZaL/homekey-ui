@@ -20,7 +20,7 @@ export default class PropertyIcons extends Component {
           style={{
             fontSize: 13,
             fontWeight: '100',
-            marginHorizontal: 2,
+            // marginHorizontal: 2,
             color: colors.fadedBlack,
           }}>
           {value === 'any' ? I18n.t('any') : value}
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    paddingVertical: 2,
+    // paddingVertical: 2,
   },
   row: {
     flexDirection: 'row',
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   icon: {
-    width: 20,
-    height: 25,
+    width: 15,
+    height: 15,
     color: 'white',
   },
 });

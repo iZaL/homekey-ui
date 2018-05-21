@@ -15,7 +15,7 @@ import I18n from './../app/common/locale';
 
 class SettingList extends Component {
   loadScene = (route = null) => {
-    const {navigation, user} = this.props;
+    const {navigation, user,isAuthenticated} = this.props;
     switch (route) {
       case 'user':
         return navigation.navigate('UserDetailScene', {
@@ -28,7 +28,7 @@ class SettingList extends Component {
       case 'login':
         return navigation.navigate('Login');
       case 'chat':
-        if (!user.isAuthenticated) {
+        if (!isAuthenticated) {
           return navigation.navigate('Login');
         } else {
           return navigation.navigate('ChatListScene');

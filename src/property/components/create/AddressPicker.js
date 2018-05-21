@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {
   Alert,
-  Dimensions,
+  Dimensions, Image,
   StyleSheet,
   TouchableHighlight,
   View,
@@ -267,13 +267,25 @@ export default class AddressPicker extends Component {
               }}
               provider={this.props.provider}
               style={styles.map}
-              initialRegion={this.state.region}
-              onRegionChangeComplete={this.onRegionChange}>
+              region={this.state.region}
+              onRegionChangeComplete={this.onRegionChange}
+              showsUserLocation={true}
+              pitchEnabled={false}
+              rotateEnabled={false}
+              >
+
               <MapView.Marker
                 coordinate={this.mapMarkerRegion()}
                 onDragEnd={e => this.onDragEnd(e)}
                 draggable
               />
+
+              {/*<Image*/}
+                {/*source={require('./../../../../assets/pin.png')}*/}
+                {/*style={styles.image}*/}
+                {/*resizeMode="contain"*/}
+              {/*/>*/}
+
             </MapView>
           </View>
         </View>
@@ -341,5 +353,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'transparent',
     zIndex: 1000,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    alignSelf: 'center',
   },
 });

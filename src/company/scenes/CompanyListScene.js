@@ -45,9 +45,14 @@ export default class CompanyListScene extends PureComponent {
         key={index}
         style={styles.row}>
         <View style={styles.companyInfoContainer}>
-          <View>
-            <Image source={{uri: item.image}} style={styles.companyLogo} />
-          </View>
+
+          {
+            item.image &&
+            <View>
+              <Image source={{uri: item.image}} style={styles.companyLogo}/>
+            </View>
+
+          }
 
           <View
             style={{
@@ -92,7 +97,7 @@ export default class CompanyListScene extends PureComponent {
         initialListSize={20}
         onEndReachedThreshold={1}
         onEndReached={() => !isFetching && fetchCollection()}
-        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}} />}
+        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}}/>}
         getItemLayout={(data, index) => ({
           length: 348,
           offset: 348 * index,

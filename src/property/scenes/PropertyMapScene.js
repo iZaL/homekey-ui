@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import MapView,{PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import colors from './../../common/colors';
 import PropertyIcons from './../components/PropertyIcons';
 import moment from 'moment';
@@ -50,18 +50,16 @@ export default class PropertyMapScene extends PureComponent {
   // }
 
   componentDidMount() {
-    setTimeout(() => {
-      // this.setState({
-      //     initialized: true
-      // }, () => {
-      //
-      // }
-      this.map.fitToCoordinates(this.props.collection.map(property => property.address), {
-        edgePadding: {top: 100, right: 100, bottom: 100, left: 100},
-        animated: true,
-      });
 
-    }, 1000);
+    if (this.map) {
+      setTimeout(() => {
+        this.map.fitToCoordinates(this.props.collection.map(property => property.address), {
+          edgePadding: {top: 100, right: 100, bottom: 100, left: 100},
+          animated: true,
+        });
+      }, 1000);
+    }
+
   }
 
   onRegionChange = region => {
@@ -81,10 +79,12 @@ export default class PropertyMapScene extends PureComponent {
               this.map = ref;
             }}
             style={styles.map}
-            initialRegion={this.state.region}
-            onRegionChangeComplete={this.onRegionChange}>
+            region={this.state.region}
+          >
             {collection.map(property => {
               let {meta, address} = property;
+
+
               return (
                 <MapView.Marker
                   provider={PROVIDER_GOOGLE}
@@ -96,7 +96,12 @@ export default class PropertyMapScene extends PureComponent {
                   }}
                   pinColor="red">
                   <MapView.Callout onPress={() => loadScene(property)}>
+
+                    <Text style={styles.title}>{meta.title}</Text>
+
                     <View style={styles.mapContent}>
+
+
                       <View style={styles.leftCol}>
                         <Image
                           source={{uri: property.images[0]}}
@@ -105,9 +110,7 @@ export default class PropertyMapScene extends PureComponent {
                         />
                       </View>
                       <View style={styles.rightCol}>
-                        <View>
-                          <Text style={styles.title}>{property.title}</Text>
-                        </View>
+
                         <Text style={styles.price}>
                           {numberWithCommas(property.meta.price)}{' '}
                           {property.country.currency}

@@ -5,7 +5,6 @@ import {SELECTORS as AUTH_SELECTORS} from '../auth/common/selectors';
 import {ACTIONS as USER_ACTIONS} from '../user/common/actions';
 import ChatListScene from './scenes/ChatListScene';
 import {SELECTORS as PROPERTY_SELECTORS} from '../property/common/selectors';
-import EmptyResult from "../property/components/EmptyResult";
 import {Text, View} from "react-native";
 
 class ChatList extends Component {

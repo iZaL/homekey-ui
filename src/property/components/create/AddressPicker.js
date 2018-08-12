@@ -56,9 +56,6 @@ export default class AddressPicker extends Component {
 
   async geoCode(locationData, lang) {
 
-    console.log('location',locationData);
-    // console.log('placeid',locationData);
-
     const {updateAddress} = this.props;
     let isEstablishment = false;
     if (locationData.terms[3]) {
@@ -82,7 +79,6 @@ export default class AddressPicker extends Component {
       console.log('response',response);
 
       let {address_components, formatted_address} = response.result;
-
       // console.log('address_components',address_components);
 
       params = {
@@ -118,7 +114,6 @@ export default class AddressPicker extends Component {
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&${urlParams}`,
       );
       let response = await request.json();
-      console.log('res',response);
 
       let {address_components, formatted_address} = response.results[0];
       if (address_components[3]) {
@@ -138,8 +133,6 @@ export default class AddressPicker extends Component {
   }
 
   onSearchPress = (locationData, locationDetails) => {
-    // console.log('locationData',locationData);
-    // console.log('locationDetails',locationDetails);
     if (!locationData.terms[1]) {
       alert(I18n.t('please_choose_precise_location'));
     } else {
@@ -279,7 +272,6 @@ export default class AddressPicker extends Component {
                 onDragEnd={e => this.onDragEnd(e)}
                 draggable
               />
-
               {/*<Image*/}
                 {/*source={require('./../../../../assets/pin.png')}*/}
                 {/*style={styles.image}*/}

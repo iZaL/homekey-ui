@@ -18,7 +18,7 @@ import UserDetail from './../user/UserDetail';
 import UserEdit from './../user/UserEdit';
 import CountryList from './../user/CountryList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {createBottomTabNavigator, createStackNavigator, createTabNavigator} from 'react-navigation';
+import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import colors from './colors';
 import I18n from './../app/common/locale';
 import Chat from '../user/Chat';

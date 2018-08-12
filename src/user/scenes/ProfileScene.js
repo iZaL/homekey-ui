@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import UserLogo from '../components/profile/UserLogo';
 import Contact from '../components/profile/Contact';
 import PropertyListScene from '../../property/scenes/PropertyListScene';
-import {TabBar, TabViewAnimated} from 'react-native-tab-view';
+import {TabBar, TabView} from 'react-native-tab-view';
 import colors from '../../common/colors';
 import {CountryPropType} from '../../property/common/proptypes';
 import I18n from './../../app/common/locale';
@@ -83,12 +83,12 @@ export default class ProfileScene extends Component {
     const {user, isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
-        {user.image && <UserLogo user={user} />}
-        <TabViewAnimated
+        {user && user.image && <UserLogo user={user} />}
+        <TabView
           style={styles.container}
           navigationState={this.state}
           renderScene={this.renderScene}
-          renderHeader={this.renderHeader}
+          renderTabBar={this.renderHeader}
           onIndexChange={this.handleChangeTab}
           {...this.props}
         />

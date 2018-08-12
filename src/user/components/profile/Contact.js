@@ -25,67 +25,63 @@ const Contact = ({user}) => {
       </View>
       <Separator style={{marginVertical: 20}} />
 
-      {user.mobile && (
+      <View>
+        <View style={styles.rowContainer}>
+          <Text style={styles.label}>{I18n.t('mobile')}</Text>
+          <View style={styles.content}>
+            <Ionicons
+              name="md-phone-portrait"
+              size={20}
+              style={styles.icon}
+            />
+            <Text style={styles.name}>{user.mobile}</Text>
+          </View>
+        </View>
+        <Separator style={{marginVertical: 20}} />
+      </View>
+
+      <View>
+        <View style={styles.rowContainer}>
+          <Text style={styles.label}>{I18n.t('email')}</Text>
+          <View style={styles.content}>
+            <Ionicons name="ios-mail" size={22} style={styles.icon} />
+            <Text style={styles.name}>{user.email}</Text>
+          </View>
+        </View>
+        <Separator style={{marginVertical: 20}} />
+      </View>
+
+      {user.company &&
+      (
         <View>
           <View style={styles.rowContainer}>
-            <Text style={styles.label}>{I18n.t('mobile')}</Text>
+            <Text style={styles.label}>{I18n.t('company_address')}</Text>
             <View style={styles.content}>
               <Ionicons
-                name="md-phone-portrait"
-                size={20}
+                name="ios-pin-outline"
+                size={22}
                 style={styles.icon}
               />
-              <Text style={styles.name}>{user.mobile}</Text>
+              <Text style={styles.name}>{user.company.address}</Text>
             </View>
           </View>
           <Separator style={{marginVertical: 20}} />
         </View>
       )}
 
-      {user.email && (
+      {user.company &&
+      (
         <View>
           <View style={styles.rowContainer}>
-            <Text style={styles.label}>{I18n.t('email')}</Text>
+            <Text style={styles.label}>{I18n.t('company_description')}</Text>
             <View style={styles.content}>
-              <Ionicons name="ios-mail" size={22} style={styles.icon} />
-              <Text style={styles.name}>{user.email}</Text>
+              <Ionicons name="md-bulb" size={22} style={styles.icon} />
+              <Text style={styles.name}>{user.company.description}</Text>
             </View>
           </View>
           <Separator style={{marginVertical: 20}} />
         </View>
       )}
-
-      {user.company &&
-        user.company.address && (
-          <View>
-            <View style={styles.rowContainer}>
-              <Text style={styles.label}>{I18n.t('company_address')}</Text>
-              <View style={styles.content}>
-                <Ionicons
-                  name="ios-pin-outline"
-                  size={22}
-                  style={styles.icon}
-                />
-                <Text style={styles.name}>{user.company.address}</Text>
-              </View>
-            </View>
-            <Separator style={{marginVertical: 20}} />
-          </View>
-        )}
-
-      {user.company &&
-        user.company.description && (
-          <View>
-            <View style={styles.rowContainer}>
-              <Text style={styles.label}>{I18n.t('company_description')}</Text>
-              <View style={styles.content}>
-                <Ionicons name="md-bulb" size={22} style={styles.icon} />
-                <Text style={styles.name}>{user.company.description}</Text>
-              </View>
-            </View>
-            <Separator style={{marginVertical: 20}} />
-          </View>
-        )}
     </ScrollView>
   );
 };

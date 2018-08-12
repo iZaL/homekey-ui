@@ -20,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     if (CODEPUSH_ENABLED) {
-      CodePush.sync();
+      // CodePush.sync();
     }
     this.props.dispatch(ACTIONS.boot());
   }

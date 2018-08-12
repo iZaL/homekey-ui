@@ -18,7 +18,7 @@ import UserDetail from './../user/UserDetail';
 import UserEdit from './../user/UserEdit';
 import CountryList from './../user/CountryList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {createStackNavigator, createTabNavigator} from 'react-navigation';
+import {createBottomTabNavigator, createStackNavigator, createTabNavigator} from 'react-navigation';
 import colors from './colors';
 import I18n from './../app/common/locale';
 import Chat from '../user/Chat';
@@ -207,7 +207,7 @@ const SettingTab = createStackNavigator(
   },
 );
 
-const Tabs = createTabNavigator(
+const Tabs = createBottomTabNavigator(
   {
     PropertyTab: {
       screen: PropertyTab,
@@ -263,7 +263,7 @@ const Tabs = createTabNavigator(
     },
   },
   {
-    tabBarPosition: 'bottom',
+    // tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: colors.primary,
       inactiveTintColor: colors.darkGrey,

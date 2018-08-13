@@ -233,7 +233,7 @@ export default class PropertyEditScene extends Component {
           }
         />
 
-        {stage === 3 && (
+        {stage === 1 && (
           <List
             field="type"
             collection={types}
@@ -257,7 +257,7 @@ export default class PropertyEditScene extends Component {
           />
         )}
 
-        {stage === 1 && (
+        {stage === 3 && (
           <AddressPicker
             country={country}
             address={attributes.address}

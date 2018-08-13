@@ -65,47 +65,47 @@ export default class AddressPicker extends Component {
   //   }
   // }
 
-  async geoCode(locationData, lang) {
-
-    const {updateAddress} = this.props;
-    let isEstablishment = false;
-    if (locationData.terms[3]) {
-      isEstablishment = true;
-    }
-
-    let urlParams = Qs.stringify({
-      key: GOOGLE_MAPS_KEY,
-      placeid: locationData.place_id,
-      language: lang,
-    });
-    let params;
-    let city = `city_${lang}`;
-    let state = `state_${lang}`;
-    let address = `address_${lang}`;
-    try {
-      let request = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
-      );
-      let response = await request.json();
-      console.log('response',response);
-
-      let {address_components, formatted_address} = response.result;
-      // console.log('address_components',address_components);
-
-      params = {
-        [address]: formatted_address,
-        [city]: isEstablishment
-          ? address_components[1].long_name
-          : address_components[0].long_name,
-        [state]: isEstablishment
-          ? address_components[2].long_name
-          : address_components[1].long_name,
-      };
-      // console.log('params',params);
-
-      updateAddress(params);
-    } catch (e) {}
-  }
+  // async geoCode(locationData, lang) {
+  //
+  //   const {updateAddress} = this.props;
+  //   let isEstablishment = false;
+  //   if (locationData.terms[3]) {
+  //     isEstablishment = true;
+  //   }
+  //
+  //   let urlParams = Qs.stringify({
+  //     key: GOOGLE_MAPS_KEY,
+  //     placeid: locationData.place_id,
+  //     language: lang,
+  //   });
+  //   let params;
+  //   let city = `city_${lang}`;
+  //   let state = `state_${lang}`;
+  //   let address = `address_${lang}`;
+  //   try {
+  //     let request = await fetch(
+  //       `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
+  //     );
+  //     let response = await request.json();
+  //     console.log('response',response);
+  //
+  //     let {address_components, formatted_address} = response.result;
+  //     // console.log('address_components',address_components);
+  //
+  //     params = {
+  //       [address]: formatted_address,
+  //       [city]: isEstablishment
+  //         ? address_components[1].long_name
+  //         : address_components[0].long_name,
+  //       [state]: isEstablishment
+  //         ? address_components[2].long_name
+  //         : address_components[1].long_name,
+  //     };
+  //     // console.log('params',params);
+  //
+  //     updateAddress(params);
+  //   } catch (e) {}
+  // }
 
 
   updateListing = () => {
@@ -138,7 +138,8 @@ export default class AddressPicker extends Component {
 
                   this.setState({
                     addressCreateFieldsModalVisible:true
-                  })
+                  });
+
 
 
                 })
@@ -148,14 +149,20 @@ export default class AddressPicker extends Component {
           },
         ],
       );
+    } else {
+      return updateListing();
     }
-    // return updateListing();
   };
-
 
   updateAddressFields = (address: object) => {
     this.props.updateAddress(address);
+
+  };
+
+  updateAddressModalFields = (address: object) => {
+    this.props.updateAddress(address);
     this.hideAddressCreateFieldsModal();
+    return this.props.updateListing();
   };
 
   hideAddressCreateFieldsModal = () => {
@@ -184,7 +191,7 @@ export default class AddressPicker extends Component {
           useNativeDriver={true}>
           <CreateAddressFields
             onCancel={this.hideAddressCreateFieldsModal}
-            onSave={this.updateAddressFields}
+            onSave={this.updateAddressModalFields}
             address={{...address}}
           />
         </Modal>

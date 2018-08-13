@@ -7,6 +7,7 @@ import {Title,Divider} from 'react-native-paper';
 import MapView from 'react-native-maps';
 import I18n from './../../../app/common/locale';
 import colors from "../../../common/colors";
+import LocalizedText from "../../../components/LocalizedText";
 
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -65,7 +66,7 @@ export default class extends PureComponent {
 
   render() {
     const {block, street, label, initialized,description,building,avenue} = this.state;
-    let {latitude, longitude, area} = this.props.address;
+    let {latitude, longitude, city_en,city_ar} = this.props.address;
     return (
       <ScrollView
         style={styles.container}
@@ -102,6 +103,15 @@ export default class extends PureComponent {
               </MapView>
             )}
           </View>
+
+          <Divider style={{marginVertical: 10}} />
+
+          <Title style={{textAlign:'center'}}>
+          <LocalizedText
+            en={city_en}
+            ar={city_ar}
+          />
+          </Title>
 
           <Divider style={{marginVertical: 10}} />
           <AddressFormFields

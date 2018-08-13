@@ -140,8 +140,6 @@ export default class AddressPicker extends Component {
                     addressCreateFieldsModalVisible:true
                   });
 
-
-
                 })
                 .catch(e => {
                 });

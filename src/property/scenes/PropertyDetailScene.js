@@ -136,6 +136,10 @@ export default class PropertyDetailScene extends Component {
       countries,
     } = this.props;
 
+    let {address} = property;
+
+    let {block,street,building,description} = address;
+
     let {scrollY} = this.state;
 
     switch (sceneType) {
@@ -241,7 +245,6 @@ export default class PropertyDetailScene extends Component {
                 {property.user.isCompany && (
                   <View
                     style={{
-                      flex: 1,
                       flexDirection: 'row',
                       alignItems: 'center',
                     }}>
@@ -269,27 +272,42 @@ export default class PropertyDetailScene extends Component {
                     </View>
                   )}
 
-                  {/*{!!property.meta.gender &&*/}
-                  {/*<View style={styles.infoRow}>*/}
-                  {/*<Text style={styles.infoTitle}>*/}
-                  {/*{I18n.t('social_status')}*/}
-                  {/*</Text>*/}
-                  {/*<Text style={styles.infoResult}>*/}
-                  {/*{property.meta.gender}*/}
-                  {/*</Text>*/}
-                  {/*</View>}*/}
-
                   <View style={styles.infoRow}>
                     <Text style={styles.infoTitle}>{I18n.t('address')}</Text>
 
                     <Text style={styles.infoResult}>
                       {isRTL
-                        ? `${property.address.address_ar} , ${
+                        ? `${
                             property.address.city_ar
-                          }, ${property.address.state_ar}`
-                        : `${property.address.address_en} , ${
+                          }`
+                        : `${
                             property.address.city_en
-                          }, ${property.address.state_en}`}
+                          }`}
+
+                      {
+                        !!block && (
+                          ` ${I18n.t('block')} ${block} `
+                        )
+                      }
+
+                      {
+                        !!street && (
+                          ` ${I18n.t('street')} ${street} `
+                        )
+                      }
+
+                      {
+                        !!building && (
+                          ` ${I18n.t('building')} ${building} `
+                        )
+                      }
+
+                      {
+                        !!description && (
+                          `${description} `
+                        )
+                      }
+
                     </Text>
                   </View>
                 </View>

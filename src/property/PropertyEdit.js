@@ -29,6 +29,11 @@ class PropertyEdit extends Component {
     this.props.navigation.goBack();
   };
 
+  saveAddress = (params) => {
+    this.props.actions.updateAddress(params);
+  };
+
+
   render() {
     let {categories, listing} = this.props;
 
@@ -46,6 +51,7 @@ class PropertyEdit extends Component {
         canGoBack={true}
         popBack={this.goBack}
         navBarTitle={I18n.t('edit_property')}
+        saveAddress={this.saveAddress}
       />
     );
   }

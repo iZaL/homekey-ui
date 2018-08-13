@@ -12,6 +12,7 @@ import {
   Text,
   TouchableHighlight,
   View,
+  Platform
 } from 'react-native';
 import colors from '../../../common/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -76,10 +77,16 @@ export default class PropertyInfo extends Component {
   selectItem = (field, value) => {
     this.setState({modal: false});
     this.props.onFieldChange(field, value);
-    this.refs.scrollView.scrollTo({
-      y: Dimensions.get('window').height - 200,
-      animated: true,
-    });
+    //
+    // setTimeout(
+    //   () => {
+    //     this.refs.scrollView.scrollTo({
+    //       y: Dimensions.get('window').height,
+    //       animated: true,
+    //     });
+    //   }
+    // ,1000);
+
   };
 
   openModal = () => {
@@ -119,16 +126,34 @@ export default class PropertyInfo extends Component {
         break;
     }
 
+
+    if(this.state.modal) {
+      return (
+        <AnimatedPicker
+          closeModal={() => this.setState({modal: false})}
+          offset={this.state.offset}
+          changeItem={this.selectItem}
+          selectedItem={gender}
+          items={genders}
+        />
+      )
+    }
+
+
     return (
-      <View style={{flex: 1}}>
-        <ScrollView
-          style={styles.container}
-          contentInset={{bottom: 60}}
-          ref="scrollView">
-          <KeyboardAvoidingView
-            behavior="position"
-            keyboardVerticalOffset={-200}>
-            {header}
+
+      <ScrollView
+        style={styles.container}
+        // contentInset={{bottom: 60}}
+        ref="scrollView"
+      >
+        <KeyboardAvoidingView
+          behavior='position'
+          keyboardVerticalOffset={Platform.OS === 'ios' ? -60 : 0}
+          enabled
+        >
+
+            {/*{header}*/}
 
             <View style={styles.menuContainer}>
               <View style={{flexDirection: 'row'}}>
@@ -219,27 +244,24 @@ export default class PropertyInfo extends Component {
               <TouchableHighlight
                 onPress={() => this.openModal()}
                 underlayColor="transparent"
-                hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+                style={{marginBottom:50}}
+              >
                 <View style={{flex: 1, flexDirection: 'row'}}>
                   <Text style={styles.textBox}>{gender} </Text>
                   <FontAwesome name="angle-down" size={20} color="black" />
                 </View>
               </TouchableHighlight>
 
-              {this.state.modal && (
-                <AnimatedPicker
-                  closeModal={() => this.setState({modal: false})}
-                  offset={this.state.offset}
-                  changeItem={this.selectItem}
-                  selectedItem={gender}
-                  items={genders}
-                />
-              )}
+
             </View>
-          </KeyboardAvoidingView>
-        </ScrollView>
+
+        </KeyboardAvoidingView>
         {footer}
-      </View>
+
+
+
+      </ScrollView>
     );
   }
 }

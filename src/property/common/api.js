@@ -41,6 +41,11 @@ function uploadImage(propertyID, body) {
   return fetchAPI(url, 'POST', body, true);
 }
 
+function updateAddress(body) {
+  const url = `${API_URL}/address/update`;
+  return fetchAPI(url, 'POST', body);
+}
+
 function incrementViews(propertyID) {
   const url = `${API_URL}/properties/${propertyID}/increment-view`;
   try {
@@ -58,4 +63,5 @@ export const API = {
   incrementViews,
   deleteProperty,
   fetchUserProperties,
+  updateAddress
 };

@@ -44,6 +44,10 @@ export const ACTION_TYPES = {
   EDIT_LISTING_UPDATE_ITEM: 'EDIT_LISTING_UPDATE_ITEM',
   PROPERTY_ADD_ITEM_TO_HISTORY_REQUEST: 'PROPERTY_ADD_ITEM_TO_HISTORY_REQUEST',
   PROPERTY_SET_SORT_OPTION: 'PROPERTY_SET_SORT_OPTION',
+
+  UPDATE_ADDRESS_REQUEST:'UPDATE_ADDRESS_REQUEST',
+  UPDATE_ADDRESS_SUCCESS:'UPDATE_ADDRESS_SUCCESS',
+  UPDATE_ADDRESS_FAILURE:'UPDATE_ADDRESS_FAILURE',
 };
 
 function fetchProperties(params) {
@@ -79,6 +83,13 @@ function updateFilter({propertyType, field, value}) {
 function resetProperty() {
   return {
     type: ACTION_TYPES.PROPERTY_RESET,
+  };
+}
+
+function updateAddress(payload) {
+  return {
+    type: ACTION_TYPES.UPDATE_ADDRESS_REQUEST,
+    payload
   };
 }
 function resetPropertyNextPageURL() {
@@ -184,6 +195,7 @@ function incrementViews(propertyID: number): void {
 export const ACTIONS = {
   fetchProperties,
   fetchMyProperties,
+  updateAddress,
   resetProperty,
   favoriteProperty,
   fetchFavorites,
@@ -201,4 +213,5 @@ export const ACTIONS = {
   resetPropertyNextPageURL,
   updateFilter,
   setSortOption,
+
 };

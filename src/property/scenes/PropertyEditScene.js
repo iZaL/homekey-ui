@@ -274,6 +274,7 @@ export default class PropertyEditScene extends Component {
             }
             updateAddress={this.updateAddress}
             updateListing={this.goToNextStage}
+            saveAddress={this.props.saveAddress}
           />
         )}
 

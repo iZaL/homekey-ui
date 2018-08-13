@@ -20,6 +20,9 @@ import isEmpty from 'lodash/isEmpty';
 import {CountryPropType} from './../../common/proptypes';
 import I18n, {isRTL} from '../../../app/common/locale';
 import Qs from 'qs';
+import MapPicker from "./MapPicker";
+import Modal from 'react-native-modal';
+import CreateAddressFields from "./CreateAddressFields";
 
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -37,22 +40,30 @@ export default class AddressPicker extends Component {
 
   constructor(props) {
     super(props);
-    let {latitude, longitude} = this.props.country.coords;
+    let {latitude, longitude} = this.props.address;
 
     this.state = {
-      region: {
-        latitude: latitude,
-        longitude: longitude,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
-      },
+      latitude:latitude,
+      longitude:longitude,
+      addressCreateFieldsModalVisible:false
     };
   }
 
-  jumpToRegion = () => {
-    const region = this.mapMarkerRegion();
-    this.map.animateToRegion(region);
-  };
+  // componentDidMount() {
+  //   if(!this.state.latitude) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         this.setState({
+  //           latitude: position.coords.latitude,
+  //           longitude: position.coords.longitude,
+  //           error: null,
+  //         });
+  //       },
+  //       (error) => this.setState({ error: error.message }),
+  //       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+  //     );
+  //   }
+  // }
 
   async geoCode(locationData, lang) {
 
@@ -96,193 +107,88 @@ export default class AddressPicker extends Component {
     } catch (e) {}
   }
 
-  async reverseGeoCode(coordinates, lang) {
-    const {updateAddress} = this.props;
-    let {latitude, longitude} = coordinates;
-
-    let isEstablishment = false;
-
-    let urlParams = Qs.stringify({
-      key: GOOGLE_MAPS_KEY,
-      language: lang,
-    });
-    let city = `city_${lang}`;
-    let state = `state_${lang}`;
-    let address = `address_${lang}`;
-    try {
-      let request = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&${urlParams}`,
-      );
-      let response = await request.json();
-
-      let {address_components, formatted_address} = response.results[0];
-      if (address_components[3]) {
-        isEstablishment = true;
-      }
-      let params = {
-        [address]: formatted_address,
-        [city]: isEstablishment
-          ? address_components[1].long_name
-          : address_components[0].long_name,
-        [state]: isEstablishment
-          ? address_components[2].long_name
-          : address_components[1].long_name,
-      };
-      updateAddress(params);
-    } catch (e) {}
-  }
-
-  onSearchPress = (locationData, locationDetails) => {
-    if (!locationData.terms[1]) {
-      alert(I18n.t('please_choose_precise_location'));
-    } else {
-      let params = {
-        latitude: locationDetails.geometry.location.lat,
-        longitude: locationDetails.geometry.location.lng,
-        // country: 'KW',
-      };
-      this.props.updateAddress(params);
-      this.jumpToRegion();
-      this.geoCode(locationData, 'en');
-      this.geoCode(locationData, 'ar');
-    }
-  };
-
-  onDragEnd(e) {
-    let {latitude, longitude} = e.nativeEvent.coordinate;
-    let params = {
-      latitude: latitude,
-      longitude: longitude,
-      // country: 'Kuwait',
-    };
-    this.props.updateAddress(params);
-    this.reverseGeoCode({latitude, longitude}, 'en');
-    this.reverseGeoCode({latitude, longitude}, 'ar');
-  }
 
   updateListing = () => {
-    const {address, updateListing} = this.props;
-    if (isEmpty(address.city_en) || isEmpty(address.city_ar)) {
-      return Alert.alert(I18n.t('select_area'), null);
+    const {address, updateListing, updateAddress,saveAddress} = this.props;
+    console.log('this.state.latitude',this.state.latitude);
+    console.log('this.props.address.latitude',this.props.address.latitude);
+
+    if(this.state.latitude !== address.latitude || !address.city_en) {
+      return Alert.alert(
+        `${I18n.t('confirm_location')}`,
+        `${I18n.t('confirm_location_confirmation')}`,
+        [
+          {text: I18n.t('cancel')},
+          {
+            text: I18n.t('yes'),
+            onPress: () => {
+              new Promise((resolve, reject) => {
+                saveAddress({
+                  resolve,
+                  reject,
+                  address
+                });
+              })
+                .then(data => {
+
+                  updateAddress({
+                    ...address,
+                    ...data
+                  });
+
+                  this.setState({
+                    addressCreateFieldsModalVisible:true
+                  })
+
+
+                })
+                .catch(e => {
+                });
+            },
+          },
+        ],
+      );
     }
-    return updateListing();
+    // return updateListing();
   };
 
-  onRegionChange = region => {
-    // this.setState({region});
-    let params = {
-      latitude: region.latitude,
-      longitude: region.longitude,
-    };
 
-    this.props.updateAddress(params);
-    // this.jumpToRegion();
-    this.reverseGeoCode(params, 'en');
-    this.reverseGeoCode(params, 'ar');
+  updateAddressFields = (address: object) => {
+    this.props.updateAddress(address);
+    this.hideAddressCreateFieldsModal();
   };
 
-  mapMarkerRegion = () => {
-    const {address, country} = this.props;
-    let {coords} = country;
-
-    let latitude, longitude;
-
-    if (address.latitude && address.latitude % 1 !== 0) {
-      latitude = address.latitude;
-      longitude = address.longitude;
-    } else {
-      latitude = coords.latitude;
-      longitude = coords.longitude;
-    }
-
-    return {
-      latitude: latitude,
-      longitude: longitude,
-    };
+  hideAddressCreateFieldsModal = () => {
+    this.setState({
+      addressCreateFieldsModalVisible:false
+    })
   };
 
   render() {
-    const {header, country, address} = this.props;
-    // console.log('add',address);
+    const {header,  address} = this.props;
+
     return (
       <View style={styles.container}>
         {header}
+        
+        <MapPicker updateAddress={this.updateAddressFields} address={address}/>
 
-        <View style={styles.searchInputContainer}>
-          <GooglePlacesAutocomplete
-            placeholder={I18n.t('select_area')}
-            minLength={1}
-            autoFocus={false}
-            fetchDetails={true}
-            listViewDisplayed={false}
-            enablePoweredByContainer={false}
-            renderDescription={row => row.description}
-            onPress={(data, details = null) =>
-              this.onSearchPress(data, details)
-            }
-            query={{
-              key: GOOGLE_MAPS_KEY,
-              language: isRTL ? 'ar' : 'en',
-              // types: '(cities)',
-              components: `country:${country.abbr}`,
-            }}
-            styles={autoCompleteStyle}
-            placeholderTextColor={colors.lightGrey}
-            text={isRTL ? address.address_ar : address.address_en}
-            textInputProps={{
-              autoCapitalize: 'none',
-              autoCorrect: false,
-            }}
+        <Footer updateListing={this.updateListing} />
+
+        <Modal
+          animationType="slide"
+          isVisible={this.state.addressCreateFieldsModalVisible}
+          style={{margin: 0, padding: 0, backgroundColor: 'white'}}
+          presentationStyle="fullScreen"
+          transparent={false}
+          useNativeDriver={true}>
+          <CreateAddressFields
+            onCancel={this.hideAddressCreateFieldsModal}
+            onSave={this.updateAddressFields}
+            address={{...address}}
           />
+        </Modal>
 
-          <TouchableHighlight
-            underlayColor="transparent"
-            onPress={() => this.jumpToRegion()}
-            style={styles.textInput}>
-            <Ionicons
-              name="ios-paper-plane"
-              color={colors.darkGrey}
-              size={25}
-              style={{
-                width: 25,
-                height: 25,
-                margin: 8,
-              }}
-            />
-          </TouchableHighlight>
-        </View>
-
-        <View style={styles.menuContainer}>
-          <View style={styles.mapContainer}>
-            <MapView
-              ref={ref => {
-                this.map = ref;
-              }}
-              provider={this.props.provider}
-              style={styles.map}
-              region={this.state.region}
-              onRegionChangeComplete={this.onRegionChange}
-              showsUserLocation={true}
-              pitchEnabled={false}
-              rotateEnabled={false}
-              >
-
-              <MapView.Marker
-                coordinate={this.mapMarkerRegion()}
-                onDragEnd={e => this.onDragEnd(e)}
-                draggable
-              />
-              {/*<Image*/}
-                {/*source={require('./../../../../assets/pin.png')}*/}
-                {/*style={styles.image}*/}
-                {/*resizeMode="contain"*/}
-              {/*/>*/}
-
-            </MapView>
-          </View>
-        </View>
-
-        <Footer updateListing={() => this.updateListing()} />
       </View>
     );
   }

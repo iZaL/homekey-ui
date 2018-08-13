@@ -235,5 +235,11 @@
   "choose_account_type" : "Select Account Type",
   "individual" : "Individual" ,
   "company" : "Company" ,
-  "please_choose_precise_location" : "Please Choose neighbourhood"
+  "please_choose_precise_location" : "Please Choose neighbourhood",
+  "confirm_location" : "Confirm Location",
+  "confirm_location_confirmation" : "Are you sure that this is the right location ?",
+  "block" : "Block",
+  "street":"Street",
+  "avenue":"Avenue",
+  "building" : "Building",
 }

@@ -24,6 +24,10 @@ class PropertyCreate extends Component {
     this.props.actions.saveProperty(this.props.listing.attributes);
   };
 
+  saveAddress = (params) => {
+    this.props.actions.updateAddress(params);
+  };
+
   goBack = () => {
     this.props.navigation.goBack();
   };
@@ -44,6 +48,7 @@ class PropertyCreate extends Component {
         navBarTitle={I18n.t('add_property')}
         propertyType={propertyType}
         popBack={this.goBack}
+        saveAddress={this.saveAddress}
       />
     );
   }

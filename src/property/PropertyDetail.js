@@ -49,9 +49,9 @@ class PropertyDetail extends Component {
     });
   };
 
-  onPinPress = () => {
-    return this.followLocation();
-  };
+  // onPinPress = () => {
+  //   this.followLocation();
+  // };
 
   setSceneType = type => {
     if (type === 'detailScene') {
@@ -136,7 +136,7 @@ class PropertyDetail extends Component {
         sceneType={sceneType}
         handleFavoritePress={this.handleFavoritePress}
         loadProfile={this.loadProfile}
-        onPinPress={this.onPinPress}
+        onPinPress={this.followLocation}
         setSceneType={this.setSceneType}
         country={country}
         countries={countries}

@@ -21,22 +21,15 @@ export default class PropertyMap extends Component {
     setSceneType: PropTypes.func.isRequired,
   };
 
-  state = {
-    initialized: false,
-  };
-
   shouldComponentUpdate(nextProps) {
     return this.props.sceneType !== nextProps.sceneType;
   }
 
-  onMapReady = () => {
-    this.setState({
-      initialized: true,
-    });
-  };
-
   render() {
     const {address, onPinPress, sceneType, setSceneType} = this.props;
+
+    console.log('sceneType',sceneType);
+
     const {latitude, longitude} = address;
     return (
       <View style={{flex: 1}}>
@@ -60,9 +53,8 @@ export default class PropertyMap extends Component {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }}
-          onMapReady={this.onMapReady}
           cacheEnabled={true}>
-          {this.state.initialized && sceneType === 'mapScene' ? (
+          {sceneType === 'mapScene' ? (
             <MapView.Marker
               coordinate={address}
               onSelect={() => onPinPress()}

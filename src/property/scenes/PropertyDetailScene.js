@@ -557,6 +557,7 @@ const styles = StyleSheet.create({
   infoResult: {
     fontWeight: '500',
     paddingLeft: 10,
+    flexWrap:'wrap'
   },
   chatButtonContainer: {
     flex: 1,

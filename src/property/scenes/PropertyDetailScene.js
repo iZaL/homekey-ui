@@ -272,10 +272,16 @@ export default class PropertyDetailScene extends Component {
                     </View>
                   )}
 
-                  <View style={styles.infoRow}>
-                    <Text style={styles.infoTitle}>{I18n.t('address')}</Text>
+                  <Text style={styles.description}>
+                    {property.meta.description}
+                  </Text>
 
-                    <Text style={styles.infoResult}>
+                  <Separator style={{ marginVertical:10 }}/>
+
+                  <View >
+                    {/*<Text style={{}}>{I18n.t('address')}</Text>*/}
+
+                    <Text style={{fontWeight:'bold',}}>
                       {isRTL
                         ? `${
                             property.address.city_ar
@@ -311,12 +317,6 @@ export default class PropertyDetailScene extends Component {
                     </Text>
                   </View>
                 </View>
-
-                <Separator />
-
-                <Text style={styles.description}>
-                  {property.meta.description}
-                </Text>
 
                 {!!property.nearByPlaces.length && (
                   <View>

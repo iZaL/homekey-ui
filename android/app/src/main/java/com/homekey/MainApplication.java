@@ -3,10 +3,7 @@ package com.homekeyapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import com.actionsheet.ActionSheetPackage;
-import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
-import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.airbnb.android.react.maps.MapsPackage;
@@ -39,9 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativeRestartPackage(),
             new ActionSheetPackage(),
-            new ReactNativeYouTube(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
             new ReactNativePushNotificationPackage(),

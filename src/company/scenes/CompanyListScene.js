@@ -3,21 +3,9 @@
  */
 import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native';
-import Swiper from 'react-native-swiper';
+import {Dimensions, FlatList, Image, StyleSheet, TouchableHighlight, View,} from 'react-native';
 import colors from '../../common/colors';
-import moment from 'moment';
 import Separator from './../../components/Separator';
-import {numberWithCommas} from '../../common/functions';
-import I18n from './../../app/common/locale';
 import {CountryPropType} from './../../property/common/proptypes';
 import LocalizedText from '../../components/LocalizedText';
 
@@ -44,15 +32,10 @@ export default class CompanyListScene extends PureComponent {
         underlayColor="transparent"
         key={index}
         style={styles.row}>
+
         <View style={styles.companyInfoContainer}>
 
-          {
-            item.image &&
-            <View>
-              <Image source={{uri: item.image}} style={styles.companyLogo}/>
-            </View>
-
-          }
+          <Image source={{uri: item.image}} style={styles.companyLogo}/>
 
           <View
             style={{

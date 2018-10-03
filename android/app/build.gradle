@@ -99,7 +99,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.homekey"
+        applicationId "com.homekeyapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -149,23 +149,20 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-restart')
-    compile project(':@yfuks/react-native-action-sheet')
-    compile project(':react-native-youtube')
-    compile project(':react-native-video')
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-push-notification')
-    compile(project(':react-native-maps')) {
+    implementation project(':@yfuks_react-native-action-sheet')
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-push-notification')
+    implementation(project(':react-native-maps')) {
         exclude group: 'com.google.android.gms'
     }
-    compile project(':react-native-image-crop-picker')
-    compile project(':react-native-i18n')
-    compile project(':react-native-code-push')
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-image-crop-picker')
+    implementation project(':react-native-i18n')
+    implementation project(':react-native-code-push')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    compile ("com.google.android.gms:play-services-base:11.6.0") {
+    compile ("com.google.android.gms:play-services-base:+") {
         force = true;
     }
     compile ("com.google.android.gms:play-services-maps:11.6.0") {

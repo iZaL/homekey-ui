@@ -67,7 +67,7 @@ export default class LocationSearchScene extends Component {
               <GooglePlacesAutocomplete
                 placeholder={I18n.t('search')}
                 minLength={1}
-                autoFocus={true}
+                autoFocus={false}
                 fetchDetails={true}
                 renderDescription={row => row.terms[0].value}
                 onPress={row => onSearch(row.terms[0].value)}

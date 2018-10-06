@@ -1,98 +1,64 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import {
-  Animated,
-  Dimensions,
-  Easing,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  StatusBar,
-} from 'react-native';
+import React, {Component} from 'react';
+import isEmpty from 'lodash/isEmpty';
 import colors from './../../common/colors';
+import {Snackbar} from 'react-native-paper';
+import I18n, {isRTL} from '../common/locale';
+import {Text} from "react-native";
 
-export default class Notification extends React.Component {
-  static propTypes = {
-    message: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+export default class Notification extends Component {
+  static propTypes = PropTypes.shape({
+    message: PropTypes.string.isRequired,
     messageType: PropTypes.string,
-    dismissNotification: PropTypes.func.isRequired,
+  }).isRequired;
+
+  state = {
+    visible: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.fadeAnim = new Animated.Value(1);
+  static getDerivedStateFromProps(nextProps) {
+    if (!isEmpty(nextProps.message)) {
+      return {
+        visible: true,
+      };
+    }
+    return null;
   }
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.message !== nextProps.message;
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.visible !== this.state.visible;
   }
 
-  hideMessage = () => {
+  closeModal = () => {
+    this.setState({
+      visible: false,
+    });
     this.props.dismissNotification();
-    StatusBar.setHidden(false);
   };
-
-  showMessage = () => {
-    StatusBar.setHidden(true);
-    Animated.timing(this.fadeAnim, {
-      toValue: 1, // Target
-      duration: 500, // Configuration
-      easing: Easing.bounce,
-    }).start();
-  };
-
-  componentDidMount() {
-    setTimeout(this.hideMessage, 4000);
-    this.showMessage();
-  }
 
   render() {
     const {messageType, message} = this.props;
 
+    const {visible} = this.state;
+
     return (
-      <Animated.View
-        style={[
-          styles.container,
-          styles[messageType],
-          {opacity: this.fadeAnim},
-        ]}>
-        <TouchableHighlight
-          onPress={() => this.hideMessage()}
-          underlayColor="transparent">
-          <Text style={styles.title}>{message}</Text>
-        </TouchableHighlight>
-      </Animated.View>
+      <Snackbar
+        visible={visible}
+        onDismiss={() => this.closeModal()}
+        duration={3500}
+        primary
+        raised
+        style={{
+          backgroundColor: messageType === 'error' ? colors.error : colors.success,
+        }}
+        action={{
+          label: I18n.t('ok'),
+          onPress: () => {
+            this.closeModal();
+          },
+        }}>
+        {message}
+      </Snackbar>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: Dimensions.get('window').width,
-    backgroundColor: 'transparent',
-    height: 74,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 5,
-    zIndex: 10000,
-  },
-  title: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '500',
-    textShadowColor: colors.fadedBlack,
-    textShadowOffset: {width: 0.1, height: 0.1},
-  },
-  success: {
-    backgroundColor: colors.success,
-  },
-  error: {
-    backgroundColor: colors.error,
-  },
-  info: {
-    backgroundColor: colors.info,
-  },
-});

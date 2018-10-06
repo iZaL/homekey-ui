@@ -6,6 +6,7 @@ export default {
   error: '#f44336',
   success: '#4caf50',
   primary: '#d60c3f',
+  secondary: '#640615',
   blue: '#1B82F9',
   fadedWhite: '#f7f7f7',
   fadedBlack: '#352d34',

@@ -215,7 +215,7 @@ const Tabs = createBottomTabNavigator(
         tabBarLabel: I18n.t('home'),
         tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
-            name={focused ? 'ios-home' : 'ios-home-outline'}
+            name={focused ? 'ios-home' : 'ios-home'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
@@ -228,7 +228,7 @@ const Tabs = createBottomTabNavigator(
         tabBarLabel: I18n.t('favorites'),
         tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
-            name={focused ? 'ios-star' : 'ios-star-outline'}
+            name={focused ? 'ios-star' : 'ios-star'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />
@@ -241,7 +241,7 @@ const Tabs = createBottomTabNavigator(
         tabBarLabel: I18n.t('companies'),
         tabBarIcon: ({tintColor, focused}) => (
           <Ionicons
-            name={focused ? 'ios-cloud-upload' : 'ios-cloud-upload-outline'}
+            name={focused ? 'ios-cloud-upload' : 'ios-cloud-upload'}
             size={26}
             style={{color: focused ? colors.primary : colors.darkGrey}}
           />

@@ -14,7 +14,11 @@
     "git": "https://github.com/airbnb/react-native-maps.git"
   },
   "source_files": "lib/ios/AirGoogleMaps/**/*.{h,m}",
-  "compiler_flags": "-fno-modules",
+  "compiler_flags": [
+    "-DHAVE_GOOGLE_MAPS=1",
+    "-DHAVE_GOOGLE_MAPS_UTILS=1",
+    "-fno-modules"
+  ],
   "dependencies": {
     "React": [
 

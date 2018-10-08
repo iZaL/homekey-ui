@@ -51,7 +51,7 @@ export default class PropertyMapScene extends PureComponent {
 
   componentDidMount() {
 
-    if (this.map) {
+    if (this.map && this.props.collection.length) {
       setTimeout(() => {
         this.map.fitToCoordinates(this.props.collection.map(property => property.address), {
           edgePadding: {top: 100, right: 100, bottom: 100, left: 100},

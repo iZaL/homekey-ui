@@ -58,7 +58,9 @@ export default class MapPicker extends Component {
         onRegionChangeComplete={this.onRegionChangeComplete}
         showsUserLocation={true}
         pitchEnabled={false}
-        rotateEnabled={false}>
+        rotateEnabled={false}
+        tracksViewChanges={true}
+      >
         <Image
           source={require('./../../../../assets/pin.png')}
           style={styles.image}
@@ -79,5 +81,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     alignSelf: 'center',
+    zIndex:1000
   },
 });

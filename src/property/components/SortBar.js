@@ -7,7 +7,7 @@ import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from '../../common/colors';
 import I18n from '../../app/common/locale';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import ActionSheet from '@yfuks/react-native-action-sheet';
+import ActionSheet from 'react-native-action-sheet';
 
 let showActionSheet = (sortOptions, onSortItemPress) => {
   let BUTTONS = sortOptions.map(item => item.value);

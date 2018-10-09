@@ -813,10 +813,6 @@
     hoist-non-react-statics "^2.2.2"
     prop-types "^15.5.10"
 
-"@yfuks/react-native-action-sheet@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@yfuks/react-native-action-sheet/-/react-native-action-sheet-0.0.5.tgz#0d3a640342efa5a70d26b404bf9e7f937db4d57c"
-
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -5469,6 +5465,10 @@ react-is@^16.5.2:
 react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-native-action-sheet@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-action-sheet/-/react-native-action-sheet-2.0.1.tgz#4a3e4ef4be1d359d2ef62314fdee962decb5b399"
 
 react-native-animatable@^1.2.4:
   version "1.3.0"

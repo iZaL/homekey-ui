@@ -3,7 +3,7 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Dimensions, Image, StyleSheet} from 'react-native';
+import {Dimensions, Image, StyleSheet,Platform} from 'react-native';
 import MapView from 'react-native-maps';
 
 const {width, height} = Dimensions.get('window');
@@ -18,9 +18,9 @@ export default class MapPicker extends Component {
     address: PropTypes.object.isRequired,
   };
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.address.area_id !== this.props.address.area_id;
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.address.area_id !== this.props.address.area_id;
+  // }
 
   componentDidUpdate(nextProps) {
     if (nextProps.address.area_id !== this.props.address.area_id) {
@@ -43,6 +43,9 @@ export default class MapPicker extends Component {
 
   render() {
     const {latitude, longitude} = this.props.address;
+
+    const markerImage = require('./../../../../assets/pin.png');
+
     return (
       <MapView
         ref={ref => {
@@ -61,11 +64,27 @@ export default class MapPicker extends Component {
         rotateEnabled={false}
         tracksViewChanges={true}
       >
-        <Image
-          source={require('./../../../../assets/pin.png')}
-          style={styles.image}
-          resizeMode="contain"
-        />
+        <MapView.Marker
+          coordinate={{
+            latitude: parseFloat(latitude),
+            longitude: parseFloat(longitude),
+          }}
+          pinColor="red"
+          image={Platform.OS === 'android' ? markerImage : undefined}
+        >
+          {Platform.OS === 'ios'
+            ? <Image
+              source={markerImage}
+              style={styles.image}
+              resizeMode="contain"
+            />
+            : null}
+        </MapView.Marker>
+        {/*<Image*/}
+          {/*source={markerImage)}*/}
+          {/*style={styles.image}*/}
+          {/*resizeMode="contain"*/}
+        {/*/>*/}
       </MapView>
     );
   }

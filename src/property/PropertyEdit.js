@@ -29,10 +29,9 @@ class PropertyEdit extends Component {
     this.props.navigation.goBack();
   };
 
-  saveAddress = (params) => {
+  saveAddress = params => {
     this.props.actions.updateAddress(params);
   };
-
 
   render() {
     let {categories, listing} = this.props;
@@ -75,4 +74,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyEdit);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PropertyEdit);

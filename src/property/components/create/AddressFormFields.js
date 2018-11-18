@@ -14,7 +14,14 @@ export default class AddressFormFields extends PureComponent {
   };
 
   render() {
-    const {block, street, avenue, building, updateFields, description} = this.props;
+    const {
+      block,
+      street,
+      avenue,
+      building,
+      updateFields,
+      description,
+    } = this.props;
 
     return (
       <View style={styles.addressContainer}>

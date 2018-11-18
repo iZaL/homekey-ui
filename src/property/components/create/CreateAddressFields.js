@@ -1,13 +1,21 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Alert, Dimensions, KeyboardAvoidingView, ScrollView, StyleSheet, View,Platform} from 'react-native';
+import {
+  Alert,
+  Dimensions,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  View,
+  Platform,
+} from 'react-native';
 import AddressFormFields from './AddressFormFields';
 import MapButtons from './MapButtons';
-import {Title,Divider} from 'react-native-paper';
+import {Title, Divider} from 'react-native-paper';
 import MapView from 'react-native-maps';
 import I18n from './../../../app/common/locale';
-import colors from "../../../common/colors";
-import LocalizedText from "../../../components/LocalizedText";
+import colors from '../../../common/colors';
+import LocalizedText from '../../../components/LocalizedText';
 
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -21,13 +29,13 @@ export default class extends PureComponent {
   };
 
   static defaultProps = {
-    address:{}
+    address: {},
   };
 
   constructor(props) {
     super(props);
 
-    let {block, street, description, building,avenue} = this.props.address;
+    let {block, street, description, building, avenue} = this.props.address;
 
     this.state = {
       label: 'Home',
@@ -65,19 +73,24 @@ export default class extends PureComponent {
   };
 
   render() {
-    const {block, street, label, initialized,description,building,avenue} = this.state;
-    let {latitude, longitude, city_en,city_ar} = this.props.address;
+    const {
+      block,
+      street,
+      label,
+      initialized,
+      description,
+      building,
+      avenue,
+    } = this.state;
+    let {latitude, longitude, city_en, city_ar} = this.props.address;
     return (
       <ScrollView
         style={styles.container}
         contentContainerStyle={{paddingBottom: 40}}>
-
         <KeyboardAvoidingView
-          behavior='position'
+          behavior="position"
           keyboardVerticalOffset={Platform.OS === 'ios' ? -60 : 0}
-          enabled
-        >
-
+          enabled>
           <View style={styles.map}>
             {initialized && (
               <MapView
@@ -106,11 +119,8 @@ export default class extends PureComponent {
 
           <Divider style={{marginVertical: 10}} />
 
-          <Title style={{textAlign:'center'}}>
-          <LocalizedText
-            en={city_en}
-            ar={city_ar}
-          />
+          <Title style={{textAlign: 'center'}}>
+            <LocalizedText en={city_en} ar={city_ar} />
           </Title>
 
           <Divider style={{marginVertical: 10}} />
@@ -124,9 +134,7 @@ export default class extends PureComponent {
             updateFields={this.updateFormFields}
           />
           <MapButtons save={this.saveAddress} close={this.hideScreen} />
-
         </KeyboardAvoidingView>
-
       </ScrollView>
     );
   }

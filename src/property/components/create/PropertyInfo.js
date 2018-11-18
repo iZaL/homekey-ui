@@ -12,7 +12,7 @@ import {
   Text,
   TouchableHighlight,
   View,
-  Platform
+  Platform,
 } from 'react-native';
 import colors from '../../../common/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -86,7 +86,6 @@ export default class PropertyInfo extends Component {
     //     });
     //   }
     // ,1000);
-
   };
 
   openModal = () => {
@@ -126,8 +125,7 @@ export default class PropertyInfo extends Component {
         break;
     }
 
-
-    if(this.state.modal) {
+    if (this.state.modal) {
       return (
         <AnimatedPicker
           closeModal={() => this.setState({modal: false})}
@@ -136,131 +134,119 @@ export default class PropertyInfo extends Component {
           selectedItem={gender}
           items={genders}
         />
-      )
+      );
     }
 
-
     return (
-
       <ScrollView
         style={styles.container}
         // contentInset={{bottom: 60}}
-        ref="scrollView"
-      >
+        ref="scrollView">
         <KeyboardAvoidingView
-          behavior='position'
+          behavior="position"
           keyboardVerticalOffset={Platform.OS === 'ios' ? -60 : 0}
-          enabled
-        >
+          enabled>
+          {/*{header}*/}
 
-            {/*{header}*/}
-
-            <View style={styles.menuContainer}>
-              <View style={{flexDirection: 'row'}}>
-                <FormLabel title={I18n.t('describe_your_property')} />
-                <Text style={styles.required}>*</Text>
-              </View>
-
-              <FormTextInput
-                style={{
-                  height: Math.max(40, this.state.descriptionHeight),
-                }}
-                onContentSizeChange={event => {
-                  this.setState({
-                    descriptionHeight: event.nativeEvent.contentSize.height,
-                  });
-                }}
-                multiline={true}
-                onChangeText={value => onFieldChange('description', value)}
-                value={description}
-                enablesReturnKeyAutomatically={true}
-                returnKeyType="done"
-                placeholder={I18n.t('describe_your_property')}
-                autoFocus={false}
-              />
-
-              <View style={{flexDirection: 'row'}}>
-                <FormLabel title={priceTitle} />
-                <Text style={styles.required}>*</Text>
-              </View>
-
-              <FormTextInput
-                onChangeText={value => onFieldChange('price', value)}
-                value={price.toString()}
-                maxLength={10}
-                placeholder={I18n.t('price')}
-                keyboardType="numeric"
-                returnKeyType="done"
-              />
-
-              <View style={{flexDirection: 'row'}}>
-                <FormLabel title={I18n.t('mobile')} />
-                <Text style={styles.required}>*</Text>
-              </View>
-
-              <FormTextInput
-                onChangeText={value => onFieldChange('mobile', value)}
-                value={mobile && mobile.toString()}
-                maxLength={12}
-                placeholder={I18n.t('mobile')}
-                keyboardType="numeric"
-                returnKeyType="done"
-              />
-
-              <FormLabel title={I18n.t('email')} />
-              <FormTextInput
-                onChangeText={value => onFieldChange('email', value)}
-                value={email}
-                maxLength={30}
-                placeholder={I18n.t('email')}
-                keyboardType="email-address"
-                returnKeyType="done"
-              />
-
-              <View style={{flexDirection: 'row'}}>
-                <FormLabel title={I18n.t('space')} />
-                <Text style={styles.hint}>{I18n.t('metre')}</Text>
-              </View>
-              <FormTextInput
-                onChangeText={value => onFieldChange('area', value)}
-                value={area ? area.toString() : ''}
-                maxLength={6}
-                placeholder={I18n.t('space_of_your_property_in_metre')}
-                keyboardType="numeric"
-                returnKeyType="done"
-              />
-
-              <FormLabel title={I18n.t('phone')} />
-              <FormTextInput
-                onChangeText={value => onFieldChange('phone', value)}
-                value={phone ? phone.toString() : ''}
-                maxLength={12}
-                placeholder={I18n.t('phone')}
-                keyboardType="numeric"
-                returnKeyType="done"
-              />
-
-              <FormLabel title={I18n.t('property_for')} />
-              <TouchableHighlight
-                onPress={() => this.openModal()}
-                underlayColor="transparent"
-                hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
-                style={{marginBottom:50}}
-              >
-                <View style={{flex: 1, flexDirection: 'row'}}>
-                  <Text style={styles.textBox}>{gender} </Text>
-                  <FontAwesome name="angle-down" size={20} color="black" />
-                </View>
-              </TouchableHighlight>
-
-
+          <View style={styles.menuContainer}>
+            <View style={{flexDirection: 'row'}}>
+              <FormLabel title={I18n.t('describe_your_property')} />
+              <Text style={styles.required}>*</Text>
             </View>
 
+            <FormTextInput
+              style={{
+                height: Math.max(40, this.state.descriptionHeight),
+              }}
+              onContentSizeChange={event => {
+                this.setState({
+                  descriptionHeight: event.nativeEvent.contentSize.height,
+                });
+              }}
+              multiline={true}
+              onChangeText={value => onFieldChange('description', value)}
+              value={description}
+              enablesReturnKeyAutomatically={true}
+              returnKeyType="done"
+              placeholder={I18n.t('describe_your_property')}
+              autoFocus={false}
+            />
+
+            <View style={{flexDirection: 'row'}}>
+              <FormLabel title={priceTitle} />
+              <Text style={styles.required}>*</Text>
+            </View>
+
+            <FormTextInput
+              onChangeText={value => onFieldChange('price', value)}
+              value={price.toString()}
+              maxLength={10}
+              placeholder={I18n.t('price')}
+              keyboardType="numeric"
+              returnKeyType="done"
+            />
+
+            <View style={{flexDirection: 'row'}}>
+              <FormLabel title={I18n.t('mobile')} />
+              <Text style={styles.required}>*</Text>
+            </View>
+
+            <FormTextInput
+              onChangeText={value => onFieldChange('mobile', value)}
+              value={mobile && mobile.toString()}
+              maxLength={12}
+              placeholder={I18n.t('mobile')}
+              keyboardType="numeric"
+              returnKeyType="done"
+            />
+
+            <FormLabel title={I18n.t('email')} />
+            <FormTextInput
+              onChangeText={value => onFieldChange('email', value)}
+              value={email}
+              maxLength={30}
+              placeholder={I18n.t('email')}
+              keyboardType="email-address"
+              returnKeyType="done"
+            />
+
+            <View style={{flexDirection: 'row'}}>
+              <FormLabel title={I18n.t('space')} />
+              <Text style={styles.hint}>{I18n.t('metre')}</Text>
+            </View>
+            <FormTextInput
+              onChangeText={value => onFieldChange('area', value)}
+              value={area ? area.toString() : ''}
+              maxLength={6}
+              placeholder={I18n.t('space_of_your_property_in_metre')}
+              keyboardType="numeric"
+              returnKeyType="done"
+            />
+
+            <FormLabel title={I18n.t('phone')} />
+            <FormTextInput
+              onChangeText={value => onFieldChange('phone', value)}
+              value={phone ? phone.toString() : ''}
+              maxLength={12}
+              placeholder={I18n.t('phone')}
+              keyboardType="numeric"
+              returnKeyType="done"
+            />
+
+            <FormLabel title={I18n.t('property_for')} />
+            <TouchableHighlight
+              onPress={() => this.openModal()}
+              underlayColor="transparent"
+              hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+              style={{marginBottom: 50}}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <Text style={styles.textBox}>{gender} </Text>
+                <FontAwesome name="angle-down" size={20} color="black" />
+              </View>
+            </TouchableHighlight>
+          </View>
         </KeyboardAvoidingView>
         {footer}
-
-
-
       </ScrollView>
     );
   }

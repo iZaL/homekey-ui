@@ -63,5 +63,5 @@ export const API = {
   incrementViews,
   deleteProperty,
   fetchUserProperties,
-  updateAddress
+  updateAddress,
 };

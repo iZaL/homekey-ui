@@ -168,4 +168,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyFilter);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PropertyFilter);

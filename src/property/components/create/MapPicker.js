@@ -3,7 +3,7 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Dimensions, Image, StyleSheet,Platform} from 'react-native';
+import {Dimensions, Image, StyleSheet, Platform} from 'react-native';
 import MapView from 'react-native-maps';
 
 const {width, height} = Dimensions.get('window');
@@ -62,28 +62,26 @@ export default class MapPicker extends Component {
         showsUserLocation={true}
         pitchEnabled={false}
         rotateEnabled={false}
-        tracksViewChanges={true}
-      >
+        tracksViewChanges={true}>
         <MapView.Marker
           coordinate={{
             latitude: parseFloat(latitude),
             longitude: parseFloat(longitude),
           }}
           pinColor="red"
-          image={Platform.OS === 'android' ? markerImage : undefined}
-        >
-          {Platform.OS === 'ios'
-            ? <Image
+          image={Platform.OS === 'android' ? markerImage : undefined}>
+          {Platform.OS === 'ios' ? (
+            <Image
               source={markerImage}
               style={styles.image}
               resizeMode="contain"
             />
-            : null}
+          ) : null}
         </MapView.Marker>
         {/*<Image*/}
-          {/*source={markerImage)}*/}
-          {/*style={styles.image}*/}
-          {/*resizeMode="contain"*/}
+        {/*source={markerImage)}*/}
+        {/*style={styles.image}*/}
+        {/*resizeMode="contain"*/}
         {/*/>*/}
       </MapView>
     );
@@ -100,6 +98,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     alignSelf: 'center',
-    zIndex:1000
+    zIndex: 1000,
   },
 });

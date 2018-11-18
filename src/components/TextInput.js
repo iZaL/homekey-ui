@@ -42,6 +42,5 @@ export default class FormTextInput extends Component {
 }
 
 const styles = StyleSheet.create({
-  input: {
-  },
+  input: {},
 });

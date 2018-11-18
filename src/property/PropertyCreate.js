@@ -24,7 +24,7 @@ class PropertyCreate extends Component {
     this.props.actions.saveProperty(this.props.listing.attributes);
   };
 
-  saveAddress = (params) => {
+  saveAddress = params => {
     this.props.actions.updateAddress(params);
   };
 
@@ -72,4 +72,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyCreate);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PropertyCreate);

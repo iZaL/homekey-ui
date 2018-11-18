@@ -28,7 +28,7 @@ export default class PropertyMap extends Component {
   render() {
     const {address, onPinPress, sceneType, setSceneType} = this.props;
 
-    console.log('sceneType',sceneType);
+    console.log('sceneType', sceneType);
 
     const {latitude, longitude} = address;
     return (

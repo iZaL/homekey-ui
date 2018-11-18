@@ -90,9 +90,7 @@ class PropertyDetail extends Component {
 
   openMaps(property, buttonIndex) {
     let address = encodeURIComponent(
-      `${property.address.city_en},${
-        property.address.country
-      }`,
+      `${property.address.city_en},${property.address.country}`,
     );
     switch (buttonIndex) {
       case 0:
@@ -160,4 +158,7 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyDetail);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PropertyDetail);

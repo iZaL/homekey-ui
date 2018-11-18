@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {
   Alert,
-  Dimensions, Image,
+  Dimensions,
+  Image,
   StyleSheet,
   TouchableHighlight,
   View,
@@ -20,9 +21,9 @@ import isEmpty from 'lodash/isEmpty';
 import {CountryPropType} from './../../common/proptypes';
 import I18n, {isRTL} from '../../../app/common/locale';
 import Qs from 'qs';
-import MapPicker from "./MapPicker";
+import MapPicker from './MapPicker';
 import Modal from 'react-native-modal';
-import CreateAddressFields from "./CreateAddressFields";
+import CreateAddressFields from './CreateAddressFields';
 
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -43,9 +44,9 @@ export default class AddressPicker extends Component {
     let {latitude, longitude} = this.props.address;
 
     this.state = {
-      latitude:latitude,
-      longitude:longitude,
-      addressCreateFieldsModalVisible:false
+      latitude: latitude,
+      longitude: longitude,
+      addressCreateFieldsModalVisible: false,
     };
   }
 
@@ -107,13 +108,12 @@ export default class AddressPicker extends Component {
   //   } catch (e) {}
   // }
 
-
   updateListing = () => {
-    const {address, updateListing, updateAddress,saveAddress} = this.props;
-    console.log('this.state.latitude',this.state.latitude);
-    console.log('this.props.address.latitude',this.props.address.latitude);
+    const {address, updateListing, updateAddress, saveAddress} = this.props;
+    console.log('this.state.latitude', this.state.latitude);
+    console.log('this.props.address.latitude', this.props.address.latitude);
 
-    if(this.state.latitude !== address.latitude || !address.city_en) {
+    if (this.state.latitude !== address.latitude || !address.city_en) {
       return Alert.alert(
         `${I18n.t('confirm_location')}`,
         `${I18n.t('confirm_location_confirmation')}`,
@@ -126,23 +126,20 @@ export default class AddressPicker extends Component {
                 saveAddress({
                   resolve,
                   reject,
-                  address
+                  address,
                 });
               })
                 .then(data => {
-
                   updateAddress({
                     ...address,
-                    ...data
+                    ...data,
                   });
 
                   this.setState({
-                    addressCreateFieldsModalVisible:true
+                    addressCreateFieldsModalVisible: true,
                   });
-
                 })
-                .catch(e => {
-                });
+                .catch(e => {});
             },
           },
         ],
@@ -154,7 +151,6 @@ export default class AddressPicker extends Component {
 
   updateAddressFields = (address: object) => {
     this.props.updateAddress(address);
-
   };
 
   updateAddressModalFields = (address: object) => {
@@ -165,18 +161,18 @@ export default class AddressPicker extends Component {
 
   hideAddressCreateFieldsModal = () => {
     this.setState({
-      addressCreateFieldsModalVisible:false
-    })
+      addressCreateFieldsModalVisible: false,
+    });
   };
 
   render() {
-    const {header,  address} = this.props;
+    const {header, address} = this.props;
 
     return (
       <View style={styles.container}>
         {header}
-        
-        <MapPicker updateAddress={this.updateAddressFields} address={address}/>
+
+        <MapPicker updateAddress={this.updateAddressFields} address={address} />
 
         <Footer updateListing={this.updateListing} />
 
@@ -193,7 +189,6 @@ export default class AddressPicker extends Component {
             address={{...address}}
           />
         </Modal>
-
       </View>
     );
   }

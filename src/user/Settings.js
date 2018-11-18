@@ -15,7 +15,7 @@ import I18n from './../app/common/locale';
 
 class SettingList extends Component {
   loadScene = (route = null) => {
-    const {navigation, user,isAuthenticated} = this.props;
+    const {navigation, user, isAuthenticated} = this.props;
     switch (route) {
       case 'user':
         return navigation.navigate('UserDetailScene', {
@@ -91,4 +91,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SettingList);

@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {
   Alert,
-  Dimensions, Image,
+  Dimensions,
+  Image,
   StyleSheet,
   TouchableHighlight,
   View,
@@ -55,7 +56,6 @@ export default class AddressPicker extends Component {
   };
 
   async geoCode(locationData, lang) {
-
     const {updateAddress} = this.props;
     let isEstablishment = false;
     if (locationData.terms[3]) {
@@ -76,7 +76,7 @@ export default class AddressPicker extends Component {
         `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
       );
       let response = await request.json();
-      console.log('response',response);
+      console.log('response', response);
 
       let {address_components, formatted_address} = response.result;
       // console.log('address_components',address_components);
@@ -264,20 +264,17 @@ export default class AddressPicker extends Component {
               onRegionChangeComplete={this.onRegionChange}
               showsUserLocation={true}
               pitchEnabled={false}
-              rotateEnabled={false}
-              >
-
+              rotateEnabled={false}>
               <MapView.Marker
                 coordinate={this.mapMarkerRegion()}
                 onDragEnd={e => this.onDragEnd(e)}
                 draggable
               />
               {/*<Image*/}
-                {/*source={require('./../../../../assets/pin.png')}*/}
-                {/*style={styles.image}*/}
-                {/*resizeMode="contain"*/}
+              {/*source={require('./../../../../assets/pin.png')}*/}
+              {/*style={styles.image}*/}
+              {/*resizeMode="contain"*/}
               {/*/>*/}
-
             </MapView>
           </View>
         </View>

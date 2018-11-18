@@ -35,4 +35,7 @@ function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators({...ACTIONS, ...APP_ACTIONS}, dispatch)};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageSelect);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LanguageSelect);

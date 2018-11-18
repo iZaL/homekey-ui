@@ -118,4 +118,7 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserEdit);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserEdit);

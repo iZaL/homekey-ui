@@ -130,7 +130,10 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Chat);
 
 const styles = StyleSheet.create({
   footerContainer: {

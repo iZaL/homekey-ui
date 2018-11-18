@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import colors from './../../common/colors';
 import {Snackbar} from 'react-native-paper';
 import I18n, {isRTL} from '../common/locale';
-import {Text} from "react-native";
+import {Text} from 'react-native';
 
 export default class Notification extends Component {
   static propTypes = PropTypes.shape({
@@ -49,7 +49,8 @@ export default class Notification extends Component {
         primary
         raised
         style={{
-          backgroundColor: messageType === 'error' ? colors.error : colors.success,
+          backgroundColor:
+            messageType === 'error' ? colors.error : colors.success,
         }}
         action={{
           label: I18n.t('ok'),

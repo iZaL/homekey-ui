@@ -3,7 +3,14 @@
  */
 import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
-import {Dimensions, FlatList, Image, StyleSheet, TouchableHighlight, View,} from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import colors from '../../common/colors';
 import Separator from './../../components/Separator';
 import {CountryPropType} from './../../property/common/proptypes';
@@ -32,10 +39,8 @@ export default class CompanyListScene extends PureComponent {
         underlayColor="transparent"
         key={index}
         style={styles.row}>
-
         <View style={styles.companyInfoContainer}>
-
-          <Image source={{uri: item.image}} style={styles.companyLogo}/>
+          <Image source={{uri: item.image}} style={styles.companyLogo} />
 
           <View
             style={{
@@ -80,7 +85,7 @@ export default class CompanyListScene extends PureComponent {
         initialListSize={20}
         onEndReachedThreshold={1}
         onEndReached={() => !isFetching && fetchCollection()}
-        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}}/>}
+        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}} />}
         getItemLayout={(data, index) => ({
           length: 348,
           offset: 348 * index,

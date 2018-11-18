@@ -37,7 +37,7 @@ class Profile extends PureComponent {
 
   render() {
     const {properties, isFetching, country, countries, user} = this.props;
-    console.log('user',user);
+    console.log('user', user);
     return (
       <ProfileScene
         user={user}
@@ -70,4 +70,7 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Profile);

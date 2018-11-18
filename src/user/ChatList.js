@@ -5,7 +5,7 @@ import {SELECTORS as AUTH_SELECTORS} from '../auth/common/selectors';
 import {ACTIONS as USER_ACTIONS} from '../user/common/actions';
 import ChatListScene from './scenes/ChatListScene';
 import {SELECTORS as PROPERTY_SELECTORS} from '../property/common/selectors';
-import {Text, View} from "react-native";
+import {Text, View} from 'react-native';
 
 class ChatList extends Component {
   componentDidMount() {
@@ -22,12 +22,12 @@ class ChatList extends Component {
   render() {
     let {threads, user} = this.props;
 
-    if(!threads.length) {
+    if (!threads.length) {
       return (
-        <View style={{padding:10}}>
+        <View style={{padding: 10}}>
           <Text>No chats</Text>
         </View>
-      )
+      );
     }
 
     return (
@@ -54,4 +54,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChatList);

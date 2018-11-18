@@ -91,4 +91,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyFavorites);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PropertyFavorites);

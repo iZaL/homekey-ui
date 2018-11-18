@@ -50,16 +50,17 @@ export default class PropertyMapScene extends PureComponent {
   // }
 
   componentDidMount() {
-
     if (this.map && this.props.collection.length) {
       setTimeout(() => {
-        this.map.fitToCoordinates(this.props.collection.map(property => property.address), {
-          edgePadding: {top: 100, right: 100, bottom: 100, left: 100},
-          animated: true,
-        });
+        this.map.fitToCoordinates(
+          this.props.collection.map(property => property.address),
+          {
+            edgePadding: {top: 100, right: 100, bottom: 100, left: 100},
+            animated: true,
+          },
+        );
       }, 1000);
     }
-
   }
 
   onRegionChange = region => {
@@ -71,19 +72,15 @@ export default class PropertyMapScene extends PureComponent {
 
     return (
       <View style={styles.container}>
-
-        {
-          this.state.initialized &&
+        {this.state.initialized && (
           <MapView
             ref={ref => {
               this.map = ref;
             }}
             style={styles.map}
-            region={this.state.region}
-          >
+            region={this.state.region}>
             {collection.map(property => {
               let {meta, address} = property;
-
 
               return (
                 <MapView.Marker
@@ -96,12 +93,9 @@ export default class PropertyMapScene extends PureComponent {
                   }}
                   pinColor="red">
                   <MapView.Callout onPress={() => loadScene(property)}>
-
                     <Text style={styles.title}>{meta.title}</Text>
 
                     <View style={styles.mapContent}>
-
-
                       <View style={styles.leftCol}>
                         <Image
                           source={{uri: property.images[0]}}
@@ -110,7 +104,6 @@ export default class PropertyMapScene extends PureComponent {
                         />
                       </View>
                       <View style={styles.rightCol}>
-
                         <Text style={styles.price}>
                           {numberWithCommas(property.meta.price)}{' '}
                           {property.country.currency}
@@ -130,7 +123,7 @@ export default class PropertyMapScene extends PureComponent {
               );
             })}
           </MapView>
-        }
+        )}
 
         <TouchableHighlight
           style={[styles.loadMoreButton, isFetching && {opacity: 0.5}]}

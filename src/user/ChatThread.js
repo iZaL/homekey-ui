@@ -140,7 +140,10 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatThread);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChatThread);
 
 const styles = StyleSheet.create({
   footerContainer: {

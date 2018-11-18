@@ -281,16 +281,14 @@ function* favoriteProperty(action) {
 }
 
 function* updateAddress(action) {
-
-  console.log('action',action);
+  console.log('action', action);
 
   const {address, resolve, reject} = action.payload;
 
   try {
     const response = yield call(API.updateAddress, address);
     yield resolve(response.data);
-    yield put({type: ACTION_TYPES.UPDATE_ADDRESS_SUCCESS, response:response});
-
+    yield put({type: ACTION_TYPES.UPDATE_ADDRESS_SUCCESS, response: response});
   } catch (error) {
     yield put({type: ACTION_TYPES.UPDATE_ADDRESS_FAILURE, error});
     // yield put(
@@ -302,7 +300,6 @@ function* updateAddress(action) {
     yield reject(error);
   }
 }
-
 
 function* deleteProperty(action) {
   try {
@@ -368,7 +365,7 @@ function* saveProperty(action) {
     let title;
 
     title = `${I18n.t(category)} ${I18n.t(type)} ${I18n.t('in')} ${
-      isRTL ? address.city_ar : address.city_en 
+      isRTL ? address.city_ar : address.city_en
     }`;
 
     const params = {
@@ -490,10 +487,7 @@ function* propertyHistoryMonitor() {
 }
 
 function* updateAddressMonitor() {
-  yield takeLatest(
-    ACTION_TYPES.UPDATE_ADDRESS_REQUEST,
-    updateAddress,
-  );
+  yield takeLatest(ACTION_TYPES.UPDATE_ADDRESS_REQUEST, updateAddress);
 }
 
 const PROPERTY_SAGA = all([

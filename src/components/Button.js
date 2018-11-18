@@ -30,7 +30,7 @@ export default class Button extends Component {
         onPress={onPress}
         style={[styles.container, style]}
         {...rest}>
-        <Text style={[styles.text,titleStyle]}>{title}</Text>
+        <Text style={[styles.text, titleStyle]}>{title}</Text>
       </PaperButton>
     );
   }
@@ -38,7 +38,7 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
   container: {},
-  text:{
-    textAlign:'left'
-  }
+  text: {
+    textAlign: 'left',
+  },
 });

@@ -138,7 +138,7 @@ export default class PropertyDetailScene extends Component {
 
     let {address} = property;
 
-    let {block,street,building,description} = address;
+    let {block, street, building, description} = address;
 
     let {scrollY} = this.state;
 
@@ -276,44 +276,23 @@ export default class PropertyDetailScene extends Component {
                     {property.meta.description}
                   </Text>
 
-                  <Separator style={{ marginVertical:10 }}/>
+                  <Separator style={{marginVertical: 10}} />
 
-                  <View >
+                  <View>
                     {/*<Text style={{}}>{I18n.t('address')}</Text>*/}
 
-                    <Text style={{fontWeight:'bold',}}>
+                    <Text style={{fontWeight: 'bold'}}>
                       {isRTL
-                        ? `${
-                            property.address.city_ar
-                          }`
-                        : `${
-                            property.address.city_en
-                          }`}
+                        ? `${property.address.city_ar}`
+                        : `${property.address.city_en}`}
 
-                      {
-                        !!block && (
-                          ` ${I18n.t('block')} ${block} `
-                        )
-                      }
+                      {!!block && ` ${I18n.t('block')} ${block} `}
 
-                      {
-                        !!street && (
-                          ` ${I18n.t('street')} ${street} `
-                        )
-                      }
+                      {!!street && ` ${I18n.t('street')} ${street} `}
 
-                      {
-                        !!building && (
-                          ` ${I18n.t('building')} ${building} `
-                        )
-                      }
+                      {!!building && ` ${I18n.t('building')} ${building} `}
 
-                      {
-                        !!description && (
-                          `${description} `
-                        )
-                      }
-
+                      {!!description && `${description} `}
                     </Text>
                   </View>
                 </View>
@@ -557,7 +536,7 @@ const styles = StyleSheet.create({
   infoResult: {
     fontWeight: '500',
     paddingLeft: 10,
-    flexWrap:'wrap'
+    flexWrap: 'wrap',
   },
   chatButtonContainer: {
     flex: 1,

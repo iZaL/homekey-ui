@@ -93,7 +93,6 @@ class Chat extends PureComponent {
     let {thread, user} = this.props;
     const messages = thread && thread.messages ? thread.messages : [];
     return (
-      <View style={{backgroundColor: 'white', flex: 1}}>
         <GiftedChat
           messages={messages.concat().reverse()}
           text={this.state.text}
@@ -108,7 +107,6 @@ class Chat extends PureComponent {
             removeClippedSubviews: false,
           }}
         />
-      </View>
     );
   }
 }

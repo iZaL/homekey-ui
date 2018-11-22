@@ -216,12 +216,12 @@ export default class PropertyHomeScene extends Component {
           underlayColor={colors.lightGrey}
           activeOpacity={0.5}>
           <View style={styles.textInput}>
-            <Ionicons
-              name="ios-search"
-              size={25}
-              color={colors.darkGrey}
-              style={[styles.searchIcon]}
-            />
+            {/*<Ionicons*/}
+              {/*name="ios-search"*/}
+              {/*size={25}*/}
+              {/*color={colors.darkGrey}*/}
+              {/*style={[styles.searchIcon]}*/}
+            {/*/>*/}
             <Text style={styles.searchText}>
               {filters && filters.searchString
                 ? filters.searchString

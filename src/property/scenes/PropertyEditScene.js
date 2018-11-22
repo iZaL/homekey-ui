@@ -233,7 +233,7 @@ export default class PropertyEditScene extends Component {
           }
         />
 
-        {stage === 6 && (
+        {stage === 1 && (
           <List
             field="type"
             collection={types}
@@ -312,7 +312,7 @@ export default class PropertyEditScene extends Component {
           />
         )}
 
-        {stage === 1 && (
+        {stage === 6 && (
           <PropertyInfo
             attributes={attributes}
             genders={genders}

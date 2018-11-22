@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {SELECTORS as AUTH_SELECTORS} from '../auth/common/selectors';
@@ -113,10 +113,10 @@ class ChatThread extends PureComponent {
           }}
           textInputStyle={styles.textInputStyle}
           listViewProps={{
-            removeClippedSubviews: false,
+            removeClippedSubviews: Platform.OS === 'android' ? true : false,
           }}
-          forceGetKeyboardHeight={true}
-          bottomOffset={48}
+          forceGetKeyboardHeight={Platform.OS === 'android' ? false : true}
+          bottomOffset={Platform.OS === 'android' ? 0 : 48}
         />
       </View>
     );

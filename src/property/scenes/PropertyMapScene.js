@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
+  View, WebView,
+  Platform
 } from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import colors from './../../common/colors';
@@ -99,6 +100,23 @@ export default class PropertyMapScene extends PureComponent {
 
                     <View style={styles.mapContent}>
                       <View style={styles.leftCol}>
+
+                        {
+                          Platform.OS === 'ios' ?
+                            <Image
+                              source={{uri: property.images[0]}}
+                              style={[styles.image]}
+                              resizeMode="cover"
+                            />
+                            :
+                            <WebView
+                              style={[styles.image]}
+                              source={{uri: property.images[0]}}
+                              injectedJavaScript={'document.getElementsByTagName("BODY")[0].style.backgroundColor = "#ffffff";'}
+                              javaScriptEnabledAndroid={true}
+                            />
+                        }
+
                         <Image
                           source={{uri: property.images[0]}}
                           style={[styles.image]}

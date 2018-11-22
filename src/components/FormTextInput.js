@@ -12,11 +12,11 @@ export default class FormTextInput extends Component {
     const {style, ...rest} = this.props;
     return (
       <TextInput
-        {...rest}
         style={[styles.input, style]}
         placeholderTextColor={colors.mediumGrey}
         autoCorrect={false}
         autoCapitalize="none"
+        {...rest}
       />
     );
   }

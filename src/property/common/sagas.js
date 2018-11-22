@@ -16,6 +16,7 @@ import find from 'lodash/find';
 import {hasArabicChar, parseArabicChar} from '../../common/functions';
 import I18n, {isRTL} from './../../app/common/locale';
 import omit from 'lodash/omit';
+import {Platform} from 'react-native';
 
 function* fetchProperties() {
   try {
@@ -399,7 +400,7 @@ function* saveProperty(action) {
       formData.append('images[]', {
         uri: img,
         name: getFileName(img),
-        type: getFileExtension(img),
+        type: Platform.OS === 'android' ? 'image/jpeg' : getFileExtension(img),
       });
     });
     // if(params.video) {

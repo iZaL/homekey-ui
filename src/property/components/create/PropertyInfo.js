@@ -144,7 +144,7 @@ export default class PropertyInfo extends Component {
         ref="scrollView">
         <KeyboardAvoidingView
           behavior="position"
-          keyboardVerticalOffset={Platform.OS === 'ios' ? -60 : 0}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? -60 : -150}
           enabled>
           {/*{header}*/}
 

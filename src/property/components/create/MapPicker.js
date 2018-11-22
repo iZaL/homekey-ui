@@ -69,7 +69,8 @@ export default class MapPicker extends Component {
             longitude: parseFloat(longitude),
           }}
           pinColor="red"
-          image={Platform.OS === 'android' ? markerImage : undefined}>
+          image={Platform.OS === 'android' ? markerImage : undefined}
+        >
           {Platform.OS === 'ios' ? (
             <Image
               source={markerImage}

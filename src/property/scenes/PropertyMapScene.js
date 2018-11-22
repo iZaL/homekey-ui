@@ -91,16 +91,18 @@ export default class PropertyMapScene extends PureComponent {
                     latitude: parseFloat(address.latitude),
                     longitude: parseFloat(address.longitude),
                   }}
-                  pinColor="red">
-                  <MapView.Callout onPress={() => loadScene(property)}>
+                  pinColor="red"
+                  tracksViewChanges={true}
+                >
+                  <MapView.Callout onPress={() => loadScene(property)} tracksViewChanges={true}>
                     <Text style={styles.title}>{meta.title}</Text>
 
                     <View style={styles.mapContent}>
                       <View style={styles.leftCol}>
                         <Image
                           source={{uri: property.images[0]}}
-                          style={styles.image}
-                          resizeMode="contain"
+                          style={[styles.image]}
+                          resizeMode="cover"
                         />
                       </View>
                       <View style={styles.rightCol}>

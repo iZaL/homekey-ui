@@ -155,7 +155,7 @@ dependencies {
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-i18n')
     compile project(':react-native-code-push')
-    //compile project(':react-native-maps')
+    compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile "com.facebook.react:react-native:+"
@@ -165,15 +165,14 @@ dependencies {
         //compile ("com.google.android.gms:play-services-gcm:+")
         //compile ("com.google.android.gms:play-services-location:+")
 
-    compile(project(':react-native-maps')) {
-        exclude group: 'com.google.android.gms'
-    }
-
-    compile 'com.google.android.gms:play-services-base:10.0.1'
-    compile 'com.google.android.gms:play-services-maps:10.0.1'
-    compile 'com.google.android.gms:play-services-location:10.0.1'
-    compile 'com.google.android.gms:play-services-gcm:10.0.1'
-
+    //compile(project(':react-native-maps')) {
+    //    exclude group: 'com.google.android.gms'
+    //}
+    //compile 'com.google.android.gms:play-services-base:10.0.1'
+    //compile 'com.google.android.gms:play-services-maps:10.0.1'
+    //compile 'com.google.android.gms:play-services-location:10.0.1'
+    //compile 'com.google.android.gms:play-services-gcm:10.0.1'
+re
 //    compile ("com.google.android.gms:play-services-base:+") {
 //        force = true;
 //    }

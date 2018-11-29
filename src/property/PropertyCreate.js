@@ -31,6 +31,32 @@ class PropertyCreate extends Component {
   goBack = () => {
     this.props.navigation.goBack();
   };
+
+  uploadImages = () => {
+
+    let {images} = this.props.listing.attributes;
+
+    return new Promise((resolve, reject) => {
+      this.props.actions.uploadImages({
+          images,
+          resolve,
+          reject,
+        })
+    })
+      .then(imgs => {
+        const payload = {
+          replace: true,
+          clone: true,
+          key: 'images',
+          item: imgs,
+        };
+        this.updateStore(payload);
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
   render() {
     let {categories, listing, propertyType} = this.props;
 
@@ -49,6 +75,7 @@ class PropertyCreate extends Component {
         propertyType={propertyType}
         popBack={this.goBack}
         saveAddress={this.saveAddress}
+        uploadImages={this.uploadImages}
       />
     );
   }

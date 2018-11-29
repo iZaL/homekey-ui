@@ -25,6 +25,28 @@ class PropertyEdit extends Component {
     this.props.actions.saveProperty(this.props.listing.attributes);
   };
 
+  uploadImages = () => {
+    let {images} = this.props.listing.attributes;
+    return new Promise((resolve, reject) => {
+      this.props.actions.uploadImages({
+        images,
+        resolve,
+        reject,
+      })
+    })
+      .then(images => {
+        const payload = {
+          replace: false,
+          key: 'images',
+          item: images,
+        };
+        this.updateStore(payload);
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
   goBack = () => {
     this.props.navigation.goBack();
   };
@@ -51,6 +73,7 @@ class PropertyEdit extends Component {
         popBack={this.goBack}
         navBarTitle={I18n.t('edit_property')}
         saveAddress={this.saveAddress}
+        uploadImages={this.uploadImages}
       />
     );
   }

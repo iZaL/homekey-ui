@@ -64,12 +64,11 @@ export default function ormReducer(state, action) {
     case PROPERTY_ACTIONS.PROPERTY_SAVE_SUCCESS: {
       if (action.payload && action.payload.data) {
         const response = action.payload.data;
-
         if (Property.hasId(response._id)) {
           const property = Property.withId(response._id);
-          property.update({...response, user: response.user._id});
+          property.update({...response, user: response.user_id});
         } else {
-          Property.create({...response, user: response.user._id});
+          Property.create({...response, user: response.user_id});
         }
       }
       break;

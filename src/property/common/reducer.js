@@ -229,16 +229,22 @@ export default function propertyReducer(state = initialState, action = {}) {
         const oldState = state.addListing.attributes[key];
         let newState;
 
-        if (isArray(item)) {
-          newState = union(oldState, item);
+
+        if(action.payload.clone) {
+          newState = item
         } else {
-          if (oldState.includes(item)) {
-            // remove item
-            newState = oldState.filter(value => value !== item);
+          if (isArray(item)) {
+            newState = union(oldState, item);
           } else {
-            newState = union(oldState, [item]);
+            if (oldState.includes(item)) {
+              // remove item
+              newState = oldState.filter(value => value !== item);
+            } else {
+              newState = union(oldState, [item]);
+            }
           }
         }
+
         return {
           ...state,
           addListing: {

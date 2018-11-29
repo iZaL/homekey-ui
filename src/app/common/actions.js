@@ -12,6 +12,14 @@ export const ACTION_TYPES = {
   SET_PUSH_TOKEN_SUCCESS: 'SET_PUSH_TOKEN_SUCCESS',
   SET_PUSH_TOKEN_FAILURE: 'SET_PUSH_TOKEN_FAILURE',
   NAVIGATE: 'NAVIGATE',
+
+  UPLOAD_IMAGES_REQUEST: '@app/UPLOAD_IMAGES_REQUEST',
+  UPLOAD_IMAGES_SUCCESS: '@app/UPLOAD_IMAGES_SUCCESS',
+  UPLOAD_IMAGES_FAILURE: '@app/UPLOAD_IMAGES_FAILURE',
+
+  SAVE_UPLOADS_REQUEST: '@app/SAVE_UPLOADS_REQUEST',
+  SAVE_UPLOADS_SUCCESS: '@app/SAVE_UPLOADS_SUCCESS',
+  SAVE_UPLOADS_FAILURE: '@app/SAVE_UPLOADS_FAILURE',
 };
 
 function boot() {
@@ -70,6 +78,20 @@ function navigateToScene(scene, params) {
   };
 }
 
+function uploadImages(params) {
+  return {
+    type: ACTION_TYPES.UPLOAD_IMAGES_REQUEST,
+    params,
+  };
+}
+
+function saveUploads(params) {
+  return {
+    type: ACTION_TYPES.SAVE_UPLOADS_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   boot,
   changeCountry,
@@ -79,4 +101,6 @@ export const ACTIONS = {
   setLanguage,
   setPushToken,
   navigateToScene,
+  uploadImages,
+  saveUploads,
 };

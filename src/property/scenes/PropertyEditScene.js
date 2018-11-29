@@ -16,6 +16,7 @@ import Footer from './../components/create/Footer';
 import {CountryPropType} from './../common/proptypes';
 import I18n, {isRTL} from '../../app/common/locale';
 import PropTypes from 'prop-types';
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
 
 export default class PropertyEditScene extends Component {
   static propTypes = {
@@ -50,7 +51,6 @@ export default class PropertyEditScene extends Component {
     let payload = {
       [field]: value.key,
     };
-
     this.updateAttributes('meta', payload);
   };
 
@@ -62,29 +62,6 @@ export default class PropertyEditScene extends Component {
   };
 
   updateAddress = data => {
-    // const {
-    //   state_en,
-    //   city_en,
-    //   state_ar,
-    //   city_ar,
-    //   country,
-    //   latitude,
-    //   longitude,
-    //   address_en,
-    //   address_ar,
-    // } = data;
-    // const payload = {
-    //   state_en,
-    //   country,
-    //   city_en,
-    //   state_ar,
-    //   city_ar,
-    //   latitude,
-    //   longitude,
-    //   address_en,
-    //   address_ar,
-    // };
-
     this.updateAttributes('address', data);
   };
 
@@ -95,6 +72,11 @@ export default class PropertyEditScene extends Component {
       item: images,
     };
     this.updateStore(payload);
+  };
+
+  uploadImages = () => {
+    this.goToNextStage();
+    this.props.uploadImages();
   };
 
   updateAmenities = amenity => {
@@ -308,7 +290,7 @@ export default class PropertyEditScene extends Component {
             header={
               <Header title={` ${I18n.t('upload')} ${I18n.t('images')}  `} />
             }
-            footer={<Footer updateListing={this.goToNextStage} />}
+            footer={<Footer updateListing={this.uploadImages} />}
           />
         )}
 

@@ -394,27 +394,27 @@ function* saveProperty(action) {
     const urlParams = `api_token=${apiToken}`;
     const response = yield call(API.saveProperty, params, urlParams);
 
-    const formData = new FormData();
-
-    map(images, img => {
-      formData.append('images[]', {
-        uri: img,
-        name: getFileName(img),
-        type: Platform.OS === 'android' ? 'image/jpeg' : getFileExtension(img),
-      });
-    });
-    // if(params.video) {
-    //   formData.append("video", params.video);
-    // }
-    const imageResponse = yield call(
-      API.uploadImage,
-      response.data._id,
-      formData,
-    );
+    // const formData = new FormData();
+    //
+    // map(images, img => {
+    //   formData.append('images[]', {
+    //     uri: img,
+    //     name: getFileName(img),
+    //     type: Platform.OS === 'android' ? 'image/jpeg' : getFileExtension(img),
+    //   });
+    // });
+    // // if(params.video) {
+    // //   formData.append("video", params.video);
+    // // }
+    // const imageResponse = yield call(
+    //   API.uploadImage,
+    //   response.data._id,
+    //   formData,
+    // );
 
     yield put({
       type: ACTION_TYPES.PROPERTY_SAVE_SUCCESS,
-      payload: imageResponse,
+      payload: response,
     });
 
     yield put(APP_ACTIONS.setNotification(I18n.t('saved'), 'success'));

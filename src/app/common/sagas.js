@@ -20,6 +20,7 @@ import 'moment/locale/ar-kw';
 import 'moment/locale/en-au';
 import moment from 'moment';
 import NavigationService from '../../components/NavigationService';
+import {getFileExtension, getFileName} from "../../common/functions";
 
 function* bootstrapped(action) {
   if (action.value === true) {
@@ -138,6 +139,52 @@ function* setPushToken(action) {
   }
 }
 
+function* uploadImages(action) {
+  const {images, reject, resolve} = action.params;
+  try {
+    const formData = new FormData();
+
+    images.map(img => {
+      formData.append('images[]', {
+        uri: img,
+        name: getFileName(img),
+        type: getFileExtension(img),
+      });
+    });
+
+    const params = {
+      body: formData,
+      isBlob: true,
+    };
+
+    const response = yield call(API.uploadImages, params);
+    yield resolve(response.data);
+    yield put({
+      type: ACTION_TYPES.UPLOAD_IMAGES_SUCCESS,
+    });
+  } catch (error) {
+    yield reject(error);
+    yield put({type: ACTION_TYPES.UPLOAD_IMAGES_FAILURE, error});
+  }
+}
+
+function* saveUploads(action) {
+  try {
+    const params = {
+      body: {
+        ...action.params,
+      },
+    };
+    const response = yield call(API.saveUploads, params);
+    yield put({
+      type: ACTION_TYPES.SAVE_UPLOADS_SUCCESS,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.SAVE_UPLOADS_FAILURE, error});
+  }
+}
+
+
 // function* navigate(action) {
 //   try {
 //     yield NavigationService.navigate(action.scene,
@@ -173,12 +220,23 @@ export function* setPushTokenMonitor() {
 //   yield takeLatest(ACTION_TYPES.NAVIGATE, navigate);
 // }
 
+function* uploadImageMonitor() {
+  yield takeLatest(ACTION_TYPES.UPLOAD_IMAGES_REQUEST, uploadImages);
+}
+function* saveUploadsMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_UPLOADS_REQUEST, saveUploads);
+}
+
+
+
 const APP_SAGA = all([
   fork(bootMonitor),
   fork(bootstrapMonitor),
   fork(changeCountryMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
+  fork(uploadImageMonitor),
+  fork(saveUploadsMonitor)
   // fork(navigationMonitor),
 ]);
 

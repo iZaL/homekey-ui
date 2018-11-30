@@ -10,6 +10,7 @@ import {
   StyleSheet,
   TouchableHighlight,
   View,
+  Platform
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../../common/colors';
@@ -170,7 +171,18 @@ export default class AddressPicker extends Component {
 
     return (
       <View style={styles.container}>
-        {header}
+
+
+        {
+          Platform.OS === "android" &&
+          <View style={styles.marker}>
+            <Image
+              source={require('./../../../../assets/pin.png')}
+              style={styles.image}
+              resizeMode="contain"
+            />
+          </View>
+        }
 
         <MapPicker updateAddress={this.updateAddressFields} address={address} />
 

@@ -58,7 +58,6 @@ export default class AddressFormFields extends PureComponent {
             autoFocus={false}
             style={styles.textInput}
             label={I18n.t('street')}
-            multiline
           />
         </View>
 

@@ -24,8 +24,11 @@ export default class MapPicker extends Component {
     imageLoaded:false
   };
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.address.area_id !== this.props.address.area_id;
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.address.area_id !== this.props.address.area_id;
+  // }
+
+  componentDidMount() {
   }
 
   componentDidUpdate(nextProps) {
@@ -38,13 +41,23 @@ export default class MapPicker extends Component {
     this.props.updateAddress(address);
   };
 
-  onRegionChangeComplete = region => {
-    let {latitude, longitude} = region;
+  onRegionChangeComplete = event => {
+
+    // console.log('region',region);
+
+    let {latitude, longitude} = event.nativeEvent.coordinate;
+
     let params = {
       latitude: latitude,
       longitude: longitude,
     };
+
+    console.log('params',params);
+
     this.updateAddress(params);
+    // setTimeout(()=>{
+    //   this.map.animateToRegion(params);
+    // },1000);
   };
 
   forceUpdate = () => {
@@ -69,12 +82,20 @@ export default class MapPicker extends Component {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }}
-          onRegionChangeComplete={this.onRegionChangeComplete}
+          // onRegionChangeComplete={this.onRegionChangeComplete}
           showsUserLocation={true}
-          pitchEnabled={false}
-          rotateEnabled={false}>
+        >
+          <MapView.Marker
+            coordinate={{
+              latitude: latitude,
+              longitude: longitude,
+            }}
+            draggable
+            onDragEnd={(event)=>this.onRegionChangeComplete(event)}
+            // centerOffset={{x: -18, y: -60}}
+            // anchor={{x: 0.69, y: 1}}
+          />
         </MapView>
-
       </View>
     );
   }

@@ -67,6 +67,8 @@ export default class extends PureComponent {
   };
 
   updateFormFields = (key, value) => {
+    console.log('key',key);
+    console.log('value',value);
     this.setState({
       [key]: value,
     });

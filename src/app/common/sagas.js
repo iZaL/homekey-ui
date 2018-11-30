@@ -13,6 +13,8 @@ import {
 } from './reducer';
 import CodePush from 'react-native-code-push';
 
+import {Platform} from 'react-native';
+
 import {I18nManager} from 'react-native';
 import {SELECTORS as AUTH_SELECTORS} from './../../auth/common/selectors';
 import {API} from './api';
@@ -148,7 +150,7 @@ function* uploadImages(action) {
       formData.append('images[]', {
         uri: img,
         name: getFileName(img),
-        type: getFileExtension(img),
+        type: Platform.OS=== 'android' ? 'image/jpeg' : getFileExtension(img),
       });
     });
 

@@ -172,17 +172,16 @@ export default class AddressPicker extends Component {
     return (
       <View style={styles.container}>
 
-
-        {
-          Platform.OS === "android" &&
-          <View style={styles.marker}>
-            <Image
-              source={require('./../../../../assets/pin.png')}
-              style={styles.image}
-              resizeMode="contain"
-            />
-          </View>
-        }
+        {/*{*/}
+          {/*Platform.OS === "android" &&*/}
+          {/*<View style={styles.marker}>*/}
+            {/*<Image*/}
+              {/*source={require('./../../../../assets/pin.png')}*/}
+              {/*style={styles.image}*/}
+              {/*resizeMode="contain"*/}
+            {/*/>*/}
+          {/*</View>*/}
+        {/*}*/}
 
         <MapPicker updateAddress={this.updateAddressFields} address={address} />
 

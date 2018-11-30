@@ -33,7 +33,7 @@ export default class AddressFormFields extends PureComponent {
             maxLength={40}
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('description')}
+            placeholder={I18n.t('description')}
           />
         </View>
 
@@ -45,7 +45,7 @@ export default class AddressFormFields extends PureComponent {
             maxLength={40}
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('block')}
+            placeholder={I18n.t('block')}
           />
         </View>
 
@@ -57,7 +57,7 @@ export default class AddressFormFields extends PureComponent {
             maxLength={40}
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('street')}
+            placeholder={I18n.t('street')}
           />
         </View>
 
@@ -69,7 +69,7 @@ export default class AddressFormFields extends PureComponent {
             maxLength={40}
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('avenue')}
+            placeholder={I18n.t('avenue')}
           />
         </View>
 
@@ -81,7 +81,7 @@ export default class AddressFormFields extends PureComponent {
             maxLength={40}
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('building')}
+            placeholder={I18n.t('building')}
           />
         </View>
       </View>

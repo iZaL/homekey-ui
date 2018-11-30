@@ -3,7 +3,7 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Dimensions, Image, StyleSheet} from 'react-native';
+import {Dimensions, Image, StyleSheet,Platform} from 'react-native';
 import MapView from 'react-native-maps';
 
 const {width, height} = Dimensions.get('window');
@@ -18,9 +18,9 @@ export default class MapPicker extends Component {
     address: PropTypes.object.isRequired,
   };
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.address.area_id !== this.props.address.area_id;
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.address.area_id !== this.props.address.area_id;
+  // }
 
   componentDidUpdate(nextProps) {
     if (nextProps.address.area_id !== this.props.address.area_id) {
@@ -59,11 +59,31 @@ export default class MapPicker extends Component {
         showsUserLocation={true}
         pitchEnabled={false}
         rotateEnabled={false}>
+
         <Image
           source={require('./../../../../assets/pin.png')}
           style={styles.image}
           resizeMode="contain"
         />
+
+        {
+          // Platform.OS === 'ios' ?
+          //
+          //   <Image
+          //     source={require('./../../../../assets/pin.png')}
+          //     style={styles.image}
+          //     resizeMode="contain"
+          //   />
+          //   :
+          //   <MapView.Marker
+          //     coordinate={{
+          //       latitude: latitude,
+          //       longitude: longitude,
+          //     }}
+          //     // centerOffset={{x: -18, y: -60}}
+          //     // anchor={{x: 0.69, y: 1}}
+          //   />
+        }
       </MapView>
     );
   }

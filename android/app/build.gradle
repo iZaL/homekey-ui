@@ -103,8 +103,8 @@ android {
         applicationId "com.homekeyapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
-        versionName "5.0"
+        versionCode 6
+        versionName "6.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

@@ -20,6 +20,9 @@ class UserDetail extends Component {
 
   render() {
     const {user} = this.props;
+
+    console.log('user',user);
+
     return <UserDetailScene user={user} loadScene={this.editUser} />;
   }
 }

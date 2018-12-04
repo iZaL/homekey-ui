@@ -28,8 +28,6 @@ export default class PropertyMap extends Component {
   render() {
     const {address, onPinPress, sceneType, setSceneType} = this.props;
 
-    console.log('sceneType', sceneType);
-
     const {latitude, longitude} = address;
     return (
       <View style={{flex: 1}}>
@@ -57,13 +55,13 @@ export default class PropertyMap extends Component {
           {sceneType === 'mapScene' ? (
             <MapView.Marker
               coordinate={address}
-              onSelect={() => onPinPress()}
+              onPress={() => onPinPress()}
               scrollEnabled={true}
             />
           ) : (
             <MapView.Marker
               coordinate={address}
-              onSelect={() => setSceneType('mapScene')}
+              onPress={() => setSceneType('mapScene')}
               scrollEnabled={true}
             />
           )}

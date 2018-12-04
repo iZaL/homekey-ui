@@ -146,11 +146,13 @@ function* uploadImages(action) {
   try {
     const formData = new FormData();
 
-    images.map(img => {
+    images.map((img,index) => {
       formData.append('images[]', {
         uri: img,
-        name: getFileName(img),
-        type: Platform.OS=== 'android' ? 'image/jpeg' : getFileExtension(img),
+        name: index,
+        // name: getFileName(img),
+        type: 'image/jpeg',
+        // type: Platform.OS=== 'android' ? 'image/jpeg' : getFileExtension(img),
       });
     });
 

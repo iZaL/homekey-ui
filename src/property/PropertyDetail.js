@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {ActionSheetIOS, Linking} from 'react-native';
+import {ActionSheetIOS, Linking,Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ACTIONS} from './common/actions';
@@ -9,6 +9,7 @@ import {SELECTORS as APP_SELECTORS} from './../app/common/selectors';
 import PropertyDetailScene from './scenes/PropertyDetailScene';
 import {SELECTORS as AUTH_SELECTORS} from '../auth/common/selectors';
 import I18n from './../app/common/locale';
+import ActionSheet from 'react-native-action-sheet';
 
 class PropertyDetail extends Component {
   static propTypes = {
@@ -26,10 +27,6 @@ class PropertyDetail extends Component {
   state = {
     sceneType: 'detailScene',
   };
-
-  // shouldComponentUpdate(nextProps) {
-  // return nextProps.property !== this.props.property;
-  // }
 
   componentDidMount() {
     this.props.navigation.setParams({
@@ -71,19 +68,32 @@ class PropertyDetail extends Component {
 
   followLocation = () => {
     const {property} = this.props;
-    ActionSheetIOS.showActionSheetWithOptions(
+    ActionSheet.showActionSheetWithOptions(
       {
         title: `${property.title}`,
-        options: [
-          I18n.t('open_in_apple_maps'),
-          I18n.t('open_in_google_maps'),
-          I18n.t('cancel'),
-        ],
+        options: Platform.select({
+          ios:[
+            I18n.t('open_in_apple_maps'),
+            I18n.t('open_in_google_maps'),
+            I18n.t('cancel'),
+          ],
+          android:[
+            I18n.t('open_in_google_maps'),
+            I18n.t('cancel'),
+          ]
+        }),
         destructiveButtonIndex: -1,
         cancelButtonIndex: 2,
       },
       buttonIndex => {
-        this.openMaps(property, buttonIndex);
+
+        let mapOption = buttonIndex;
+
+        if(Platform.OS === 'android') {
+          mapOption = buttonIndex + 1;
+        };
+
+        this.openMaps(property, mapOption);
       },
     );
   };

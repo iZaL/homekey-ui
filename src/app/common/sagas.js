@@ -149,7 +149,7 @@ function* uploadImages(action) {
     images.map((img,index) => {
       formData.append('images[]', {
         uri: img,
-        name: index,
+        name: Math.random().toString(36).substring(7) + '.jpg',
         // name: getFileName(img),
         type: 'image/jpeg',
         // type: Platform.OS=== 'android' ? 'image/jpeg' : getFileExtension(img),

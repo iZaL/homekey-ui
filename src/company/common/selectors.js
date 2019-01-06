@@ -36,7 +36,7 @@ const getCompanyID = (state, props) =>
 //     : address.city_en}`;
 //
 //   return Object.assign({}, property, {
-//     user: User.hasId(property.user) ? User.withId(property.user).ref : {},
+//     user: User.idExists(property.user) ? User.withId(property.user).ref : {},
 //     title: title,
 //     country: countries.find(country => country.id === address.country),
 //   });

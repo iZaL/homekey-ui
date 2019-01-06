@@ -40,7 +40,7 @@ const resolveProperty = (property, User, countries) => {
   //   : address.city_en}`;
 
   return Object.assign({}, property, {
-    user: User.hasId(property.user) ? User.withId(property.user).ref : {},
+    user: User.idExists(property.user) ? User.withId(property.user).ref : {},
     // title: title,
     country: countries.find(country => country.id === address.country),
   });
@@ -146,7 +146,7 @@ const getThreadDetail = createSelector(
   AUTH_SELECTORS.getCurrentUserID,
   getThreadID,
   ormSelector(orm, ({Thread}, userID, threadID) => {
-    if (Thread.hasId(threadID)) {
+    if (Thread.idExists(threadID)) {
       return Thread.withId(threadID).ref;
     } else {
       return {};

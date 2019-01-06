@@ -11,7 +11,7 @@ export default function ormReducer(state, action) {
   switch (action.type) {
     case AUTH_ACTIONS.LOGIN_SUCCESS: {
       let user = action.payload;
-      if (!User.hasId(user._id)) {
+      if (!User.idExists(user._id)) {
         User.create(user);
       }
       break;
@@ -19,7 +19,7 @@ export default function ormReducer(state, action) {
     case COMPANY_ACTIONS.DOMESTIC_COMPANIES_SUCCESS: {
       const collections = action.payload.data;
       map(collections, entity => {
-        User.hasId(entity._id)
+        User.idExists(entity._id)
           ? User.withId(entity._id).update({...entity})
           : User.create(entity);
       });
@@ -27,7 +27,7 @@ export default function ormReducer(state, action) {
     }
     case USER_ACTIONS.USER_UPDATE_SUCCESS: {
       let user = action.payload;
-      if (!User.hasId(user._id)) {
+      if (!User.idExists(user._id)) {
         User.create(user);
       } else {
         User.withId(user._id).update(action.payload);
@@ -43,10 +43,10 @@ export default function ormReducer(state, action) {
       map(propertyCollections, entity => {
         let user = entity.user;
         if (!user) return;
-        if (!User.hasId(user._id)) {
+        if (!User.idExists(user._id)) {
           User.create(user);
         }
-        Property.hasId(entity._id)
+        Property.idExists(entity._id)
           ? Property.withId(entity._id).update({...entity, user: user._id})
           : Property.create({...entity, user: user._id});
       });
@@ -54,7 +54,7 @@ export default function ormReducer(state, action) {
     }
     case PROPERTY_ACTIONS.PROPERTY_FAVORITE_OPTIMISTIC_UPDATE: {
       const {itemID, newItemAttributes} = action.payload.params;
-      if (Property.hasId(itemID)) {
+      if (Property.idExists(itemID)) {
         const modelInstance = Property.withId(itemID);
         modelInstance.update(newItemAttributes);
       }
@@ -64,7 +64,7 @@ export default function ormReducer(state, action) {
     case PROPERTY_ACTIONS.PROPERTY_SAVE_SUCCESS: {
       if (action.payload && action.payload.data) {
         const response = action.payload.data;
-        if (Property.hasId(response._id)) {
+        if (Property.idExists(response._id)) {
           const property = Property.withId(response._id);
           property.update({...response, user: response.user_id});
         } else {
@@ -77,7 +77,7 @@ export default function ormReducer(state, action) {
     case PROPERTY_ACTIONS.PROPERTY_DELETE_REQUEST: {
       if (action.params && action.params.itemID) {
         const itemID = action.params.itemID;
-        if (Property.hasId(itemID)) {
+        if (Property.idExists(itemID)) {
           const property = Property.withId(itemID);
           property.delete();
         }
@@ -89,7 +89,7 @@ export default function ormReducer(state, action) {
       let thread = action.payload;
 
       if (thread) {
-        if (!Thread.hasId(thread._id)) {
+        if (!Thread.idExists(thread._id)) {
           Thread.create(thread);
         } else {
           Thread.withId(thread._id).update({
@@ -147,15 +147,15 @@ export default function ormReducer(state, action) {
         map(threadCollections, entity => {
           let {property} = entity;
 
-          if (!Property.hasId(property._id)) {
+          if (!Property.idExists(property._id)) {
             Property.create({...entity.property, user: property.user._id});
           }
 
-          if (!User.hasId(property.user._id)) {
+          if (!User.idExists(property.user._id)) {
             User.create({...property.user});
           }
 
-          Thread.hasId(entity._id)
+          Thread.idExists(entity._id)
             ? Thread.withId(entity._id).update({
                 ...entity,
               })
@@ -176,21 +176,21 @@ export default function ormReducer(state, action) {
       try {
         let users = entity.users;
         users.map(user => {
-          if (!User.hasId(user._id)) {
+          if (!User.idExists(user._id)) {
             User.create(user);
           }
         });
         //
 
-        if (!Property.hasId(property._id)) {
+        if (!Property.idExists(property._id)) {
           Property.create({...entity.property, user: property.user._id});
         }
 
-        if (!User.hasId(property.user._id)) {
+        if (!User.idExists(property.user._id)) {
           User.create({...property.user});
         }
 
-        Thread.hasId(entity._id)
+        Thread.idExists(entity._id)
           ? Thread.withId(entity._id).update({
               ...entity,
               // property: entity.property._id,

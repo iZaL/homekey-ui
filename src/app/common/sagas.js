@@ -5,24 +5,15 @@ import {API as AUTH_API, AUTH_STORAGE_KEY} from '../../auth/common/api';
 import {ACTION_TYPES as AUTH_ACTION_TYPES} from '../../auth/common/actions';
 import {ACTION_TYPES as PROPERTY_ACTION_TYPES} from '../../property/common/actions';
 import {ACTION_TYPES} from './actions';
-import {
-  BOOTSTRAPPED_STORAGE_KEY,
-  COUNTRY_KEY,
-  LANGUAGE_STORAGE_KEY,
-  PUSH_TOKEN_KEY,
-} from './reducer';
+import {BOOTSTRAPPED_STORAGE_KEY, COUNTRY_KEY, LANGUAGE_STORAGE_KEY, PUSH_TOKEN_KEY,} from './reducer';
 import CodePush from 'react-native-code-push';
 
-import {Platform} from 'react-native';
-
-import {I18nManager} from 'react-native';
+import {I18nManager, Platform} from 'react-native';
 import {SELECTORS as AUTH_SELECTORS} from './../../auth/common/selectors';
 import {API} from './api';
 import 'moment/locale/ar-kw';
 import 'moment/locale/en-au';
 import moment from 'moment';
-import NavigationService from '../../components/NavigationService';
-import {getFileExtension, getFileName} from "../../common/functions";
 
 function* bootstrapped(action) {
   if (action.value === true) {
@@ -62,7 +53,10 @@ function* boot() {
     try {
       let response = yield call(
         AUTH_API.login,
-        {pushtoken: pushTokenStorageKey},
+        {
+          token: pushTokenStorageKey,
+          os:Platform.OS === 'ios' ? 'ios' : 'android'
+        },
         authStorageKey,
       );
       yield put({
@@ -128,7 +122,7 @@ function* setPushToken(action) {
       yield call(setItem, PUSH_TOKEN_KEY, action.params.token);
       yield call(API.storePushToken, urlParams, {
         token: action.params.token,
-        os: action.params.os,
+        os:Platform.OS === 'ios' ? 'ios' : 'android'
       });
     }
 

@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, View, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -11,7 +11,7 @@ import {Bubble, GiftedChat} from 'react-native-gifted-chat';
 import {isRTL} from '../app/common/locale';
 import ChatHeader from './components/ChatHeader';
 
-class ChatThread extends PureComponent {
+class ChatThread extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,6 +93,9 @@ class ChatThread extends PureComponent {
   };
 
   render() {
+
+    console.log('this.props',this.props);
+
     let {thread, user} = this.props;
     const messages = thread && thread.messages ? thread.messages : [];
     return (

@@ -47,15 +47,17 @@ function* boot() {
 
   //3- Login from history and sync push token to user if exists
   const authStorageKey = yield call(getStorageItem, AUTH_STORAGE_KEY);
-  const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
 
-  if (!isNull(authStorageKey)) {
+  // if (!isNull(authStorageKey)) {
+    const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
+
     try {
       let response = yield call(
         AUTH_API.login,
         {
-          token: pushTokenStorageKey,
-          os:Platform.OS === 'ios' ? 'ios' : 'android'
+          token: 'wsasdasd',
+          os:Platform.OS === 'ios' ? 'ios' : 'android',
+          api_token:"1"
         },
         authStorageKey,
       );
@@ -66,7 +68,7 @@ function* boot() {
     } catch (error) {
       yield put({type: AUTH_ACTION_TYPES.LOGIN_FAILURE, error});
     }
-  }
+  // }
 
   //4- Set User Country
   let currentCountry = yield call(getStorageItem, COUNTRY_KEY);

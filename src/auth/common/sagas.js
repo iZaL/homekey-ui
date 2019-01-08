@@ -14,6 +14,7 @@ import {forgetItem, getItem, setItem} from '../../common/storage';
 import {ACTION_TYPES as USER_ACTION_TYPES} from '../../user/common/actions';
 import I18n from './../../app/common/locale';
 import {PUSH_TOKEN_KEY} from './../../app/common/reducer';
+import {Platform} from 'react-native';
 
 function* login(action) {
   try {
@@ -23,7 +24,8 @@ function* login(action) {
 
     const params = {
       ...action.credentials,
-      pushtoken: pushTokenStorageKey,
+      token: pushTokenStorageKey,
+      os:Platform.OS === 'ios' ? 'ios' : 'android'
     };
 
     const response = yield call(API.login, params, token);

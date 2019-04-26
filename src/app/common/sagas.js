@@ -55,7 +55,7 @@ function* boot() {
       let response = yield call(
         AUTH_API.login,
         {
-          token: pushTokenStorageKey
+          token: pushTokenStorageKey,
           os:Platform.OS === 'ios' ? 'ios' : 'android',
           api_token:authStorageKey
         },

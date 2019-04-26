@@ -24,7 +24,7 @@ target 'homekey' do
     pod 'GoogleMaps'  # Remove this line if you don't want to support Google Maps on iOS
     pod 'react-native-google-maps', path: rn_maps_path  # Remove this line if you don't want to support Google Maps on iOS
 
-
+    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 end
 
 post_install do |installer|

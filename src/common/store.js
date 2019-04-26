@@ -1,8 +1,8 @@
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 import createSagaMiddleware from 'redux-saga';
-import {applyMiddleware, createStore} from 'redux';
-import {AsyncStorage} from 'react-native';
+import {applyMiddleware,compose, createStore} from 'redux';
+import AsyncStorage from '@react-native-community/async-storage';
 import {createLogger} from 'redux-logger';
 
 import {autoRehydrate, persistStore} from 'redux-persist';
@@ -19,8 +19,8 @@ if (__DEV__) {
 
   Store = createStore(
     rootReducer,
-    applyMiddleware(logger, sagaMiddleware),
-    autoRehydrate(),
+    compose(applyMiddleware(logger, sagaMiddleware),autoRehydrate()),
+    // autoRehydrate(),
   );
 
   if (module.hot) {
@@ -32,8 +32,8 @@ if (__DEV__) {
 } else {
   Store = createStore(
     rootReducer,
-    applyMiddleware(sagaMiddleware),
-    autoRehydrate(),
+    compose(applyMiddleware(sagaMiddleware),autoRehydrate()),
+    // autoRehydrate(),
   );
 }
 

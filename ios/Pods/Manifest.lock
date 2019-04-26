@@ -22,11 +22,11 @@ PODS:
     - GoogleMaps/Base
   - React (0.59.5):
     - React/Core (= 0.59.5)
-  - react-native-google-maps (0.22.1):
+  - react-native-google-maps (0.24.2):
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 2.5.0)
     - React
-  - react-native-maps (0.22.1):
+  - react-native-maps (0.24.2):
     - React
   - React/Core (0.59.5):
     - yoga (= 0.59.5.React)
@@ -56,6 +56,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNCAsyncStorage (1.3.3):
+    - React
   - yoga (0.59.5.React)
 
 DEPENDENCIES:
@@ -73,6 +75,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -87,6 +90,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -94,10 +99,11 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   React: 90adac468c7b72bf1fa6c64bf230650f851a8388
-  react-native-google-maps: 06d7adbb45aafbad5fd151f9e6f6856f546d7f58
-  react-native-maps: 5a3de82c153db99e5ac939cb2ed576f245514016
+  react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
+  react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
+  RNCAsyncStorage: 02c55fdf22e98cdfdddca674e8ce0bb9f4e32fbf
   yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
 
-PODFILE CHECKSUM: 37e276960869371f62828b81431f9b49b4121864
+PODFILE CHECKSUM: 8e712a17b73cc67f317b9829a159c1f1a8bc0688
 
 COCOAPODS: 1.6.1

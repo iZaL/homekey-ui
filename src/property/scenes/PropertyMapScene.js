@@ -24,6 +24,7 @@ const LATITUDE_DELTA = 2.5;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class PropertyMapScene extends PureComponent {
+
   static propTypes = {
     onRegionChange: PropTypes.func,
     collection: PropTypes.array.isRequired,
@@ -68,6 +69,12 @@ export default class PropertyMapScene extends PureComponent {
     this.setState({region});
   };
 
+  onLoad = () => {
+    // Hack to prevent non loading images
+    this.showSecondaryMarker = true;
+    this.forceUpdate()
+  };
+
   render() {
     const {collection, loadScene, fetchProperties, isFetching} = this.props;
 
@@ -101,20 +108,33 @@ export default class PropertyMapScene extends PureComponent {
                     <View style={styles.mapContent}>
                       <View style={styles.leftCol}>
 
+                        {!this.showSecondaryMarker && <Image
+                          source={{uri: property.images[0]}}
+                          style={[styles.image]}
+                          resizeMode="cover"
+                          onLoad={this.onLoad}
+                        />}
+
+                        {this.showSecondaryMarker && <Image
+                          source={{uri: property.images[0]}}
+                          style={[styles.image]}
+                          resizeMode="cover"
+                        />}
+
                         {
-                          Platform.OS === 'ios' ?
-                            <Image
-                              source={{uri: property.images[0]}}
-                              style={[styles.image]}
-                              resizeMode="cover"
-                            />
-                            :
-                            <WebView
-                              style={[styles.image]}
-                              source={{uri: property.images[0]}}
-                              injectedJavaScript={'document.getElementsByTagName("BODY")[0].style.backgroundColor = "#ffffff";'}
-                              javaScriptEnabledAndroid={true}
-                            />
+                          // Platform.OS === 'ios' ?
+                          //   <Image
+                          //     source={{uri: property.images[0]}}
+                          //     style={[styles.image]}
+                          //     resizeMode="cover"
+                          //   />
+                          //   :
+                          //   <WebView
+                          //     style={[styles.image]}
+                          //     source={{uri: property.images[0]}}
+                          //     injectedJavaScript={'document.getElementsByTagName("BODY")[0].style.backgroundColor = "#ffffff";'}
+                          //     javaScriptEnabledAndroid={true}
+                          //   />
                         }
 
                       </View>

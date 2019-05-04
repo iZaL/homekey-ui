@@ -95,7 +95,7 @@ export default class PropertyMapScene extends PureComponent {
                   pinColor="red"
                   tracksViewChanges={true}
                 >
-                  <MapView.Callout onPress={() => loadScene(property)} tracksViewChanges={true}>
+                  <MapView.Callout onPress={() => loadScene(property)} tracksViewChanges={false}>
                     <Text style={styles.title}>{meta.title}</Text>
 
                     <View style={styles.mapContent}>
@@ -117,11 +117,6 @@ export default class PropertyMapScene extends PureComponent {
                             />
                         }
 
-                        <Image
-                          source={{uri: property.images[0]}}
-                          style={[styles.image]}
-                          resizeMode="cover"
-                        />
                       </View>
                       <View style={styles.rightCol}>
                         <Text style={styles.price}>

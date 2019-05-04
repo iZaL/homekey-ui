@@ -4,7 +4,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {Dimensions, StyleSheet, TouchableHighlight, View} from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from './../../common/colors';
 
@@ -40,10 +40,10 @@ export default class PropertyMap extends Component {
         )}
 
         <MapView
+          provider={PROVIDER_GOOGLE}
           ref={ref => {
             this.map = ref;
           }}
-          provider={this.props.provider}
           style={styles.map}
           initialRegion={{
             latitude: latitude,

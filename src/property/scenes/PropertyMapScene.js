@@ -86,13 +86,14 @@ export default class PropertyMapScene extends PureComponent {
               this.map = ref;
             }}
             style={styles.map}
-            region={this.state.region}>
+            region={this.state.region}
+            provider={PROVIDER_GOOGLE}
+          >
             {collection.map(property => {
               let {meta, address} = property;
 
               return (
                 <MapView.Marker
-                  provider={PROVIDER_GOOGLE}
                   ref={'ref' + property._id}
                   key={'key' + property._id}
                   coordinate={{

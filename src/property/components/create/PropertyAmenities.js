@@ -97,12 +97,13 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    padding: 10,
+    paddingVertical: 10,
   },
   row: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 10
   },
   title: {
     flex: 1,
@@ -117,6 +118,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 10,
+    // marginHorizontal: 10,
   },
 });

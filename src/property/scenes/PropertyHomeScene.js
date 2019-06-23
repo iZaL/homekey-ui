@@ -117,7 +117,7 @@ export default class PropertyHomeScene extends Component {
   };
 
   toggleMenuVisible = value => {
-    // this.props.countrySelectScene(value);
+    this.props.countrySelectScene(value);
   };
 
   changeTab = name => {

@@ -17,6 +17,7 @@ import Profile from './../user/Profile';
 import UserDetail from './../user/UserDetail';
 import UserEdit from './../user/UserEdit';
 import CountryList from './../user/CountryList';
+import ContactScene from './../user/Contact';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import colors from './colors';
@@ -194,6 +195,9 @@ const SettingTab = createStackNavigator(
         title: I18n.t('add_property'),
       },
     },
+    ContactScene:{
+      screen:ContactScene
+    }
   },
   {
     headerBackTitle: null,

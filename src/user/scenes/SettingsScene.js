@@ -80,6 +80,14 @@ export default class SettingsScene extends Component {
             icon="key"
           />
         )}
+        <Separator />
+        <SettingListItem
+          title={I18n.t('contact')}
+          route="contact"
+          loadScene={loadScene}
+          icon="contact"
+        />
+
       </ScrollView>
     );
   }

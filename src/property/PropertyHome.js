@@ -66,6 +66,10 @@ class PropertyHome extends Component {
     return this.props.navigation.navigate('CountryListScene');
   };
 
+  loadContactScene = () => {
+    return this.props.navigation.navigate('ContactScene');
+  };
+
   render() {
     let {
       searchHistory,
@@ -91,6 +95,7 @@ class PropertyHome extends Component {
         loadPropertyScene={this.loadPropertyScene}
         propertyTypes={propertyTypes}
         countrySelectScene={this.loadCountryListScene}
+        loadContactScene={this.loadContactScene}
       />
     );
   }

@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import {ACTIONS} from './common/actions';
 import {ACTIONS as PROPERTY_ACTIONS} from '../property/common/actions';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 class Contact extends PureComponent {
 
@@ -59,6 +60,39 @@ class Contact extends PureComponent {
           <TouchableHighlight onPress={() => this.makeCall('98009977')}>
             <MaterialIcons name="phone" size={30} color="green" />
           </TouchableHighlight>
+
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: 5,
+          }}>
+          <Text style={[styles.title]} onPress={() =>{}}>
+            homekey.office
+          </Text>
+
+          <TouchableHighlight onPress={() => this.makeCall('98009977')}>
+            <Ionicons name="logo-instagram" size={30} color="green" />
+          </TouchableHighlight>
+
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: 5,
+          }}>
+          <Text style={[styles.title]} onPress={() =>{}}>
+            homekey@gmail.com
+          </Text>
+
+          <TouchableHighlight onPress={() => {}}>
+            <MaterialIcons name="email" size={30} color="green" />
+          </TouchableHighlight>
+
         </View>
       </View>
     );

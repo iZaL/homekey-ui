@@ -33,6 +33,7 @@ export default class PropertyHomeScene extends Component {
     propertyType: PropTypes.object.isRequired,
     propertyTypes: PropTypes.array.isRequired,
     countrySelectScene: PropTypes.func.isRequired,
+    loadContactScene: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -297,9 +298,9 @@ export default class PropertyHomeScene extends Component {
               />
             </View>
             <View style={styles.historyContainer}>
-              {isEmpty(searchHistory) ? (
+              {!isEmpty(searchHistory) ? (
                 <TouchableHighlight
-                  onPress={() => {}}
+                  onPress={()=>this.props.loadContactScene()}
                   underlayColor="transparent">
                   <View
                     style={{

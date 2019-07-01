@@ -85,7 +85,7 @@ export default class SettingsScene extends Component {
           title={I18n.t('contact')}
           route="contact"
           loadScene={loadScene}
-          icon="contact"
+          icon="phone"
         />
 
       </ScrollView>

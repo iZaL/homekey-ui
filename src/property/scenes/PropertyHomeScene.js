@@ -298,7 +298,7 @@ export default class PropertyHomeScene extends Component {
               />
             </View>
             <View style={styles.historyContainer}>
-              {!isEmpty(searchHistory) ? (
+              {isEmpty(searchHistory) ? (
                 <TouchableHighlight
                   onPress={()=>this.props.loadContactScene()}
                   underlayColor="transparent">
